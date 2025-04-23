@@ -8,11 +8,16 @@ return function(M) -- Accept the parent module M as an argument
     local M_exercise = {} -- Local module table for exercise functions
 
     --- Check Current Exercise ---
-    -- Called by the <Plug>(LearnVim_CheckExercise) mapping ('exc').
+    -- Called by the :LearnVim exc command.
     -- Checks if the user has completed the current exercise correctly.
     function M_exercise.check_current_exercise()
          -- Ensure the command is run from within the exercise buffer.
-         if vim.api.nvim_get_current_buf() ~= M.current_state.exercise_bufnr then -- Access buffer number via M.current_state
+         -- Get the buffer number of the window where the command was executed.
+         -- Using vim.api.nvim_get_current_buf() is safer than assuming the current window's buffer.
+         local current_buf = vim.api.nvim_get_current_buf()
+
+         -- Check if the current buffer is the exercise buffer.
+         if current_buf ~= M.current_state.exercise_bufnr then -- Access buffer number via M.current_state
              vim.notify("Please switch to the exercise pane to check.", vim.log.levels.WARN)
              return
          end
@@ -44,11 +49,12 @@ return function(M) -- Accept the parent module M as an argument
     end
 
     --- Reset Current Exercise ---
-    -- Called by the <Plug>(LearnVim_ResetExercise) mapping ('exr').
+    -- Called by the :LearnVim exr command.
     -- Resets the exercise buffer content and cursor to the starting state for the current exercise.
     function M_exercise.reset_current_exercise()
          -- Ensure the command is run from within the exercise buffer.
-         if vim.api.nvim_get_current_buf() ~= M.current_state.exercise_bufnr then -- Access buffer number via M.current_state
+         local current_buf = vim.api.nvim_get_current_buf()
+         if current_buf ~= M.current_state.exercise_bufnr then -- Access buffer number via M.current_state
              vim.notify("Please switch to the exercise pane to reset.", vim.log.levels.WARN)
              return
          end
@@ -64,8 +70,10 @@ return function(M) -- Accept the parent module M as an argument
 
          -- Reset the exercise buffer content using the original setup_text.
          if current_exercise.setup_text then
-              local setup_lines = vim.split(current_exercise.setup_text, '\n', { plain = true })
+              -- Ensure buffer is modifiable before resetting content
+              vim.api.nvim_buf_set_option(M.current_state.exercise_bufnr, 'modifiable', true)
               vim.api.nvim_buf_set_lines(M.current_state.exercise_bufnr, 0, -1, false, {}) -- Clear current content
+              local setup_lines = vim.split(current_exercise.setup_text, '\n', { plain = true })
               vim.api.nvim_buf_set_lines(M.current_state.exercise_bufnr, 0, 0, false, setup_lines) -- Set original content
               -- Reset cursor position if specified in the exercise data.
               if current_exercise.start_cursor then
@@ -93,12 +101,12 @@ return function(M) -- Accept the parent module M as an argument
     function M_exercise.validate_exercise(exercise_data)
         -- Get the exercise buffer and the window where validation was triggered.
         local exercise_buf = M.current_state.exercise_bufnr -- Access buffer number via M.current_state
-        local current_win = vim.api.nvim_get_current_win() -- Window where 'exc' was pressed
+        local exercise_win = M.current_state.exercise_winid -- Access window ID via M.current_state
 
         -- Implement validation logic based on the exercise type.
         if exercise_data.type == 'mode_switch' then
              -- For mode switch exercises, check the current mode.
-             -- This assumes 'exc' was pressed *after* the user switched modes.
+             -- This assumes :LearnVim exc was pressed *after* the user switched modes.
              if exercise_data.validation and exercise_data.validation.type == 'check_mode' then
                   local current_mode = vim.api.nvim_get_mode().mode -- Get the current Neovim mode
                   return current_mode == exercise_data.validation.target_mode
@@ -117,22 +125,37 @@ return function(M) -- Accept the parent module M as an argument
             end
             return false -- No valid validation defined for this type
 
-        -- Add more validation types here as you implement more complex exercises:
-        -- elseif exercise_data.type == 'cursor_move' then
-        --     -- Check if the cursor is at a specific target position.
-        --     if exercise_data.validation and exercise_data.validation.type == 'check_cursor_position' then
-        --          -- Get the cursor position in the EXERCISE window.
-        --          local current_cursor = vim.api.nvim_win_get_cursor(M.current_state.exercise_winid) -- Access window ID via M.current_state
-        --          local target_c = exercise_data.validation.target_cursor
-        --          -- Note: Nvim API uses 1-based line, 0-based column for cursor position.
-        --          return current_cursor[1] == target_c[1] and current_cursor[2] == target_c[2]
-        --      end
-        --      return false
-        -- elseif exercise_data.type == 'command' then
-        --      -- Check if a specific command was executed.
-        --      -- This requires intercepting or monitoring command line history, which is complex.
-        --      vim.notify("Command validation not implemented yet.", vim.log.levels.WARN)
-        --      return false -- Placeholder
+        elseif exercise_data.type == 'cursor_move' then
+             -- Check if the cursor is at a specific target position.
+             if exercise_data.validation and exercise_data.validation.type == 'check_cursor_position' then
+                  -- Get the cursor position in the EXERCISE window.
+                  local current_cursor = vim.api.nvim_win_get_cursor(exercise_win) -- Use exercise_win
+                  local target_c = exercise_data.validation.target_cursor
+                  -- Note: Nvim API uses 1-based line, 0-based column for cursor position.
+                  return current_cursor[1] == target_c[1] and current_cursor[2] == target_c[2]
+             end
+             return false -- No valid validation defined for this type
+
+        -- FIX: Implement validation for the 'command' type exercise
+        elseif exercise_data.type == 'command' then
+             if exercise_data.validation and exercise_data.validation.type == 'check_command' then
+                  -- For command exercises, we'll use simpler validation based on the command target.
+                  if exercise_data.target_command == ':w' then
+                      -- For :w on a scratch buffer, a simple validation is to check if the user is back in Normal mode.
+                      -- Typing a command and pressing Enter returns to Normal mode.
+                      local current_mode = vim.api.nvim_get_mode().mode
+                      return current_mode == 'n'
+                  end
+                  -- For :q! and :wq, the validation is just to attempt the command and then check progress manually.
+                  -- The validation function will always return true here, and the curriculum text
+                  -- will guide the user on how to verify the outcome by restarting the tutorial.
+                  if exercise_data.target_command == ':q!' or exercise_data.target_command == ':wq' then
+                       return true
+                  end
+             end
+             -- If command type is not recognized or validation type is unknown
+             vim.notify("Unknown command exercise validation type or target: " .. tostring(exercise_data.target_command), vim.log.levels.WARN)
+             return false
         end
 
         -- Default case: if the exercise type is not recognized.

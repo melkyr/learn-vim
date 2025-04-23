@@ -47,31 +47,27 @@ The most important skill in Vim is returning to **Normal Mode**. When you're in 
 The primary key for this is **`<Esc>`**.
 (On some keyboards or setups, `<C-[>` - Control plus the left bracket - also works and is often easier to reach).
 
-We've also set up two commands you can use in the exercise pane (the right window):
-* In Normal mode, type **`exc`** to **check** if you've completed the current exercise.
-* In Normal mode, type **`exr`** to **reset** the current exercise back to its starting state.
-
-You will need to map `exc` and `exr` in your Neovim config (e.g., init.lua or vimrc) like this:
-`nmap exc <Plug>(LearnVim_CheckExercise)`
-`nmap exr <Plug>(LearnVim_ResetExercise)`
+We've also set up two commands you can use from the Neovim command line (`:`):
+* Type **`:LearnVim exc`** and press <Enter> to **check** if you've completed the current exercise.
+* Type **`:LearnVim exr`** and press <Enter> to **reset** the current exercise back to its starting state.
 
 Let's practice!
 ]],
             exercises = {
                 {
-                    instruction = "You are currently in Insert mode. Press the `<Esc>` key to return to Normal mode. Then type 'exc' to check.",
+                    instruction = "You are currently in Insert mode. Press the `<Esc>` key to return to Normal mode. Then type `:LearnVim exc` to check.", -- Updated instruction
                     type = "mode_switch", -- Indicates this exercise is about changing modes
                     -- No setup_text needed, the plugin will programmatically put the buffer into Insert mode
                     validation = { type = 'check_mode', target_mode = 'n' }, -- Validation rule: check if the final mode is Normal ('n')
                     feedback = "Success! You are now in Normal mode.", -- Message shown on successful completion
                 },
                  {
-                    instruction = "Press `i` to enter Insert mode. Type some text, then press `<Esc>` again to return to Normal mode. After returning to Normal mode, type 'exc' to check.",
-                    type = "mode_switch", -- Still checking the final mode
+                    instruction = "Press `i` to enter Insert mode. Type some text, then press `<Esc>` again to return to Normal mode. After returning to Normal mode, type `:LearnVim exc` to check.", -- Updated instruction
+                    type = "mode_switch",
                     setup_text = [[
 " --- Exercise 1.2.2 ---
-" Instruction: Press `i` to enter Insert mode. Type some text, then press `<Esc>` again to return to Normal mode. After returning to Normal mode, type 'exc' to check.
-" Use 'exc' to check, 'exr' to reset.
+" Instruction: Press `i` to enter Insert mode. Type some text, then press `<Esc>` again to return to Normal mode. After returning to Normal mode, type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
 Type something here:]], -- Initial text in the exercise buffer
@@ -90,16 +86,16 @@ Now that you know how to get *out* of Insert mode, let's get *into* it.
 
 The most common way to enter Insert mode is by pressing the `i` key while in Normal mode. This puts you into Insert mode *before* the character under the cursor.
 
-Let's practice typing something *before* existing text. Remember to press `<Esc>` to return to Normal mode and then `exc` to check.
+Let's practice typing something *before* existing text. Remember to press `<Esc>` to return to Normal mode and then type `:LearnVim exc` to check.
 ]],
             exercises = {
                 {
-                    instruction = "Press `i` to enter Insert mode. Type 'INSERTED ' before 'TARGET', then press `<Esc>`. Type 'exc' to check.",
+                    instruction = "Press `i` to enter Insert mode. Type 'INSERTED ' before 'TARGET', then press `<Esc>`. Type `:LearnVim exc` to check.", -- Updated instruction
                     type = "insert_text", -- Indicates this exercise is about inserting text
                     setup_text = [[
 " --- Exercise 1.3.1 ---
-" Instruction: Press `i` to enter Insert mode. Type 'INSERTED ' before 'TARGET', then press `<Esc>`. Type 'exc' to check.
-" Use 'exc' to check, 'exr' to reset.
+" Instruction: Press `i` to enter Insert mode. Type 'INSERTED ' before 'TARGET', then press `<Esc>`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
 Insert text before TARGET here.]], -- Initial text including header comments
@@ -108,8 +104,8 @@ Insert text before TARGET here.]], -- Initial text including header comments
                          type = 'check_buffer_content', -- Validation rule: check the entire buffer content
                          target_content = [[
 " --- Exercise 1.3.1 ---
-" Instruction: Press `i` to enter Insert mode. Type 'INSERTED ' before 'TARGET', then press `<Esc>`. Type 'exc' to check.
-" Use 'exc' to check, 'exr' to reset.
+" Instruction: Press `i` to enter Insert mode. Type 'INSERTED ' before 'TARGET', then press `<Esc>`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
 Insert text before INSERTED TARGET here.]] -- Expected buffer content *including* the header lines
@@ -127,16 +123,16 @@ You've learned `i` for inserting *before* the cursor. Another common way to ente
 
 The `a` key (for append) enters Insert mode *after* the character under the cursor. This is very useful for adding text at the end of a word or line.
 
-Remember to use `exc` to check and `exr` to reset the exercise.
+Remember to use `:LearnVim exc` to check and `:LearnVim exr` to reset the exercise from the command line.
 ]],
             exercises = {
                 {
-                    instruction = "Use `a` to append ' my first edit' to the line below. Press `<Esc>` to return to Normal mode. Then type 'exc' to check.",
+                    instruction = "Use `a` to append ' my first edit' to the line below. Press `<Esc>` to return to Normal mode. Then type `:LearnVim exc` to check.", -- Updated instruction
                     type = "insert_text",
                     setup_text = [[
 " --- Exercise 1.4.1 ---
-" Instruction: Use `a` to append ' my first edit' to the line below. Press `<Esc>` to return to Normal mode. Then type 'exc' to check.
-" Use 'exc' to check, 'exr' to reset.
+" Instruction: Use `a` to append ' my first edit' to the line below. Press `<Esc>` to return to Normal mode. Then type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
 This is the line.]], -- Start text
@@ -145,11 +141,11 @@ This is the line.]], -- Start text
                          type = 'check_buffer_content',
                          target_content = [[
 " --- Exercise 1.4.1 ---
-" Instruction: Use `a` to append ' my first edit' to the line below. Press `<Esc>` to return to Normal mode. Then type 'exc' to check.
-" Use 'exc' to check, 'exr' to reset.
+" Instruction: Use `a` to append ' my first edit' to the line below. Press `<Esc>` to return to Normal mode. Then type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
-This is the line. my first edit]] -- Expected buffer content *including* header
+This is the line. my first edit]]
                     },
                     feedback = "Append successful! You made your first edit.",
                 },
@@ -166,23 +162,25 @@ From Normal mode, type `:` to enter Command-line mode. You'll see a `:` appear a
 
 Then type `w` (for write) and press `<Enter>`. The full command is `:w`.
 
-Let's try it. (The tutorial simulates the save; it won't write a real file here). Remember `exc` to check.
-]],
+In this tutorial, attempting to save the exercise buffer will show an error because it's a special buffer. That's expected!
+
+**Your task:** Type `:w` and press `<Enter>`. You will see an error message. Then type `:LearnVim exc` to check.
+]], -- Updated explanation
             exercises = {
                 {
-                    instruction = "Type `:w` and press `<Enter>` to simulate saving the current buffer. Type 'exc' to check.",
-                    type = "command", -- Indicates this exercise is about executing a command
-                    target_command = ":w", -- The command we expect the user to enter
+                    instruction = "Type `:w` and press `<Enter>`. Then type `:LearnVim exc` to check.", -- Updated instruction
+                    type = "command",
+                    target_command = ":w",
                     setup_text = [[
 " --- Exercise 1.5.1 ---
-" Instruction: Type `:w` and press `<Enter>` to simulate saving the current buffer. Type 'exc' to check.
-" Use 'exc' to check, 'exr' to reset.
+" Instruction: Type `:w` and press `<Enter>`. Then type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
 This buffer needs saving. Changes were made here.]] ,
                     -- setup_state = { modified = true }, -- TODO: Need to programmatically set modified flag in init.lua before loading this exercise
-                    validation = { type = 'check_command', target_command = ':w' }, -- Placeholder validation, needs command-line capture logic
-                    feedback = "Buffer saved (in the tutorial)! The '*' marker (if visible) would disappear.",
+                    validation = { type = 'check_command', target_command = ':w' }, -- Validation updated in exercise.lua
+                    feedback = "You attempted to save! The error message confirms you used the command.", -- Updated feedback
                 },
             },
         },
@@ -199,46 +197,50 @@ From Normal mode, type `:`.
 * `:wq` - Write (save) and quit. A very common command.
 * `:x` - Write and quit. Similar to `:wq`, but only writes if changes were made.
 
-Let's practice the escape route and a clean exit. (The tutorial simulates quitting). Remember `exc` to check.
-]],
+In this tutorial, these commands won't actually close Neovim, but they will affect your saved progress.
+
+**Your task:**
+1.  Imagine you made a terrible mistake and want to exit *without* saving. Type `:q!` and press `<Enter>`.
+2.  Type `:LearnVim exc` to check.
+3.  **Important:** To see that your progress was *not* saved by `:q!`, type `:qall` to exit Neovim completely. Then restart Neovim and type `:LearnVim start`. You should be back at Lesson 1.6.
+]], -- Updated explanation
             exercises = {
                 {
-                    instruction = "Imagine you made a terrible mistake and want to exit *without* saving. Type `:q!` and press `<Enter>`. Then type 'exc' to check.",
+                    instruction = "Type `:q!` and press `<Enter>`. Then type `:LearnVim exc` to check. Exit and restart Neovim to verify progress was not saved.", -- Updated instruction
                     type = "command",
                     target_command = ":q!",
                     setup_text = [[
 " --- Exercise 1.6.1 ---
-" Instruction: Type `:q!` and press `<Enter>` to quit without saving. Then type 'exc' to check.
-" Use 'exc' to check, 'exr' to reset.
+" Instruction: Type `:q!` and press `<Enter>`. Then type `:LearnVim exc` to check. Exit and restart Neovim to verify progress was not saved.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
 Make changes here, then abandon them.
 Add some text.]],
                     -- setup_state = { modified = true }, -- TODO: Need to programmatically set modified flag
-                    validation = { type = 'check_command', target_command = ':q!' }, -- Placeholder validation
-                    feedback = "Emergency exit successful! You discarded changes.",
+                    validation = { type = 'check_command', target_command = ':q!' }, -- Validation updated in exercise.lua
+                    feedback = "You attempted to quit without saving! Now exit Neovim completely (:qall), restart, and type :LearnVim start to see you're still on this lesson.", -- Updated feedback
                 },
                 {
-                    instruction = "Now, type `:wq` and press `<Enter>` to save and quit cleanly. Type 'exc' to check.",
+                    instruction = "Now, type `:wq` and press `<Enter>` to save and quit cleanly. Type `:LearnVim exc` to check. Exit and restart Neovim to verify progress was saved.", -- Updated instruction
                     type = "command",
                     target_command = ":wq",
                     setup_text = [[
 " --- Exercise 1.6.2 ---
-" Instruction: Now, type `:wq` and press `<Enter>` to save and quit cleanly. Type 'exc' to check.
-" Use 'exc' to check, 'exr' to reset.
+" Instruction: Now, type `:wq` and press `<Enter>` to save and quit cleanly. Type `:LearnVim exc` to check. Exit and restart Neovim to verify progress was saved.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
 Make changes here that you want to save.
 Add some text.]],
                     -- setup_state = { modified = true }, -- TODO: Need to programmatically set modified flag
-                    validation = { type = 'check_command', target_command = ':wq' }, -- Placeholder validation
-                    feedback = "Clean exit successful!",
+                    validation = { type = 'check_command', target_command = ':wq!' }, -- Validation updated in exercise.lua
+                    feedback = "You attempted to save and quit! Now exit Neovim completely (:qall), restart, and type :LearnVim start. You should move to the next lesson.", -- Updated feedback
                 },
             },
         },
     },
     -- --- Module 2: Basic Navigation (The Home Row) ---
-    -- Add Module 2 content here later, following the structure.
     module2 = {
         title = "Basic Navigation (The Home Row)",
         lesson1 = {
@@ -252,35 +254,35 @@ In Normal mode, the most basic movement keys are right under your fingers on the
 * `h` - Move one character **left**
 * `l` - Move one character **right**
 
-Try moving the cursor left and right in the exercise pane. Remember to use `exc` to check when you think you've completed the task!
+Try moving the cursor left and right in the exercise pane. Remember to type `:LearnVim exc` to check when you think you've completed the task!
 ]],
             exercises = {
                 {
-                    instruction = "Using only the `l` key, move the cursor to the character 'D'. Type 'exc' to check.",
+                    instruction = "Using only the `l` key, move the cursor to the character 'D'. Type `:LearnVim exc` to check.", -- Updated instruction
                     type = "cursor_move", -- Indicates exercise is about cursor position
                     setup_text = [[
 " --- Exercise 2.1.1 ---
-" Instruction: Using only the `l` key, move the cursor to the character 'D'. Type 'exc' to check.
-" Use 'exc' to check, 'exr' to reset.
+" Instruction: Using only the `l` key, move the cursor to the character 'D'. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
 ABCDEFG]],
                     start_cursor = {5, 0}, -- Cursor starts on 'A' (line 5, column 0)
-                    validation = { type = 'check_cursor_position', target_cursor = {5, 3} }, -- Target cursor is on 'D' (line 5, column 3)
+                    validation = { type = 'check_cursor_position', target_cursor = {6, 3} }, -- Target cursor is on 'D' (line 5, column 3)
                     feedback = "Correct! You moved right.",
                 },
                  {
-                    instruction = "Using only the `h` key, move the cursor to the character 'E'. Type 'exc' to check.",
+                    instruction = "Using only the `h` key, move the cursor to the character 'E'. Type `:LearnVim exc` to check.", -- Updated instruction
                     type = "cursor_move",
                     setup_text = [[
 " --- Exercise 2.1.2 ---
-" Instruction: Using only the `h` key, move the cursor to the character 'E'. Type 'exc' to check.
-" Use 'exc' to check, 'exr' to reset.
+" Instruction: Using only the `h` key, move the cursor to the character 'E'. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
 ABCDEFG]],
                     start_cursor = {5, 6}, -- Cursor starts on 'G' (line 5, column 6)
-                    validation = { type = 'check_cursor_position', target_cursor = {5, 4} }, -- Target cursor is on 'E' (line 5, column 4)
+                    validation = { type = 'check_cursor_position', target_cursor = {6, 4} }, -- Target cursor is on 'E' (line 5, column 4)
                     feedback = "Correct! You moved left.",
                  }
             },
@@ -294,39 +296,39 @@ Continuing with the home row, `j` and `k` move the cursor vertically:
 * `j` - Move one line **down**
 * `k` - Move one line **up**
 
-These are incredibly common movements. Practice moving up and down in the exercise pane. Remember `exc` to check.
+These are incredibly common movements. Practice moving up and down in the exercise pane. Remember to type `:LearnVim exc` to check.
 ]],
             exercises = {
                 {
-                    instruction = "Using only the `j` key, move the cursor down to 'Line 3'. Type 'exc' to check.",
+                    instruction = "Using only the `j` key, move the cursor down to 'Line 3'. Type `:LearnVim exc` to check.", -- Updated instruction
                     type = "cursor_move",
                     setup_text = [[
 " --- Exercise 2.2.1 ---
-" Instruction: Using only the `j` key, move the cursor down to 'Line 3'. Type 'exc' to check.
-" Use 'exc' to check, 'exr' to reset.
+" Instruction: Using only the `j` key, move the cursor down to 'Line 3'. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
 Line 1
 Line 2
 Line 3]],
-                    start_cursor = {5, 0}, -- Cursor starts on Line 1 (line 5, column 0)
-                    validation = { type = 'check_cursor_position', target_cursor = {7, 0} }, -- Target cursor is on Line 3 (line 7, column 0)
+                    start_cursor = {5, 0},
+                    validation = { type = 'check_cursor_position', target_cursor = {7, 0} },
                     feedback = "Success! You moved down.",
                 },
                 {
-                    instruction = "Using only the `k` key, move the cursor up to 'Line 1'. Type 'exc' to check.",
+                    instruction = "Using only the `k` key, move the cursor up to 'Line 1'. Type `:LearnVim exc` to check.", -- Updated instruction
                     type = "cursor_move",
                     setup_text = [[
 " --- Exercise 2.2.2 ---
-" Instruction: Using only the `k` key, move the cursor up to 'Line 1'. Type 'exc' to check.
-" Use 'exc' to check, 'exr' to reset.
+" Instruction: Using only the `k` key, move the cursor up to 'Line 1'. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
 Line 1
 Line 2
 Line 3]],
-                    start_cursor = {7, 0}, -- Cursor starts on Line 3 (line 7, column 0)
-                    validation = { type = 'check_cursor_position', target_cursor = {5, 0} }, -- Target cursor is on Line 1 (line 5, column 0)
+                    start_cursor = {7, 0},
+                    validation = { type = 'check_cursor_position', target_cursor = {5, 0} },
                     feedback = "Success! You moved up.",
                 },
             },
@@ -340,23 +342,23 @@ You can combine `h`, `j`, `k`, and `l` to move anywhere character by character, 
 
 For example, from the start of a line, pressing `lj` moves right one character, then down one line.
 
-Let's try navigating to a specific spot. Remember `exc` to check.
+Let's try navigating to a specific spot. Remember to type `:LearnVim exc` to check.
 ]],
             exercises = {
                 {
-                    instruction = "Navigate to the character 'X' in this text using only `h`, `j`, `k`, and `l`. Type 'exc' to check.",
+                    instruction = "Navigate to the character 'X' in this text using only `h`, `j`, `k`, and `l`. Type `:LearnVim exc` to check.", -- Updated instruction
                     type = "cursor_move",
                     setup_text = [[
 " --- Exercise 2.3.1 ---
-" Instruction: Navigate to the character 'X' in this text using only `h`, `j`, `k`, and `l`. Type 'exc' to check.
-" Use 'exc' to check, 'exr' to reset.
+" Instruction: Navigate to the character 'X' in this text using only `h`, `j`, `k`, and `l`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
 Move around here.
 Find the X here.
 Go to the X.]],
-                    start_cursor = {5, 0}, -- Cursor starts at the beginning
-                    validation = { type = 'check_cursor_position', target_cursor = {6, 12} }, -- Target cursor is on 'X' on line 6 (line 6, column 12)
+                    start_cursor = {5, 0},
+                    validation = { type = 'check_cursor_position', target_cursor = {6, 12} },
                     feedback = "Great job navigating character by character!",
                 },
             },

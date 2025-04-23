@@ -10,7 +10,7 @@ return function(M) -- Accept the parent module M as an argument
     -- Creates or finds the tutorial buffers and windows.
     -- Ensures the UI is in a consistent state.
     -- This version replaces the current window with the exercise pane,
-    -- then splits it ONCE for the tutorial pane.
+    -- then splits it ONCE using a HORIZONTAL split for the tutorial pane.
     function M_ui.setup_tutorial_ui()
         -- Options for the tutorial text buffer (initially modifiable for setup)
          local tutorial_buf_opts = {
@@ -58,31 +58,36 @@ return function(M) -- Accept the parent module M as an argument
             vim.api.nvim_win_set_buf(current_win, M.current_state.exercise_bufnr)
             M.current_state.exercise_winid = current_win -- Store the ID of the now-exercise window
 
-            -- Split the current window (which is now the exercise window) vertically.
-            -- This creates the space for the tutorial window.
-            vim.cmd('vsplit')
-            -- The new window created by vsplit is now the current window.
+            -- Split the current window (which is now the exercise window) HORIZONTALLY.
+            -- This creates the space for the tutorial window above it.
+            vim.cmd('split') -- Changed from 'vsplit' to 'split'
+            -- The new window created by split is now the current window.
             M.current_state.tutorial_winid = vim.api.nvim_get_current_win()
             -- Set the tutorial buffer into this new window.
             vim.api.nvim_win_set_buf(M.current_state.tutorial_winid, M.current_state.tutorial_bufnr)
 
 
             -- Set window options for cleanliness and usability in the tutorial panes.
-            -- Tutorial window options (left pane)
-            vim.api.nvim_win_set_option(M.current_state.tutorial_winid, 'wrap', false) -- Don't wrap lines
+            -- Tutorial window options (top pane)
+            -- FIX: Set wrap to true so text wraps within the window width
+            vim.api.nvim_win_set_option(M.current_state.tutorial_winid, 'wrap', true)
             vim.api.nvim_win_set_option(M.current_state.tutorial_winid, 'number', false) -- Hide line numbers
             vim.api.nvim_win_set_option(M.current_state.tutorial_winid, 'relativenumber', false) -- Hide relative line numbers
             vim.api.nvim_win_set_option(M.current_state.tutorial_winid, 'signcolumn', 'no') -- Hide sign column
             vim.api.nvim_win_set_option(M.current_state.tutorial_winid, 'foldcolumn', '0') -- Hide fold column
-            vim.api.nvim_win_set_option(M.current_state.tutorial_winid, 'winfixwidth', true) -- Keep tutorial window width fixed
-            vim.api.nvim_win_set_width(M.current_state.tutorial_winid, 40) -- Set a default width for the tutorial pane
+            -- winfixwidth doesn't make sense for a horizontal split, use winfixheight instead
+            vim.api.nvim_win_set_option(M.current_state.tutorial_winid, 'winfixheight', true)
+            vim.api.nvim_win_set_height(M.current_state.tutorial_winid, 10) -- Set a default height for the tutorial pane (adjust as needed)
 
-            -- Exercise window options (right pane - the original window)
-            vim.api.nvim_win_set_option(M.current_state.exercise_winid, 'wrap', false) -- Don't wrap lines
+
+            -- Exercise window options (bottom pane - the original window)
+            vim.api.nvim_win_set_option(M.current_state.exercise_winid, 'wrap', false) -- Keep wrap false for code/exercises
             vim.api.nvim_win_set_option(M.current_state.exercise_winid, 'number', true) -- Show line numbers in exercise pane
             vim.api.nvim_win_set_option(M.current_state.exercise_winid, 'relativenumber', false) -- Hide relative line numbers
             vim.api.nvim_win_set_option(M.current_state.exercise_winid, 'signcolumn', 'no') -- Hide sign column (can use for validation markers later)
             vim.api.nvim_win_set_option(M.current_state.exercise_winid, 'foldcolumn', '0') -- Hide fold column
+            -- winfixwidth is not needed here, exercise pane takes remaining space
+
 
             -- Return focus to the exercise window so the user can start interacting.
              vim.api.nvim_set_current_win(M.current_state.exercise_winid)
@@ -97,16 +102,16 @@ return function(M) -- Accept the parent module M as an argument
              vim.api.nvim_win_set_buf(M.current_state.exercise_winid, M.current_state.exercise_bufnr)
 
               -- Ensure buffer options are correct regardless of how window was reopened or options were changed
-              -- Tutorial buffer should be read-only
+              -- Tutorial buffer should be read-only and wrap enabled
               vim.api.nvim_buf_set_option(M.current_state.tutorial_bufnr, 'readonly', true)
               vim.api.nvim_buf_set_option(M.current_state.tutorial_bufnr, 'modifiable', false)
-              vim.api.nvim_buf_set_option(M.current_state.tutorial_bufnr, 'wrap', false)
+              vim.api.nvim_buf_set_option(M.current_state.tutorial_bufnr, 'wrap', true) -- Ensure wrap is true
                vim.api.nvim_buf_set_option(M.current_state.tutorial_bufnr, 'bufhidden', 'hide') -- Ensure bufhidden is hide
 
-              -- Exercise buffer should be modifiable by default
+              -- Exercise buffer should be modifiable by default and wrap disabled
               vim.api.nvim_buf_set_option(M.current_state.exercise_bufnr, 'modifiable', true)
               vim.api.nvim_buf_set_option(M.current_state.exercise_bufnr, 'readonly', false)
-              vim.api.nvim_buf_set_option(M.current_state.exercise_bufnr, 'wrap', false)
+              vim.api.nvim_buf_set_option(M.current_state.exercise_bufnr, 'wrap', false) -- Ensure wrap is false
                vim.api.nvim_buf_set_option(M.current_state.exercise_bufnr, 'bufhidden', 'hide') -- Ensure bufhidden is hide
 
 
@@ -116,9 +121,12 @@ return function(M) -- Accept the parent module M as an argument
 
         -- Re-apply key window options every time setup is called,
         -- in case they were changed by user actions or other plugins.
-        vim.api.nvim_win_set_option(M.current_state.tutorial_winid, 'winfixwidth', true)
-         vim.api.nvim_win_set_width(M.current_state.tutorial_winid, 40)
+        -- Use winfixheight for the top (tutorial) pane in horizontal split
+        vim.api.nvim_win_set_option(M.current_state.tutorial_winid, 'winfixheight', true)
+        vim.api.nvim_win_set_height(M.current_state.tutorial_winid, 10) -- Re-apply default height
          vim.api.nvim_win_set_option(M.current_state.exercise_winid, 'number', true) -- Show numbers in exercise pane
+         vim.api.nvim_win_set_option(M.current_state.tutorial_winid, 'wrap', true) -- Re-apply wrap true for tutorial
+         vim.api.nvim_win_set_option(M.current_state.exercise_winid, 'wrap', false) -- Re-apply wrap false for exercise
 
     end
 
@@ -136,7 +144,7 @@ return function(M) -- Accept the parent module M as an argument
         -- Ensure UI is set up before displaying content.
         M_ui.setup_tutorial_ui() -- Call local ui function
 
-        -- 1. Update Tutorial Window (left pane)
+        -- 1. Update Tutorial Window (top pane)
         local tutorial_buf = M.current_state.tutorial_bufnr -- Access buffer number via M.current_state
         -- Ensure modifiable before writing
         vim.api.nvim_buf_set_option(tutorial_buf, 'modifiable', true)
@@ -149,16 +157,21 @@ return function(M) -- Accept the parent module M as an argument
         vim.api.nvim_buf_set_option(tutorial_buf, 'modifiable', false)
         vim.api.nvim_buf_set_option(tutorial_buf, 'readonly', true)
          vim.api.nvim_buf_set_option(tutorial_buf, 'bufhidden', 'hide') -- Ensure bufhidden is hide
+         -- Ensure wrap is true for tutorial buffer after writing
+         vim.api.nvim_buf_set_option(tutorial_buf, 'wrap', true)
         -- Scroll to the top of the tutorial window.
         vim.api.nvim_win_set_cursor(M.current_state.tutorial_winid, {1, 0}) -- Access window ID via M.current_state
 
 
-        -- 2. Update Exercise Window (right pane)
+        -- 2. Update Exercise Window (bottom pane)
         local exercise_buf = M.current_state.exercise_bufnr -- Access buffer number via M.current_state
 
         -- Ensure exercise buffer is modifiable before writing ANY content to it.
         vim.api.nvim_buf_set_option(exercise_buf, 'modifiable', true)
         vim.api.nvim_buf_set_option(exercise_buf, 'readonly', false)
+        -- Ensure wrap is false for exercise buffer before writing
+        vim.api.nvim_buf_set_option(exercise_buf, 'wrap', false)
+
 
         -- Clear previous content in the exercise buffer.
         vim.api.nvim_buf_set_lines(exercise_buf, 0, -1, false, {})
@@ -183,6 +196,8 @@ return function(M) -- Accept the parent module M as an argument
                   vim.api.nvim_buf_set_option(exercise_buf, 'modifiable', false)
                   vim.api.nvim_buf_set_option(exercise_buf, 'readonly', true)
                   vim.api.nvim_buf_set_option(exercise_buf, 'bufhidden', 'hide')
+                  -- Ensure wrap is false for this error state
+                  vim.api.nvim_buf_set_option(exercise_buf, 'wrap', false)
                   vim.api.nvim_set_current_win(M.current_state.tutorial_winid) -- Focus tutorial pane on error
                  return
             end
@@ -207,7 +222,7 @@ return function(M) -- Accept the parent module M as an argument
                  local instruction_lines = {
                      '" --- Exercise ' .. module_id .. '.' .. lesson_id .. '.' .. M.current_state.exercise .. ' ---',
                      '" Instruction: ' .. current_exercise.instruction,
-                     '" Use \'exc\' to check, \'exr\' to reset.', -- Remind them how to check/reset
+                     '" Use \':LearnVim exc\' to check, \':LearnVim exr\' to reset.', -- Remind them how to check/reset
                      '" ---------------------------------------------', '',
                  }
                  -- Ensure modifiable is true before writing instruction header
@@ -221,6 +236,8 @@ return function(M) -- Accept the parent module M as an argument
             vim.api.nvim_buf_set_option(exercise_buf, 'modifiable', true)
             vim.api.nvim_buf_set_option(exercise_buf, 'readonly', false)
              vim.api.nvim_buf_set_option(exercise_buf, 'bufhidden', 'hide') -- Ensure bufhidden is hide
+             -- Ensure wrap is false for exercise buffer
+             vim.api.nvim_buf_set_option(exercise_buf, 'wrap', false)
 
             -- Ensure focus is on the exercise window.
              vim.api.nvim_set_current_win(M.current_state.exercise_winid) -- Access window ID via M.current_state
@@ -242,6 +259,8 @@ return function(M) -- Accept the parent module M as an argument
             vim.api.nvim_buf_set_option(exercise_buf, 'modifiable', false) -- Set modifiable to false AFTER writing
             vim.api.nvim_buf_set_option(exercise_buf, 'readonly', true)
             vim.api.nvim_buf_set_option(exercise_buf, 'bufhidden', 'hide')
+            -- Ensure wrap is false for this non-modifiable state
+            vim.api.nvim_buf_set_option(exercise_buf, 'wrap', false)
 
             -- Focus the tutorial window if there's no exercise to interact with.
              vim.api.nvim_set_current_win(M.current_state.tutorial_winid) -- Access window ID via M.current_state
