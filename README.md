@@ -1,112 +1,91 @@
-LearnVim.nvim
+# LearnVim.nvim
 
 An interactive tutorial plugin for Neovim to help users learn Vim's modal editing and basic commands directly within the editor.
-Table of Contents
 
-    About
+---
 
-    Installation
+## 📚 About
 
-    Usage
+**LearnVim.nvim** provides a structured, interactive way to learn the fundamentals of Vim's modal editing paradigm and essential commands without leaving your Neovim environment. It splits your window into a tutorial pane (explaining concepts) and an exercise pane (where you practice). Progress is saved automatically.
 
-    Curriculum
+---
 
-    Contributing
-
-    License
-
-About
-
-LearnVim.nvim provides a structured, interactive way to learn the fundamentals of Vim's modal editing paradigm and essential commands without leaving your Neovim environment. It splits your window into a tutorial pane (explaining concepts) and an exercise pane (where you practice). Progress is saved automatically.
-Installation
+## ⚙️ Installation
 
 Install using your favorite Neovim package manager.
 
-lazy.nvim
+### Using [lazy.nvim](https://github.com/folke/lazy.nvim)
 
-Add this to your plugins/ directory or your init.lua:
+Add this to your plugins list in `init.lua`:
 
-{ 'melkyr/learn-vim.nvim' } -- Replace 'your_github_username' with your GitHub username
+```lua
+{ 'melkyr/learn-vim.nvim' }
+```
 
-Packer
+### Using [Packer](https://github.com/wbthomason/packer.nvim)
 
-Add this to your init.lua:
+Add this to your plugins list in `init.lua`:
 
-use 'melkyr/learn-vim.nvim' -- Replace 'your_github_username' with your GitHub username
+```lua
+use 'melkyr/learn-vim.nvim'
+```
 
-vim-plug
+### Using [vim-plug](https://github.com/junegunn/vim-plug)
 
-Add this to your init.vim or init.lua:
+Add this to your `init.vim` or `init.lua`:
 
-Plug 'melkyrlearn-vim.nvim' " Replace 'your_github_username' with your GitHub username
+```vim
+Plug 'melkyr/learn-vim.nvim'
+```
 
-After adding the plugin, run the appropriate command for your package manager to install it (e.g., :Lazy sync, :PackerSync, :PlugInstall).
-Usage
+After adding the plugin, run the appropriate command for your package manager to install it:
 
-The primary way to interact with the tutorial is through the :LearnVim command.
+- `:Lazy sync`
+- `:PackerSync`
+- `:PlugInstall`
 
-    :LearnVim start: Start or resume the tutorial. This will split your current window into the tutorial and exercise panes.
+---
 
-    :LearnVim next: Move to the next exercise or lesson.
+## 🚀 Usage
 
-    :LearnVim prev: Move to the previous lesson.
+The primary way to interact with the tutorial is through the `:LearnVim` command.
 
-    :LearnVim lesson <module>.<lesson>: Jump to a specific lesson (e.g., :LearnVim lesson 1.3).
+---
 
-    :LearnVim exc: Check if you have completed the current exercise correctly.
+## 🧠 Curriculum (In Progress)
 
-    :LearnVim exr: Reset the current exercise to its initial state.
+The tutorial covers the following topics:
 
-    :LearnVim restart: Reset your tutorial progress to the beginning (Module 1, Lesson 1) and restart the tutorial.
+- **Normal Mode**: Navigation, editing, and command usage
+- **Insert Mode**: Inserting and appending text
+- **Visual Mode**: Selecting and manipulating text TODO
+- **Command-Line Mode**: Executing commands and searches TODO
+- **Registers**: Understanding and using Vim registers TODO
+- **Macros**: Recording and playing back sequences TODO
+- **Undo/Redo**: Managing changes TODO
+- **Buffers, Windows, and Tabs**: Working with multiple files and views TODO
+- **Search and Replace**: Finding and modifying text TODO
+- **Customizing Vim**: Introduction to `.vimrc` and basic configurations TODO
 
-Example Workflow:
+---
 
-    Open Neovim.
+## 🤝 Contributing
 
-    Type :LearnVim start and press <Enter>.
+Contributions are welcome! If you'd like to improve the tutorial, fix bugs, or add new features, please:
 
-    Read the instructions in the top (tutorial) pane.
+1. Fork the repository
+2. Create a new branch for your feature or fix
+3. Commit your changes with clear messages
+4. Push to your fork and submit a pull request
 
-    Perform the required actions in the bottom (exercise) pane.
+Please ensure your code follows the existing style and includes relevant tests or documentation.
 
-    Type :LearnVim exc and press <Enter> to check your work.
+---
 
-    If correct, the tutorial will advance. If not, try again or use :LearnVim exr to reset.
+## 📄 License
 
-    Use :LearnVim next or :LearnVim prev to navigate manually if needed.
+This project is licensed under the [MIT License](LICENSE).
 
-    Type :qall to exit Neovim when you're done. Your progress is saved automatically.
+---
 
-Curriculum
-
-The plugin currently includes:
-
-    Module 1: The Vim Mindset & Survival Basics
-
-        Modal Editing Explained
-
-        Entering Normal Mode (<Esc>)
-
-        Entering Insert Mode (i)
-
-        Append (a)
-
-        Saving (:w)
-
-        Quitting (:q!, :wq, :x)
-
-    Module 2: Basic Navigation (The Home Row)
-
-        Moving Left and Right (h, l)
-
-        Moving Down and Up (j, k)
-
-        Combining Basic Movements
-
-More modules and lessons are planned for the future!
-Contributing
-
-Contributions are welcome! If you find a bug, have a suggestion for a new lesson, or want to improve the code, please open an issue or submit a pull request on the GitHub repository.
-License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+Happy Vimming! 🎉
