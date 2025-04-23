@@ -84,7 +84,7 @@ Please ensure your code follows the existing style and includes relevant tests o
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [APACHE 2.0 License](LICENSE).
 
 ---
 
