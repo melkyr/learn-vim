@@ -17,6 +17,9 @@ local module8 = require('learn_vim.modules.module8')
 local module9 = require('learn_vim.modules.module9')
 local module10 = require('learn_vim.modules.module10')
 local module11 = require('learn_vim.modules.module11')
+local module12 = require('learn_vim.modules.module12')
+local module13 = require('learn_vim.modules.module13')
+local module14 = require('learn_vim.modules.module14')
 -- Add more modules here as you create them:
 -- local module9 = require('learn_vim.modules.module9')
 
@@ -34,7 +37,10 @@ local curriculum = {
     module8 = module8,
     module9 = module9,
     module10 = module10,
-    module11 = module11-- Add the new module8 to the curriculum table
+    module11 = module11,
+    module12 = module12.
+    module13 = module13,
+    module14 = module14-- Add the new module8 to the curriculum table
     -- Add more modules here:
     -- module9 = module9,
 }
