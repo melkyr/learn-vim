@@ -38,9 +38,9 @@ local curriculum = {
     module9 = module9,
     module10 = module10,
     module11 = module11,
-    module12 = module12.
+    module12 = module12,
     module13 = module13,
-    module14 = module14-- Add the new module8 to the curriculum table
+    module14 = module14, -- Add the new module8 to the curriculum table
     -- Add more modules here:
     -- module9 = module9,
 }
