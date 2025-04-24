@@ -4,13 +4,18 @@
 -- It requires individual module files and combines their data.
 
 -- Require individual module files from the lua/learn_vim/modules directory.
--- Make sure you have created these files (e.g., module1.lua, module2.lua)
+-- Make sure you have created these files (e.g., module1.lua, module2.lua, ..., module8.lua)
 -- and placed the content for each module within them.
 local module1 = require('learn_vim.modules.module1')
 local module2 = require('learn_vim.modules.module2')
+local module3 = require('learn_vim.modules.module3')
+local module4 = require('learn_vim.modules.module4')
+local module5 = require('learn_vim.modules.module5')
+local module6 = require('learn_vim.modules.module6')
+local module7 = require('learn_vim.modules.module7')
+local module8 = require('learn_vim.modules.module8') -- Require the new module8
 -- Add more modules here as you create them:
--- local module3 = require('learn_vim.modules.module3')
--- local module4 = require('learn_vim.modules.module4')
+-- local module9 = require('learn_vim.modules.module9')
 
 -- Combine the data from the individual module files into a single curriculum table.
 -- The keys (module1, module2, etc.) are used by the navigation logic
@@ -18,9 +23,14 @@ local module2 = require('learn_vim.modules.module2')
 local curriculum = {
     module1 = module1,
     module2 = module2,
+    module3 = module3,
+    module4 = module4,
+    module5 = module5,
+    module6 = module6,
+    module7 = module7,
+    module8 = module8, -- Add the new module8 to the curriculum table
     -- Add more modules here:
-    -- module3 = module3,
-    -- module4 = module4,
+    -- module9 = module9,
 }
 
 -- Return the combined curriculum table.
