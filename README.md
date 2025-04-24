@@ -9,6 +9,29 @@ An interactive tutorial plugin for Neovim to help users learn Vim's modal editin
 **LearnVim.nvim** provides a structured, interactive way to learn the fundamentals of Vim's modal editing paradigm and essential commands without leaving your Neovim environment. It splits your window into a tutorial pane (explaining concepts) and an exercise pane (where you practice). Progress is saved automatically.
 
 ---
+## ✨ Motivation and Comparison
+
+Learning Vim can feel daunting at first due to its modal nature and vast command set. While resources like the built-in `vimtutor` and various books are invaluable, they often require switching contexts or don't fully leverage the interactive capabilities of the editor itself.
+
+* **`vimtutor`**: Excellent for a quick, basic introduction, but limited in scope and structure. It's a single, linear experience without persistent progress or modular lessons.
+
+* **Books/Online Guides**: Provide in-depth knowledge but require reading outside the editor you're trying to learn, making immediate practice less seamless.
+
+**LearnVim.nvim** aims to bridge this gap by offering:
+
+* **Integrated Experience**: Learn and practice directly within your Neovim instance, using the actual environment you'll be working in.
+
+* **Structured Curriculum**: Progress through modules and lessons covering core concepts systematically.
+
+* **Interactive Exercises**: Hands-on practice in a dedicated pane, with validation to check your understanding.
+
+* **Persistent Progress**: Pick up where you left off across Neovim sessions.
+
+* **Modular Design**: Easily add or modify lessons and modules.
+
+This plugin is designed to be a stepping stone, providing a guided, practical introduction that complements other resources and helps build muscle memory for common Vim tasks in a real editing environment.
+
+
 
 ## ⚙️ Installation
 
