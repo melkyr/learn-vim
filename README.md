@@ -55,17 +55,110 @@ The primary way to interact with the tutorial is through the `:LearnVim` command
 ## 🧠 Curriculum (In Progress)
 
 The tutorial covers the following topics:
+Module 1: Introduction to Vim
 
-- **Normal Mode**: Navigation, editing, and command usage
-- **Insert Mode**: Inserting and appending text
-- **Visual Mode**: Selecting and manipulating text TODO
-- **Command-Line Mode**: Executing commands and searches TODO
-- **Registers**: Understanding and using Vim registers TODO
-- **Macros**: Recording and playing back sequences TODO
-- **Undo/Redo**: Managing changes TODO
-- **Buffers, Windows, and Tabs**: Working with multiple files and views TODO
-- **Search and Replace**: Finding and modifying text TODO
-- **Customizing Vim**: Introduction to `.vimrc` and basic configurations TODO
+    What is Vim?
+    Modal Editing
+    Normal Mode
+    Insert Mode (i)
+    Command-line Mode (:)
+    Saving (:w) and Quitting (:q, :wq, :q!)
+
+Module 2: Basic Movements
+
+    Character Movements (h, j, k, l)
+    Word Movements (w, b, e)
+    Line Movements (0, ^, $)
+
+Module 3: Counts and Repetition
+
+    Repeating the Last Change (.)
+    Undo (u) and Redo (<C-r>)
+    Combining Counts with Movements
+
+Module 4: Deletion and Changing
+
+    Deleting Text (d)
+    Changing Text (c)
+    Deleting Lines (dd)
+    Changing Lines (cc)
+    Combining Deletion/Changing with Movements
+
+Module 5: Yanking and Putting
+
+    Yanking (Copying) Text (y)
+    Putting (Pasting) Text (p, P)
+    Yanking Lines (yy)
+    Combining Yanking with Movements
+
+Module 6: More Insertion Modes
+
+    Insert at Beginning of Line (I)
+    Append at End of Line (A)
+    Open Line Below (o)
+    Open Line Above (O)
+
+Module 7: Finding, Searching, and Replacing
+
+    Character Finding on a Line (f, F, t, T, ;, ,)
+    Basic Searching (/, ?, n, N)
+    Combining Counts with Find/Search
+    Simple Find and Replace (:s)
+    Search Highlighting (:set hlsearch, :nohlsearch)
+
+Module 8: Command-line Mode and Registers
+
+    Introduction to Command-line Mode (:)
+    Ranges with Commands (:1,5, :.,$, :%, :g/pattern/)
+    Introduction to Registers (", named registers a-z)
+    Special Registers (", 0, %, #, :, /, .)
+    The Black Hole Register (_)
+    The Selection and Clipboard Registers (*, +)
+    Testing System Clipboard Integration
+
+Module 9: Advanced Editing and Navigation
+
+    Multiline Visual Editing (V, <C-v>)
+    Repeating Multiline Actions (.)
+    Matching Braces/Brackets/Parentheses (%)
+    Applying Actions with % (e.g., d%, c%, y%)
+
+Module 10: Macros
+
+    Recording Macros (q)
+    Playing Back Macros (@, counts with @)
+    Macros for Repetitive Editing (Parts 1-6, with various languages)
+
+Module 11: Final Test
+
+    Mixed exercises testing skills from previous modules, using various programming languages.
+    Congratulatory message and ASCII art.
+
+Module 12: Buffers, Windows, and Tabs
+
+    Introduction to Buffers, Windows, and Tabs
+    Navigating Buffers (:ls, :bnext, :bprev, :buffer, :bd)
+    Splitting Windows (:split, :vsplit)
+    Navigating Windows (<C-w> h/j/k/l/w/W/c/q)
+    Working with Tabs (:tabnew, :tabnext, :tabprev, :tabclose, :tabonly, {number}gt)
+    Combining Buffers, Windows, and Tabs
+
+Module 13: Text Objects
+
+    Introduction to Text Objects (i, a)
+    Sentence and Paragraph Objects (s, p)
+    Delimiter Objects ((), [], {} etc., ", ', ```)
+    Combining Operators with Text Objects (d, c, y, v)
+
+Module 14: Customizing Vim
+
+    Your Vim Configuration File (~/.vimrc, init.lua, init.vim, $MYVIMRC)
+    Setting Options (:set, vim.opt)
+    Creating Mappings (:map, :noremap, modes)
+    The Leader Key (<leader>)
+    Using <Plug>
+    Exploring Options and Colors (:h, :highlight, vim.api.nvim_set_hl)
+    Congratulatory message and ASCII art (End of Tutorial)
 
 ---
 
