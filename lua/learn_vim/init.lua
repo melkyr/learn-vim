@@ -25,6 +25,7 @@ M.current_state = {
 M.config = {
     -- Path to save/load tutorial progress. Defaults to a file in Neovim's state directory.
     progress_file = vim.fn.stdpath('state') .. '/learn_vim_progress.json',
+    debug = false, -- Add this line
     -- Add other configuration options here later (e.g., UI colors, default window sizes)
 }
 
@@ -36,29 +37,49 @@ M.config = {
 -- - ui, navigation, and state return a setup function that needs to be called with M.
 -- - exercise is currently returning a table directly (unexpected based on code, but observed).
 
--- print("Debug: Requiring curriculum...")
+if M.config.debug then
+    vim.notify("LearnVim Debug: Requiring curriculum...", vim.log.levels.INFO)
+end
 local curriculum_module = require('learn_vim.curriculum')
--- print("Debug: Type of curriculum_module: " .. type(curriculum_module))
+if M.config.debug then
+    vim.notify("LearnVim Debug: Type of curriculum_module: " .. type(curriculum_module), vim.log.levels.INFO)
+end
 M.curriculum = curriculum_module -- Assign curriculum directly
 
--- print("Debug: Requiring ui...")
+if M.config.debug then
+    vim.notify("LearnVim Debug: Requiring ui...", vim.log.levels.INFO)
+end
 local ui_setup = require('learn_vim.ui')
--- print("Debug: Type of ui_setup: " .. type(ui_setup))
+if M.config.debug then
+    vim.notify("LearnVim Debug: Type of ui_setup: " .. type(ui_setup), vim.log.levels.INFO)
+end
 M.ui = ui_setup(M) -- Call setup function and assign result
 
--- print("Debug: Requiring navigation...")
+if M.config.debug then
+    vim.notify("LearnVim Debug: Requiring navigation...", vim.log.levels.INFO)
+end
 local navigation_setup = require('learn_vim.navigation')
--- print("Debug: Type of navigation_setup: " .. type(navigation_setup))
+if M.config.debug then
+    vim.notify("LearnVim Debug: Type of navigation_setup: " .. type(navigation_setup), vim.log.levels.INFO)
+end
 M.navigation = navigation_setup(M) -- Call setup function and assign result
 
--- print("Debug: Requiring exercise...")
+if M.config.debug then
+    vim.notify("LearnVim Debug: Requiring exercise...", vim.log.levels.INFO)
+end
 local exercise_module = require('learn_vim.exercise') -- Renamed to exercise_module as it's a table
--- print("Debug: Type of exercise_module: " .. type(exercise_module))
+if M.config.debug then
+    vim.notify("LearnVim Debug: Type of exercise_module: " .. type(exercise_module), vim.log.levels.INFO)
+end
 M.exercise = exercise_module -- Assign exercise table directly (based on debug output)
 
--- print("Debug: Requiring state...")
+if M.config.debug then
+    vim.notify("LearnVim Debug: Requiring state...", vim.log.levels.INFO)
+end
 local state_setup = require('learn_vim.state')
--- print("Debug: Type of state_setup: " .. type(state_setup))
+if M.config.debug then
+    vim.notify("LearnVim Debug: Type of state_setup: " .. type(state_setup), vim.log.levels.INFO)
+end
 M.state = state_setup(M) -- Call setup function and assign result
 
 

@@ -5,6 +5,7 @@
 
 return function(M) -- Accept the parent module M as an argument
     local M_ui = {} -- Local module table for UI functions
+    local Contents = require('learn_vim.contents') -- Require the contents module
 
     --- UI Setup ---
     -- Creates or finds the tutorial buffers and windows.
@@ -151,7 +152,8 @@ return function(M) -- Accept the parent module M as an argument
         -- Clear previous content in the tutorial buffer.
         vim.api.nvim_buf_set_lines(tutorial_buf, 0, -1, false, {})
         -- Split the explanation text into lines and set the buffer content.
-        local explanation_lines = vim.split(lesson_data.explanation, '\n', { plain = true })
+        local explanation_lines = vim.split(lesson_data.explanation, '
+', { plain = true })
         vim.api.nvim_buf_set_lines(tutorial_buf, 0, 0, false, explanation_lines)
          -- Set back to read-only and non-modifiable after writing.
         vim.api.nvim_buf_set_option(tutorial_buf, 'modifiable', false)
@@ -205,7 +207,8 @@ return function(M) -- Accept the parent module M as an argument
             -- Set up exercise text if provided in the curriculum data.
             -- The setup_text is expected to include the header comments now.
             if current_exercise.setup_text then
-                local setup_lines = vim.split(current_exercise.setup_text, '\n', { plain = true })
+                local setup_lines = vim.split(current_exercise.setup_text, '
+', { plain = true })
                 -- Ensure modifiable is true before writing setup text
                  vim.api.nvim_buf_set_option(exercise_buf, 'modifiable', true)
                 vim.api.nvim_buf_set_lines(exercise_buf, 0, 0, false, setup_lines)
@@ -222,7 +225,7 @@ return function(M) -- Accept the parent module M as an argument
                  local instruction_lines = {
                      '" --- Exercise ' .. module_id .. '.' .. lesson_id .. '.' .. M.current_state.exercise .. ' ---',
                      '" Instruction: ' .. current_exercise.instruction,
-                     '" Use \':LearnVim exc\' to check, \':LearnVim exr\' to reset.', -- Remind them how to check/reset
+                     '" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.', -- Remind them how to check/reset
                      '" ---------------------------------------------', '',
                  }
                  -- Ensure modifiable is true before writing instruction header
@@ -269,6 +272,99 @@ return function(M) -- Accept the parent module M as an argument
         end
     end
 
+    --- Display Contents Menu ---
+    -- Creates a floating window with a list of all modules and lessons.
+    function M_ui.display_contents_menu()
+        local menu_items = Contents.get_menu_items()
+        local prepared_lines = {}
+        local max_width = 0
+
+        for _, item in ipairs(menu_items) do
+            table.insert(prepared_lines, item.display_text)
+            if #item.display_text > max_width then
+                max_width = #item.display_text
+            end
+        end
+
+        local screen_width = vim.api.nvim_get_option_value('columns', {})
+        local screen_height = vim.api.nvim_get_option_value('lines', {})
+
+        local win_width = math.min(math.max(max_width + 4, 40), screen_width - 4) -- Add padding, min 40, max screen width - 4
+        local win_height = math.min(#prepared_lines + 2, screen_height - 4) -- Add padding for border, max screen height - 4
+
+        local row = math.floor((screen_height - win_height) / 2)
+        local col = math.floor((screen_width - win_width) / 2)
+
+        local menu_bufnr = vim.api.nvim_create_buf(false, true) -- false for listed, true for scratch
+        local win_opts = {
+            relative = 'editor',
+            style = 'minimal',
+            border = 'rounded',
+            width = win_width,
+            height = win_height,
+            row = row,
+            col = col,
+            focusable = true,
+            zindex = 50
+        }
+        
+        -- We open the window with the current buffer (0), then set the menu_bufnr to it.
+        -- This is a common pattern to avoid issues with nvim_open_win and buffer focus.
+        local menu_winid = vim.api.nvim_open_win(0, true, win_opts) 
+        vim.api.nvim_win_set_buf(menu_winid, menu_bufnr)
+
+        vim.api.nvim_buf_set_option(menu_bufnr, 'bufhidden', 'wipe')
+        vim.api.nvim_buf_set_option(menu_bufnr, 'buftype', 'nofile')
+        vim.api.nvim_buf_set_option(menu_bufnr, 'nomodifiable', true) -- Set to true initially
+        vim.api.nvim_buf_set_option(menu_bufnr, 'nowrap', true)
+        vim.api.nvim_buf_set_option(menu_bufnr, 'nobuflisted', true)
+        vim.api.nvim_buf_set_option(menu_bufnr, 'swapfile', false)
+        vim.api.nvim_buf_set_option(menu_bufnr, 'cursorline', true) -- Highlight current line
+
+        -- Make buffer modifiable to set lines, then unmodifiable again
+        vim.api.nvim_buf_set_option(menu_bufnr, 'modifiable', true)
+        vim.api.nvim_buf_set_lines(menu_bufnr, 0, -1, false, prepared_lines)
+        vim.api.nvim_buf_set_option(menu_bufnr, 'modifiable', false)
+
+        -- Keymaps
+        vim.api.nvim_buf_set_keymap(menu_bufnr, 'n', 'q', '', {
+            noremap = true, silent = true,
+            callback = function()
+                if vim.api.nvim_win_is_valid(menu_winid) then
+                    vim.api.nvim_win_close(menu_winid, true)
+                end
+            end
+        })
+
+        vim.api.nvim_buf_set_keymap(menu_bufnr, 'n', '<CR>', '', {
+            noremap = true, silent = true,
+            callback = function()
+                local cursor_pos = vim.api.nvim_win_get_cursor(menu_winid)
+                local line_num = cursor_pos[1] -- 1-based line number
+                
+                -- menu_items needs to be an upvalue for this callback to access it
+                local selected_item = menu_items[line_num] 
+
+                if selected_item and selected_item.type == "lesson_item" then
+                    if vim.api.nvim_win_is_valid(menu_winid) then
+                        vim.api.nvim_win_close(menu_winid, true)
+                    end
+                    -- Use M.navigation which should be available via the M closure
+                    M.navigation.goto_lesson(selected_item.module_num, selected_item.lesson_num)
+                end
+            end
+        })
+        vim.api.nvim_buf_set_keymap(menu_bufnr, 'n', '<Esc>', '', {
+            noremap = true, silent = true,
+            callback = function()
+                if vim.api.nvim_win_is_valid(menu_winid) then
+                    vim.api.nvim_win_close(menu_winid, true)
+                end
+            end
+        })
+    end
+
     -- Return the local module table containing the public functions.
     return M_ui
 end
+```
