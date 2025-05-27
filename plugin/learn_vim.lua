@@ -50,10 +50,12 @@ vim.api.nvim_create_user_command('LearnVim', function(opts)
         else
              vim.notify("Invalid lesson format. Use :LearnVim lesson <module>.<lesson> (e.g., :LearnVim lesson 1.2)", vim.log.levels.WARN)
         end
+    elseif args_string == 'contents' then
+        learn_vim.ui.display_contents_menu() -- Call the display_contents_menu function
     else
         -- If no recognized command/argument combo, show help message
         vim.notify("Unknown command: :LearnVim " .. args_string, vim.log.levels.WARN)
-        vim.notify("Usage: :LearnVim [start | next | prev | restart | exc | exr | lesson <module>.<lesson>]", vim.log.levels.INFO)
+        vim.notify("Usage: :LearnVim [start | next | prev | restart | exc | exr | lesson <module>.<lesson> | contents]", vim.log.levels.INFO)
     end
 end, {
     nargs = '*', -- Allows any number of arguments after :LearnVim
@@ -66,3 +68,4 @@ end, {
 
 -- Note: This file should *only* define commands and mappings that call into
 -- your Lua modules under lua/learn_vim/. Avoid putting any core logic here.
+```
