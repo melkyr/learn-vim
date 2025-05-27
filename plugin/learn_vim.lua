@@ -68,4 +68,3 @@ end, {
 
 -- Note: This file should *only* define commands and mappings that call into
 -- your Lua modules under lua/learn_vim/. Avoid putting any core logic here.
-```

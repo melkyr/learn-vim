@@ -25,4 +25,3 @@ function Utils.set_buffer_options(bufnr, options)
 end
 
 return Utils
-```

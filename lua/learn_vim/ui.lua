@@ -134,8 +134,7 @@ return function(M) -- Accept the parent module M as an argument
         local tutorial_buf = M.current_state.tutorial_bufnr
         Utils.set_buffer_options(tutorial_buf, {modifiable = true}) -- Ensure modifiable before writing
         vim.api.nvim_buf_set_lines(tutorial_buf, 0, -1, false, {})
-        local explanation_lines = vim.split(lesson_data.explanation, '
-', { plain = true })
+        local explanation_lines = vim.split(lesson_data.explanation, '\n', { plain = true })
         vim.api.nvim_buf_set_lines(tutorial_buf, 0, 0, false, explanation_lines)
         Utils.set_buffer_options(tutorial_buf, {
             modifiable = false,
@@ -175,8 +174,7 @@ return function(M) -- Accept the parent module M as an argument
             end
 
             if current_exercise.setup_text then
-                local setup_lines = vim.split(current_exercise.setup_text, '
-', { plain = true })
+                local setup_lines = vim.split(current_exercise.setup_text, '\n', { plain = true })
                 Utils.set_buffer_options(exercise_buf, {modifiable = true})
                 vim.api.nvim_buf_set_lines(exercise_buf, 0, 0, false, setup_lines)
                  if current_exercise.start_cursor then
@@ -186,11 +184,11 @@ return function(M) -- Accept the parent module M as an argument
                  end
             else
                  local instruction_lines = {
-                     '" --- Exercise ' .. module_id .. '.' .. lesson_id .. '.' .. M.current_state.exercise .. ' ---',
-                     '" Instruction: ' .. current_exercise.instruction,
-                     '" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.',
-                     '" ---------------------------------------------', '',
-                 }
+                    '" --- Exercise ' .. module_id .. '.' .. lesson_id .. '.' .. M.current_state.exercise .. ' ---',
+                    '" Instruction: ' .. current_exercise.instruction,
+                    '" Use \':LearnVim exc\' to check, \':LearnVim exr\' to reset.',
+                    '" ---------------------------------------------', '',
+                }
                  Utils.set_buffer_options(exercise_buf, {modifiable = true})
                  vim.api.nvim_buf_set_lines(exercise_buf, 0, 0, false, instruction_lines)
                  vim.api.nvim_win_set_cursor(M.current_state.exercise_winid, {5, 0})
@@ -301,4 +299,3 @@ return function(M) -- Accept the parent module M as an argument
 
     return M_ui
 end
-```

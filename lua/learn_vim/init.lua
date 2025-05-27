@@ -216,4 +216,3 @@ end
 
 -- Return the main module table M, exposing its functions and state.
 return M
-```

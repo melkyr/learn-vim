@@ -317,7 +317,7 @@ INSERT INTO users (id, name) VALUES (1, 'Test User');]] -- Content inside () cha
                 feedback = "You changed text inside parentheses!",
             },
              {
-                instruction = "In this Ruby snippet, place your cursor anywhere inside the double quotes `""` and use `yi"` to yank the inner double quotes. Then move to the line below and paste using `p`. Type `:LearnVim exc` to check.",
+                instruction = [["In this Ruby snippet, place your cursor anywhere inside the double quotes `""` and use yi`"` to yank the inner double quotes. Then move to the line below and paste using `p`. Type `:LearnVim exc` to check."]],
                 type = "insert_text", -- Check buffer content
                 setup_text = [[
 " --- Exercise 13.4.3 (Ruby) ---

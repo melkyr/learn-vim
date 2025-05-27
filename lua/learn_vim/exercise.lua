@@ -45,8 +45,7 @@ function M.load_current_exercise()
 
     -- Clear the exercise buffer and set its content
     vim.api.nvim_buf_set_lines(exercise_bufnr, 0, -1, false, {})
-    local lines = vim.split(exercise_data.setup_text, '
-')
+    local lines = vim.split(exercise_data.setup_text, '\n')
     vim.api.nvim_buf_set_lines(exercise_bufnr, 0, 0, false, lines)
 
     -- Set the filetype for syntax highlighting (optional, but good practice)
@@ -94,14 +93,11 @@ function M.check_current_exercise()
     -- Get the current state of the exercise buffer
     local exercise_bufnr = state.exercise_bufnr
     local current_buffer_content = vim.api.nvim_buf_get_lines(exercise_bufnr, 0, -1, false)
-    current_buffer_content = table.concat(current_buffer_content, '
-') -- Join lines for content checks
+    current_buffer_content = table.concat(current_buffer_content, '\n') -- Join lines for content checks
 
     -- Perform validation based on type
     if validation.type == 'check_buffer_content' then
-        local target_content = table.concat(vim.split(validation.target_content, '
-'), '
-')
+        local target_content = table.concat(vim.split(validation.target_content, '\n'), '\n')
         is_correct = (current_buffer_content == target_content)
 
     -- New validation type: check_buffer_content_regex
@@ -174,8 +170,7 @@ function M.reset_current_exercise()
     -- Clear the exercise buffer and set its content back to the setup_text
     vim.api.nvim_buf_set_option(exercise_bufnr, 'modifiable', true) -- Ensure it's modifiable before clearing
     vim.api.nvim_buf_set_lines(exercise_bufnr, 0, -1, false, {})
-    local lines = vim.split(exercise_data.setup_text, '
-')
+    local lines = vim.split(exercise_data.setup_text, '\n')
     vim.api.nvim_buf_set_lines(exercise_bufnr, 0, 0, false, lines)
 
      -- Reset cursor position if specified
@@ -194,4 +189,3 @@ end
 
 -- Return the module table M
 return M
-```
