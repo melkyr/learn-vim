@@ -134,6 +134,28 @@ end
 --- Restarts the tutorial from the beginning.
 -- Called by :LearnVim restart.
 function M.restart_tutorial()
+    -- Store old IDs before they are reset from M.current_state
+    local old_tutorial_winid = M.current_state.tutorial_winid
+    local old_exercise_winid = M.current_state.exercise_winid
+    -- local old_tutorial_bufnr = M.current_state.tutorial_bufnr -- Optional for now
+    -- local old_exercise_bufnr = M.current_state.exercise_bufnr -- Optional for now
+
+    -- Close the windows if they are valid
+    if old_tutorial_winid ~= -1 and vim.api.nvim_win_is_valid(old_tutorial_winid) then
+        pcall(vim.api.nvim_win_close, old_tutorial_winid, true)
+    end
+    if old_exercise_winid ~= -1 and vim.api.nvim_win_is_valid(old_exercise_winid) then
+        pcall(vim.api.nvim_win_close, old_exercise_winid, true)
+    end
+    
+    -- Optional: Explicitly delete old buffers (consider if needed, bufhidden=hide might suffice)
+    -- if old_tutorial_bufnr ~= -1 and vim.api.nvim_buf_is_valid(old_tutorial_bufnr) then
+    --     pcall(vim.api.nvim_buf_delete, old_tutorial_bufnr, { force = true })
+    -- end
+    -- if old_exercise_bufnr ~= -1 and vim.api.nvim_buf_is_valid(old_exercise_bufnr) then
+    --     pcall(vim.api.nvim_buf_delete, old_exercise_bufnr, { force = true })
+    -- end
+
      -- Reset the state to the initial values.
      M.current_state = { module = 1, lesson = 1, exercise = 1 }
      -- Reset UI state as well, so setup_tutorial_ui recreates windows/buffers cleanly.
