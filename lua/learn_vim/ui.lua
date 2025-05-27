@@ -253,9 +253,9 @@ return function(M) -- Accept the parent module M as an argument
         Utils.set_buffer_options(menu_bufnr, {
             bufhidden = 'wipe',
             buftype = 'nofile',
-            nomodifiable = true, -- Set initially non-modifiable
-            nowrap = true,
-            nobuflisted = true,
+            modifiable = false, -- Set initially non-modifiable
+            wrap = false,
+            buflisted = false,
             swapfile = false,
             cursorline = true
         })
