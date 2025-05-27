@@ -266,7 +266,7 @@ Let's practice combining operators and Visual mode with text objects. Remember t
 ]],
         exercises = {
             {
-                instruction = "In this C++ snippet, place your cursor anywhere inside the curly braces `{}` of the function body and use `vaf{` to visually select around the curly braces. Then press `d` to delete the selection. Type `:LearnVim exc` to check.",
+                instruction = "In this C++ snippet, place your cursor anywhere inside the curly braces `{}` of the function body and use `va{` to visually select around the curly braces. Then press `d` to delete the selection. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
                 setup_text = [[
 " --- Exercise 13.4.1 (C++) ---
@@ -317,24 +317,24 @@ INSERT INTO users (id, name) VALUES (1, 'Test User');]] -- Content inside () cha
                 feedback = "You changed text inside parentheses!",
             },
              {
-                instruction = "In this Ruby snippet, place your cursor anywhere inside the double quotes `\"\"` and use `yi\"` to yank the inner double quotes. Then move to the line below and paste using `p`. Type `:LearnVim exc` to check.",
+                instruction = "In this Ruby snippet, place your cursor anywhere inside the double quotes `""` and use `yi"` to yank the inner double quotes. Then move to the line below and paste using `p`. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
                 setup_text = [[
 " --- Exercise 13.4.3 (Ruby) ---
-" Instruction: In this Ruby snippet, place your cursor anywhere inside the double quotes `\"\"` and use `yi\"` to yank the inner double quotes. Then move to the line below and paste using `p`. Type `:LearnVim exc` to check.
+" Instruction: In this Ruby snippet, place your cursor anywhere inside the double quotes `""` and use `yi"` to yank the inner double quotes. Then move to the line below and paste using `p`. Type `:LearnVim exc` to check.
 " Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
-puts \"Yank this string\"
+puts "Yank this string"
 # Paste here:]],
                 start_cursor = {5, 10}, -- Cursor inside the double quotes
                 validation = {
                     type = 'check_buffer_content',
                     target_content = [[
 " --- Exercise 13.4.3 (Ruby) ---
-" Instruction: In this Ruby snippet, place your cursor anywhere inside the double quotes `\"\"` and use `yi\"` to yank the inner double quotes. Then move to the line below and paste using `p`. Type `:LearnVim exc` to check.
+" Instruction: In this Ruby snippet, place your cursor anywhere inside the double quotes `""` and use `yi"` to yank the inner double quotes. Then move to the line below and paste using `p`. Type `:LearnVim exc` to check.
 " Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
-puts \"Yank this string\"
+puts "Yank this string"
 # Paste here:Yank this string]] -- 'Yank this string' pasted
                 },
                 feedback = "You yanked text inside double quotes!",
@@ -344,4 +344,3 @@ puts \"Yank this string\"
     -- Add more lessons here if needed
     -- lesson5 = { ... }
 }
-
