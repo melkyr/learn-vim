@@ -25,6 +25,7 @@ M.current_state = {
 M.config = {
     -- Path to save/load tutorial progress. Defaults to a file in Neovim's state directory.
     progress_file = vim.fn.stdpath('state') .. '/learn_vim_progress.json',
+    debug = false, -- Add this line
     -- Add other configuration options here later (e.g., UI colors, default window sizes)
 }
 
@@ -36,29 +37,49 @@ M.config = {
 -- - ui, navigation, and state return a setup function that needs to be called with M.
 -- - exercise is currently returning a table directly (unexpected based on code, but observed).
 
-print("Debug: Requiring curriculum...")
+if M.config.debug then
+    vim.notify("LearnVim Debug: Requiring curriculum...", vim.log.levels.INFO)
+end
 local curriculum_module = require('learn_vim.curriculum')
-print("Debug: Type of curriculum_module: " .. type(curriculum_module))
+if M.config.debug then
+    vim.notify("LearnVim Debug: Type of curriculum_module: " .. type(curriculum_module), vim.log.levels.INFO)
+end
 M.curriculum = curriculum_module -- Assign curriculum directly
 
-print("Debug: Requiring ui...")
+if M.config.debug then
+    vim.notify("LearnVim Debug: Requiring ui...", vim.log.levels.INFO)
+end
 local ui_setup = require('learn_vim.ui')
-print("Debug: Type of ui_setup: " .. type(ui_setup))
+if M.config.debug then
+    vim.notify("LearnVim Debug: Type of ui_setup: " .. type(ui_setup), vim.log.levels.INFO)
+end
 M.ui = ui_setup(M) -- Call setup function and assign result
 
-print("Debug: Requiring navigation...")
+if M.config.debug then
+    vim.notify("LearnVim Debug: Requiring navigation...", vim.log.levels.INFO)
+end
 local navigation_setup = require('learn_vim.navigation')
-print("Debug: Type of navigation_setup: " .. type(navigation_setup))
+if M.config.debug then
+    vim.notify("LearnVim Debug: Type of navigation_setup: " .. type(navigation_setup), vim.log.levels.INFO)
+end
 M.navigation = navigation_setup(M) -- Call setup function and assign result
 
-print("Debug: Requiring exercise...")
+if M.config.debug then
+    vim.notify("LearnVim Debug: Requiring exercise...", vim.log.levels.INFO)
+end
 local exercise_module = require('learn_vim.exercise') -- Renamed to exercise_module as it's a table
-print("Debug: Type of exercise_module: " .. type(exercise_module))
+if M.config.debug then
+    vim.notify("LearnVim Debug: Type of exercise_module: " .. type(exercise_module), vim.log.levels.INFO)
+end
 M.exercise = exercise_module -- Assign exercise table directly (based on debug output)
 
-print("Debug: Requiring state...")
+if M.config.debug then
+    vim.notify("LearnVim Debug: Requiring state...", vim.log.levels.INFO)
+end
 local state_setup = require('learn_vim.state')
-print("Debug: Type of state_setup: " .. type(state_setup))
+if M.config.debug then
+    vim.notify("LearnVim Debug: Type of state_setup: " .. type(state_setup), vim.log.levels.INFO)
+end
 M.state = state_setup(M) -- Call setup function and assign result
 
 
@@ -113,6 +134,28 @@ end
 --- Restarts the tutorial from the beginning.
 -- Called by :LearnVim restart.
 function M.restart_tutorial()
+    -- Store old IDs before they are reset from M.current_state
+    local old_tutorial_winid = M.current_state.tutorial_winid
+    local old_exercise_winid = M.current_state.exercise_winid
+    local old_tutorial_bufnr = M.current_state.tutorial_bufnr
+    local old_exercise_bufnr = M.current_state.exercise_bufnr
+
+    -- Close the windows if they are valid
+    if old_tutorial_winid ~= -1 and vim.api.nvim_win_is_valid(old_tutorial_winid) then
+        pcall(vim.api.nvim_win_close, old_tutorial_winid, true)
+    end
+    if old_exercise_winid ~= -1 and vim.api.nvim_win_is_valid(old_exercise_winid) then
+        pcall(vim.api.nvim_win_close, old_exercise_winid, true)
+    end
+    
+    -- Explicitly delete old buffers
+    if old_tutorial_bufnr ~= -1 and vim.api.nvim_buf_is_valid(old_tutorial_bufnr) then
+        pcall(vim.api.nvim_buf_delete, old_tutorial_bufnr, { force = true })
+    end
+    if old_exercise_bufnr ~= -1 and vim.api.nvim_buf_is_valid(old_exercise_bufnr) then
+        pcall(vim.api.nvim_buf_delete, old_exercise_bufnr, { force = true })
+    end
+
      -- Reset the state to the initial values.
      M.current_state = { module = 1, lesson = 1, exercise = 1 }
      -- Reset UI state as well, so setup_tutorial_ui recreates windows/buffers cleanly.

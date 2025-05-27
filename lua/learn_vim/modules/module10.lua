@@ -15,7 +15,7 @@ Macros are one of Vim's most powerful features for automating repetitive tasks. 
 
 You record a macro in Normal mode using the `q` command, followed by the register you want to store the macro in (any letter `a` through `z`).
 
-* **`q{register}`**: Start recording a macro into `{register}`. The cursor in the bottom left will change (e.g., to `q/`) to show you are recording.
+* **`q{register}`**: Start recording a macro into `{register}`. The cursor in the bottom left will change (the command line will show an indicator like 'recording @a' or an older 'q/a' to show you are recording into register 'a') to show you are recording.
 * **`q`**: Stop recording the macro.
 
 Once recording starts, every keystroke you type (movements, insertions, deletions, commands, etc.) is saved until you press `q` again.
@@ -314,7 +314,7 @@ SELECT * FROM settings WHERE is_enabled = false;
                     type = 'check_buffer_content',
                     target_content = [[
 " --- Exercise 10.4.3 (SQL) ---
-" Instruction: Record a macro into register `h` that changes the value 'true' to 'false' and moves to the next line. Keystrokes: `qh` `/true<Enter>` `cw` `false<Esc>` `j` `0` `q`. Then play the macro 2 times using `2@h`. Type `:LearnVim exc` to check.
+" Instruction: In this SQL snippet, record a macro into register `h` that changes the value 'true' to 'false' and moves to the next line. Keystrokes: `qh` `/true<Enter>` `cw` `false<Esc>` `j` `0` `q`. Then play the macro 2 times using `2@h`. Type `:LearnVim exc` to check.
 " Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 SELECT * FROM users WHERE is_active = false;
@@ -382,7 +382,7 @@ fn main() {
     let x = 10;
     let y = 20;
     let z = x + y;
-    println!(\"Sum: {}\", z);
+    println!("Sum: {}", z);
 }
 ]],
                 start_cursor = {6, 4}, -- Cursor on 'l' of the first 'let'
@@ -397,7 +397,7 @@ fn main() {
      x = 10;
      y = 20;
     let z = x + y;
-    println!(\"Sum: {}\", z);
+    println!("Sum: {}", z);
 }
 ]] -- 'let ' should be deleted from the first two lines
                 },
@@ -756,4 +756,3 @@ fun main() {
     -- Add more lessons for Module 10 here if needed
     -- lesson9 = { ... }
 }
-

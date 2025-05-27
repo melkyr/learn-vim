@@ -3,6 +3,7 @@
 -- This module handles the logic for managing and validating exercises.
 
 local M = {} -- The module table
+local Utils = require('learn_vim.utils') -- Require the utils module
 local LEARN_VIM = nil -- Placeholder for the main plugin module, set during setup
 
 -- --- Setup Function ---
@@ -66,8 +67,7 @@ function M.load_current_exercise()
     end
 
     -- Make the exercise buffer editable
-    vim.api.nvim_buf_set_option(exercise_bufnr, 'modifiable', true)
-    vim.api.nvim_buf_set_option(exercise_bufnr, 'readonly', false)
+    Utils.set_buffer_options(exercise_bufnr, {modifiable = true, readonly = false})
 
     -- Ensure the exercise window is focused
     vim.api.nvim_set_current_win(state.exercise_winid)
