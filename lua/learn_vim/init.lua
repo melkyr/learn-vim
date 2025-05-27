@@ -36,29 +36,29 @@ M.config = {
 -- - ui, navigation, and state return a setup function that needs to be called with M.
 -- - exercise is currently returning a table directly (unexpected based on code, but observed).
 
-print("Debug: Requiring curriculum...")
+-- print("Debug: Requiring curriculum...")
 local curriculum_module = require('learn_vim.curriculum')
-print("Debug: Type of curriculum_module: " .. type(curriculum_module))
+-- print("Debug: Type of curriculum_module: " .. type(curriculum_module))
 M.curriculum = curriculum_module -- Assign curriculum directly
 
-print("Debug: Requiring ui...")
+-- print("Debug: Requiring ui...")
 local ui_setup = require('learn_vim.ui')
-print("Debug: Type of ui_setup: " .. type(ui_setup))
+-- print("Debug: Type of ui_setup: " .. type(ui_setup))
 M.ui = ui_setup(M) -- Call setup function and assign result
 
-print("Debug: Requiring navigation...")
+-- print("Debug: Requiring navigation...")
 local navigation_setup = require('learn_vim.navigation')
-print("Debug: Type of navigation_setup: " .. type(navigation_setup))
+-- print("Debug: Type of navigation_setup: " .. type(navigation_setup))
 M.navigation = navigation_setup(M) -- Call setup function and assign result
 
-print("Debug: Requiring exercise...")
+-- print("Debug: Requiring exercise...")
 local exercise_module = require('learn_vim.exercise') -- Renamed to exercise_module as it's a table
-print("Debug: Type of exercise_module: " .. type(exercise_module))
+-- print("Debug: Type of exercise_module: " .. type(exercise_module))
 M.exercise = exercise_module -- Assign exercise table directly (based on debug output)
 
-print("Debug: Requiring state...")
+-- print("Debug: Requiring state...")
 local state_setup = require('learn_vim.state')
-print("Debug: Type of state_setup: " .. type(state_setup))
+-- print("Debug: Type of state_setup: " .. type(state_setup))
 M.state = state_setup(M) -- Call setup function and assign result
 
 
@@ -173,3 +173,4 @@ end
 
 -- Return the main module table M, exposing its functions and state.
 return M
+```
