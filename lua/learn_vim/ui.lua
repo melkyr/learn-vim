@@ -297,5 +297,112 @@ return function(M) -- Accept the parent module M as an argument
         })
     end
 
+    --- Display Motion Practice Menu ---
+    function M_ui.display_motion_practice_menu()
+        local menu_lines = {
+            "      k      ",
+            "    h   l    ",
+            "      j      ",
+            "",
+            "Press Esc or q to exit",
+            "Then type :LearnVim start or :LearnVim contents"
+        }
+
+        -- Determine window size and position
+        local content_width = 0
+        for _, line in ipairs(menu_lines) do
+            if #line > content_width then
+                content_width = #line
+            end
+        end
+
+        local win_width = math.max(content_width + 4, 40) -- Add padding, min width 40
+        local win_height = #menu_lines + 2 -- Add padding for border
+
+        local screen_width = vim.api.nvim_get_option_value('columns', {})
+        local screen_height = vim.api.nvim_get_option_value('lines', {})
+        local row = math.floor((screen_height - win_height) / 2)
+        local col = math.floor((screen_width - win_width) / 2)
+
+        -- Create buffer and window
+        local menu_bufnr = vim.api.nvim_create_buf(false, true) -- nofile, scratch
+        local win_opts = {
+            relative = 'editor', style = 'minimal', border = 'rounded',
+            width = win_width, height = win_height, row = row, col = col,
+            focusable = true, zindex = 50
+        }
+        local menu_winid = vim.api.nvim_open_win(menu_bufnr, true, win_opts)
+
+        -- Set buffer options (initially modifiable for setting lines)
+        Utils.set_buffer_options(menu_bufnr, {
+            modifiable = true,
+            bufhidden = 'wipe', -- Ensure it gets wiped when hidden
+            buftype = 'nofile',
+            swapfile = false,
+            cursorline = false,
+            buflisted = false
+        })
+
+        -- Populate buffer
+        vim.api.nvim_buf_set_lines(menu_bufnr, 0, -1, false, menu_lines)
+
+        -- Syntax Highlighting for h,j,k,l
+        local ns_id = vim.api.nvim_create_namespace('LearnVimMotionMenu')
+        vim.api.nvim_set_hl(0, 'LearnVimKKey', { fg = 'Red', bold = true })
+        vim.api.nvim_set_hl(0, 'LearnVimJKey', { fg = 'Green', bold = true })
+        vim.api.nvim_set_hl(0, 'LearnVimHKey', { fg = 'Blue', bold = true })
+        vim.api.nvim_set_hl(0, 'LearnVimLKey', { fg = 'Yellow', bold = true })
+
+        -- Apply highlights (0-indexed lines, 0-indexed byte-based columns)
+        -- Line 1 (idx 0): "      k      " -> k at col 6
+        vim.api.nvim_buf_add_highlight(menu_bufnr, ns_id, 'LearnVimKKey', 0, 6, 7)
+        -- Line 2 (idx 1): "    h   l    " -> h at col 4, l at col 8 (Note: original prompt said l at 10, but "    h   l    " has l at 8)
+        vim.api.nvim_buf_add_highlight(menu_bufnr, ns_id, 'LearnVimHKey', 1, 4, 5)
+        vim.api.nvim_buf_add_highlight(menu_bufnr, ns_id, 'LearnVimLKey', 1, 8, 9) -- Adjusted l position
+        -- Line 3 (idx 2): "      j      " -> j at col 6
+        vim.api.nvim_buf_add_highlight(menu_bufnr, ns_id, 'LearnVimJKey', 2, 6, 7)
+
+        -- Set final buffer options (nomodifiable)
+        Utils.set_buffer_options(menu_bufnr, {
+            modifiable = false,
+            bufhidden = 'wipe',
+            buftype = 'nofile',
+            swapfile = false,
+            cursorline = false,
+            buflisted = false
+        })
+
+        -- Define Keymaps
+        local close_callback = function()
+            if vim.api.nvim_win_is_valid(menu_winid) then
+                vim.api.nvim_win_close(menu_winid, true)
+            end
+            -- Clear highlights for this namespace to avoid issues if another buffer uses same ns_id
+            vim.api.nvim_buf_clear_namespace(menu_bufnr, ns_id, 0, -1)
+        end
+
+        vim.api.nvim_buf_set_keymap(menu_bufnr, 'n', '<Esc>', '', { noremap = true, silent = true, callback = close_callback })
+        vim.api.nvim_buf_set_keymap(menu_bufnr, 'n', 'q', '', { noremap = true, silent = true, callback = close_callback })
+
+        local function key_press_callback(key)
+            return function()
+                if vim.api.nvim_win_is_valid(menu_winid) then
+                    vim.api.nvim_win_close(menu_winid, true)
+                end
+                vim.notify("Pressed " .. key)
+                -- Clear highlights for this namespace
+                vim.api.nvim_buf_clear_namespace(menu_bufnr, ns_id, 0, -1)
+            end
+        end
+
+        vim.api.nvim_buf_set_keymap(menu_bufnr, 'n', 'h', '', { noremap = true, silent = true, callback = key_press_callback('h') })
+        vim.api.nvim_buf_set_keymap(menu_bufnr, 'n', 'j', '', { noremap = true, silent = true, callback = key_press_callback('j') })
+        vim.api.nvim_buf_set_keymap(menu_bufnr, 'n', 'k', '', { noremap = true, silent = true, callback = key_press_callback('k') })
+        vim.api.nvim_buf_set_keymap(menu_bufnr, 'n', 'l', '', { noremap = true, silent = true, callback = key_press_callback('l') })
+
+        -- Set focus to the window
+        vim.api.nvim_set_current_win(menu_winid)
+    end
+
     return M_ui
 end
