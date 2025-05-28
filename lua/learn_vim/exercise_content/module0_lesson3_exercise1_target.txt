@@ -1,0 +1,7 @@
+Practice word and line motions here.
+This line has many words for you to jump between.
+The quick brown fox jumps over the lazy dog.
+123 456 789
+
+End of this specific practice line.
+Another line for end-of-line practice. [TARGET_EOL]
