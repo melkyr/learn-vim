@@ -1,0 +1,10 @@
+" --- Exercise 5.4.3 ---
+" Instruction: Edit the paragraph to match the target content. Hint: Use `yy`, `p`, `dd`, and navigation commands.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Line D.
+Line B.
+Line E.
+Line A.
+Line C.

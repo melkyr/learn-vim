@@ -1,0 +1,6 @@
+" --- Exercise 14.6.1 ---
+" Instruction: Type `:set cursorline` and press <Enter> to highlight the current line. Then type `:set cursorline&` and press <Enter> to revert it to its default. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Experiment with highlighting the current line.]

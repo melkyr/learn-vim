@@ -1,0 +1,7 @@
+" --- Exercise 4.1.2 ---
+" Instruction: Using `dd`, delete the line 'Delete this line.'. Then type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Keep this line.
+Keep this line too.

@@ -1,0 +1,7 @@
+" --- Exercise 8.7.1 ---
+" Instruction: Copy text from an external application and paste it into the line below 'Paste external text here:' using '\"+p'. Then type ':LearnVim exc' to check.
+" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
+" ---------------------------------------------
+
+COPY THIS LINE TO EXTERNAL APP
+Paste external text here:]

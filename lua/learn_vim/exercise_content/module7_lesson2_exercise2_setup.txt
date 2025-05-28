@@ -1,0 +1,8 @@
+" --- Exercise 7.2.2 ---
+" Instruction: Search backward for the word 'quick' using `?`. Type `:LearnVim exc` to check after the search.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Line 1: The quick brown fox
+Line 2: jumps over the lazy
+Line 3: dog.]

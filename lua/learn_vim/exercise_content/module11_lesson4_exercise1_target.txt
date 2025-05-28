@@ -1,0 +1,8 @@
+" --- Exercise 11.4.1 (Elixir) ---
+" Instruction: In this Elixir snippet, use Line Visual (`V`) to select the three lines defining the function body and delete them (`d`). Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+defmodule MyModule do
+  def greet(name) do
+  end
+end

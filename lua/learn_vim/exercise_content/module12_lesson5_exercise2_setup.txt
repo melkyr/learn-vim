@@ -1,0 +1,6 @@
+" --- Exercise 12.5.2 ---
+" Instruction: Type `:tabnew` and press <Enter> to create a new tab page. Then type `:tabclose` and press <Enter> to close that new tab and return to the tutorial. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Practice creating and closing tabs.]

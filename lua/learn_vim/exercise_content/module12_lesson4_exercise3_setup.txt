@@ -1,0 +1,6 @@
+" --- Exercise 12.4.3 ---
+" Instruction: Split the window horizontally (`:split`). Then use `:close` and press <Enter> to close the new window. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Close the extra window.]

@@ -1,0 +1,6 @@
+" --- Exercise 4.2.3 ---
+" Instruction: Using `r`, replace the character 'X' with 'Y'. Then type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Replace the Y here.

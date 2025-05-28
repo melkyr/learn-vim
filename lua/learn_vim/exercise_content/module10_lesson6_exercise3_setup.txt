@@ -1,0 +1,12 @@
+" --- Exercise 10.6.3 (C++) ---
+" Instruction: In this C++ snippet, record a macro into register `n` that deletes the word 'std::' and moves to the next line. Keystrokes: `qn` `dw` `j` `0` `q`. Then play the macro 2 times using `2@n`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+#include <iostream>
+
+int main() {
+    std::cout << "Hello";
+    std::cout << " ";
+    std::cout << "world!" << std::endl;
+    return 0;
+}

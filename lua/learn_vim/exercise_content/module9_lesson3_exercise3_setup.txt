@@ -1,0 +1,12 @@
+" --- Exercise 9.3.3 (Go) ---
+" Instruction: In this Go snippet, place your cursor on the opening square bracket `[` and press `%`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+package main
+
+import "fmt"
+
+func main() {
+    numbers := []int{1, 2, 3, 4, 5}
+    fmt.Println(numbers[2]) // Access the third element
+}]

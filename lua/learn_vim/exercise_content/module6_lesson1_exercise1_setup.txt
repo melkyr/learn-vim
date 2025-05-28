@@ -1,0 +1,6 @@
+" --- Exercise 6.1.1 ---
+" Instruction: Press `v` to enter Character Visual mode, move the cursor to select some text, then press `<Esc>` to return to Normal mode. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Select some of this text.

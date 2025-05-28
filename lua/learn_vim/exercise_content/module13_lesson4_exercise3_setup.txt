@@ -1,0 +1,6 @@
+" --- Exercise 13.4.3 (Ruby) ---
+" Instruction: In this Ruby snippet, place your cursor anywhere inside the double quotes `""` and use `yi"` to yank the inner double quotes. Then move to the line below and paste using `p`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+puts "Yank this string"
+# Paste here:]

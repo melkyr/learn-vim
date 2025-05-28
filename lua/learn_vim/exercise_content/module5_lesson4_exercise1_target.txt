@@ -1,0 +1,5 @@
+" --- Exercise 5.4.1 ---
+" Instruction: Edit the paragraph to match the target content. Hint: Use `dw`, `dd`, `p`, and `.`
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+It was the best of times.

@@ -1,0 +1,9 @@
+" --- Exercise 11.12.1 (TypeScript) ---
+" Instruction: In this TypeScript snippet, use Block Visual (`<C-v>`) to delete the semicolons `;` at the end of the interface properties. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+interface User {
+  id: string
+  name: string
+  age: number
+}

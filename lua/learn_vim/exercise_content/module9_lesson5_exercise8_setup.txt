@@ -1,0 +1,10 @@
+" --- Exercise 9.5.8 (PHP) ---
+" Instruction: In this PHP snippet, use Block Visual (`<C-v>`) to delete the '$' character at the start of the variables in the function. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+<?php
+function add($a, $b) {
+    $sum = $a + $b;
+    return $sum;
+}
+?>

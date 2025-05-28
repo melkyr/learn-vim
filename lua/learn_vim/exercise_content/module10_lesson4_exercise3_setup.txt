@@ -1,0 +1,8 @@
+" --- Exercise 10.4.3 (SQL) ---
+" Instruction: In this SQL snippet, record a macro into register `h` that changes the value 'true' to 'false' and moves to the next line. Keystrokes: `qh` `/true<Enter>` `cw` `false<Esc>` `j` `0` `q`. Then play the macro 2 times using `2@h`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+SELECT * FROM users WHERE is_active = true;
+SELECT * FROM products WHERE is_available = true;
+SELECT * FROM orders WHERE is_completed = true;
+SELECT * FROM settings WHERE is_enabled = false;

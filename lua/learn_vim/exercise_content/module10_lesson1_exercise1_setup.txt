@@ -1,0 +1,6 @@
+" --- Exercise 10.1.1 ---
+" Instruction: Record a macro into register `a` that deletes the current word (`dw`). Start recording with `qa`, type `dw`, and stop recording with `q`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Record a macro here.]

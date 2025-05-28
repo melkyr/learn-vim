@@ -3,6 +3,8 @@
 -- This file contains the content for Module 11: Final Test.
 -- It includes exercises testing various Vim skills using snippets from diverse programming languages.
 
+local Utils = require('learn_vim.utils')
+
 return {
     title = "Final Test",
     lesson1 = {
@@ -20,91 +22,33 @@ Remember to use `:LearnVim exc` to check your work and `:LearnVim exr` to reset 
             {
                 instruction = "In this C snippet, delete the line containing `printf(\"World!\\n\");`. Use any deletion command you prefer. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.1.1 (C) ---
-" Instruction: In this C snippet, delete the line containing `printf(\"World!\\n\");`. Use any deletion command you prefer. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-#include <stdio.h>
-
-int main() {
-    printf("Hello, ");
-    printf("World!\\n");
-    return 0;
-}]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson1_exercise1_setup.txt"),
                 start_cursor = {5, 0},
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.1.1 (C) ---
-" Instruction: In this C snippet, delete the line containing `printf(\"World!\\n\");`. Use any deletion command you prefer. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-#include <stdio.h>
-
-int main() {
-    printf("Hello, ");
-    return 0;
-}]] -- The printf("World!\n"); line should be gone
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson1_exercise1_target.txt")
                 },
                 feedback = "Test 1.1 complete!",
             },
              {
                 instruction = "In this Assembly snippet, change the instruction `mov eax, 1` to `mov ebx, 0`. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.1.2 (Assembly - GAS) ---
-" Instruction: In this Assembly snippet, change the instruction `mov eax, 1` to `mov ebx, 0`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-.global _start
-
-_start:
-    mov eax, 1
-    mov ebx, 0
-    int 0x80]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson1_exercise2_setup.txt"),
                 start_cursor = {7, 4}, -- Cursor on 'm' of mov eax, 1
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.1.2 (Assembly - GAS) ---
-" Instruction: In this Assembly snippet, change the instruction `mov eax, 1` to `mov ebx, 0`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-.global _start
-
-_start:
-    mov ebx, 0
-    mov ebx, 0
-    int 0x80]] -- The line should be changed
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson1_exercise2_target.txt")
                 },
                 feedback = "Test 1.2 complete!",
             },
              {
                 instruction = "In this Fortran snippet, yank the line `  PRINT *, 'Hello'` and paste it below the line `  PRINT *, 'World'`. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.1.3 (Fortran) ---
-" Instruction: In this Fortran snippet, yank the line `  PRINT *, 'Hello'` and paste it below the line `  PRINT *, 'World'`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-PROGRAM HelloWorld
-  PRINT *, 'Hello'
-  PRINT *, 'World'
-END PROGRAM HelloWorld]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson1_exercise3_setup.txt"),
                 start_cursor = {6, 2}, -- Cursor on 'P' of the first PRINT
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.1.3 (Fortran) ---
-" Instruction: In this Fortran snippet, yank the line `  PRINT *, 'Hello'` and paste it below the line `  PRINT *, 'World'`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-PROGRAM HelloWorld
-  PRINT *, 'Hello'
-  PRINT *, 'World'
-  PRINT *, 'Hello'
-END PROGRAM HelloWorld]] -- The first print line should be duplicated below the second
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson1_exercise3_target.txt")
                 },
                 feedback = "Test 1.3 complete!",
             },
@@ -121,87 +65,33 @@ More exercises to test your skills, focusing on Visual mode and the `:s` substit
             {
                 instruction = "In this COBOL snippet, use Block Visual (`<C-v>`) to delete the leading spaces on the lines within the PROCEDURE DIVISION. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.2.1 (COBOL) ---
-" Instruction: In this COBOL snippet, use Block Visual (`<C-v>`) to delete the leading spaces on the lines within the PROCEDURE DIVISION. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-       IDENTIFICATION DIVISION.
-       PROGRAM-ID. HELLOWORLD.
-       PROCEDURE DIVISION.
-           DISPLAY 'Hello, World!'.
-           STOP RUN.
-]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson2_exercise1_setup.txt"),
                 start_cursor = {8, 7}, -- Cursor on the first space of DISPLAY
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.2.1 (COBOL) ---
-" Instruction: In this COBOL snippet, use Block Visual (`<C-v>`) to delete the leading spaces on the lines within the PROCEDURE DIVISION. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-       IDENTIFICATION DIVISION.
-       PROGRAM-ID. HELLOWORLD.
-       PROCEDURE DIVISION.
-       DISPLAY 'Hello, World!'.
-       STOP RUN.
-]] -- Leading spaces removed from DISPLAY and STOP RUN lines
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson2_exercise1_target.txt")
                 },
                 feedback = "Test 2.1 complete!",
             },
              {
                 instruction = "In this Common Lisp snippet, use Line Visual (`V`) to select the two lines inside the `let` form and delete them (`d`). Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.2.2 (Common Lisp) ---
-" Instruction: In this Common Lisp snippet, use Line Visual (`V`) to select the two lines inside the `let` form and delete them (`d`). Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-(defun greet (name)
-  (let ((message (format nil "Hello, ~a!" name))
-        (greeting-prefix "Greeting: "))
-    (concatenate 'string greeting-prefix message)))
-]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson2_exercise2_setup.txt"),
                 start_cursor = {6, 2}, -- Cursor on the first '(' of the let form
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.2.2 (Common Lisp) ---
-" Instruction: In this Common Lisp snippet, use Line Visual (`V`) to select the two lines inside the `let` form and delete them (`d`). Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-(defun greet (name)
-    (concatenate 'string greeting-prefix message)))
-]] -- The two lines inside let should be gone
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson2_exercise2_target.txt")
                 },
                 feedback = "Test 2.2 complete!",
             },
              {
                 instruction = "In this Prolog snippet, use `:s` to replace all occurrences of `parent` with `ancestor` on the line containing `parent(X, Y)`. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.2.3 (Prolog) ---
-" Instruction: In this Prolog snippet, use `:s` to replace all occurrences of `parent` with `ancestor` on the line containing `parent(X, Y)`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-parent(X, Y) :- father(X, Y).
-parent(X, Y) :- mother(X, Y).
-ancestor(X, Y) :- parent(X, Y).
-ancestor(X, Y) :- parent(X, Z), ancestor(Z, Y).
-]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson2_exercise3_setup.txt"),
                 start_cursor = {5, 0}, -- Cursor on the first line
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.2.3 (Prolog) ---
-" Instruction: In this Prolog snippet, use `:s` to replace all occurrences of `parent` with `ancestor` on the line containing `parent(X, Y)`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-ancestor(X, Y) :- father(X, Y).
-parent(X, Y) :- mother(X, Y).
-ancestor(X, Y) :- parent(X, Y).
-ancestor(X, Y) :- parent(X, Z), ancestor(Z, Y).
-]] -- 'parent' replaced with 'ancestor' on the first line
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson2_exercise3_target.txt")
                 },
                 feedback = "Test 2.3 complete!",
             },
@@ -218,87 +108,33 @@ More mixed exercises covering various commands. Apply the most efficient techniq
             {
                 instruction = "In this Haskell snippet, delete the line containing `y = 20`. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.3.1 (Haskell) ---
-" Instruction: In this Haskell snippet, delete the line containing `y = 20`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-x = 10
-y = 20
-z = x + y]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson3_exercise1_setup.txt"),
                 start_cursor = {5, 0},
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.3.1 (Haskell) ---
-" Instruction: In this Haskell snippet, delete the line containing `y = 20`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-x = 10
-z = x + y]] -- The line 'y = 20' should be gone
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson3_exercise1_target.txt")
                 },
                 feedback = "Test 3.1 complete!",
             },
              {
                 instruction = "In this Scala snippet, change the word `var` to `val` on the first two variable declarations. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.3.2 (Scala) ---
-" Instruction: In this Scala snippet, change the word `var` to `val` on the first two variable declarations. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-object Main {
-  def main(args: Array[String]): Unit = {
-    var name = "Alice"
-    var age = 30
-    val city = "Paris"
-    println(s"$name is $age in $city")
-  }
-}]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson3_exercise2_setup.txt"),
                 start_cursor = {7, 4}, -- Cursor on 'v' of the first 'var'
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.3.2 (Scala) ---
-" Instruction: In this Scala snippet, change the word `var` to `val` on the first two variable declarations. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-object Main {
-  def main(args: Array[String]): Unit = {
-    val name = "Alice"
-    val age = 30
-    val city = "Paris"
-    println(s"$name is $age in $city")
-  }
-}]], -- First two 'var's should be 'val'
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson3_exercise2_target.txt")
                 },
                 feedback = "Test 3.2 complete!",
             },
              {
                 instruction = "In this Clojure snippet, yank the s-expression `(println \"Hello\")` and paste it below the `(println \"World\")` line. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.3.3 (Clojure) ---
-" Instruction: In this Clojure snippet, yank the s-expression `(println \"Hello\")` and paste it below the `(println \"World\")` line. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-(defn greet []
-  (println "Hello")
-  (println "World"))
-]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson3_exercise3_setup.txt"),
                 start_cursor = {6, 2}, -- Cursor on the first '('
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.3.3 (Clojure) ---
-" Instruction: In this Clojure snippet, yank the s-expression `(println \"Hello\")` and paste it below the `(println \"World\")` line. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-(defn greet []
-  (println "Hello")
-  (println "World")
-  (println "Hello"))
-]] -- The first println line should be duplicated below the second
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson3_exercise3_target.txt")
                 },
                 feedback = "Test 3.3 complete!",
             },
@@ -315,89 +151,33 @@ More exercises to solidify your skills.
             {
                 instruction = "In this Elixir snippet, use Line Visual (`V`) to select the three lines defining the function body and delete them (`d`). Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.4.1 (Elixir) ---
-" Instruction: In this Elixir snippet, use Line Visual (`V`) to select the three lines defining the function body and delete them (`d`). Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-defmodule MyModule do
-  def greet(name) do
-    message = "Hello, #{name}"
-    IO.puts(message)
-  end
-end]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson4_exercise1_setup.txt"),
                 start_cursor = {6, 2}, -- Cursor on 'm' of message
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.4.1 (Elixir) ---
-" Instruction: In this Elixir snippet, use Line Visual (`V`) to select the three lines defining the function body and delete them (`d`). Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-defmodule MyModule do
-  def greet(name) do
-  end
-end]] -- The three lines of the function body should be gone
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson4_exercise1_target.txt")
                 },
                 feedback = "Test 4.1 complete!",
             },
              {
                 instruction = "In this Erlang snippet, use Block Visual (`<C-v>`) to delete the leading spaces on the lines within the `case` expression. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.4.2 (Erlang) ---
-" Instruction: In this Erlang snippet, use Block Visual (`<C-v>`) to delete the leading spaces on the lines within the `case` expression. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-greet(Name) ->
-    case Name of
-        "Alice" -> io:format("Hello Alice~n");
-        "Bob" -> io:format("Hello Bob~n");
-        _ -> io:format("Hello Unknown~n")
-    end.
-]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson4_exercise2_setup.txt"),
                 start_cursor = {7, 8}, -- Cursor on the first space before "Alice"
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.4.2 (Erlang) ---
-" Instruction: In this Erlang snippet, use Block Visual (`<C-v>`) to delete the leading spaces on the lines within the `case` expression. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-greet(Name) ->
-    case Name of
-    "Alice" -> io:format("Hello Alice~n");
-    "Bob" -> io:format("Hello Bob~n");
-    _ -> io:format("Hello Unknown~n")
-    end.
-]] -- Leading spaces removed from the case branches
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson4_exercise2_target.txt")
                 },
                 feedback = "Test 4.2 complete!",
             },
              {
                 instruction = "In this F# snippet, change the word `let` to `mutable` on the first two variable declarations. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.4.3 (F#) ---
-" Instruction: In this F# snippet, change the word `let` to `mutable` on the first two variable declarations. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-let name = "Alice"
-let age = 30
-let city = "London"
-printfn "%s is %d in %s" name age city]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson4_exercise3_setup.txt"),
                 start_cursor = {5, 0}, -- Cursor on 'l' of the first 'let'
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.4.3 (F#) ---
-" Instruction: In this F# snippet, change the word `let` to `mutable` on the first two variable declarations. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-mutable name = "Alice"
-mutable age = 30
-let city = "London"
-printfn "%s is %d in %s" name age city]] -- First two 'let's should be 'mutable'
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson4_exercise3_target.txt")
                 },
                 feedback = "Test 4.3 complete!",
             },
@@ -414,81 +194,22 @@ Almost there! A few more exercises to test your command mastery.
             {
                 instruction = "In this TypeScript snippet, use `:s` to replace all occurrences of `string` with `number` within the `interface` definition. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.5.1 (TypeScript) ---
-" Instruction: In this TypeScript snippet, use `:s` to replace all occurrences of `string` with `number` within the `interface` definition. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  age: number;
-}]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson5_exercise1_setup.txt"),
                 start_cursor = {5, 0}, -- Cursor on the first line
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.5.1 (TypeScript) ---
-" Instruction: In this TypeScript snippet, use `:s` to replace all occurrences of `string` with `number` within the `interface` definition. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-interface User {
-  id: number;
-  name: number;
-  email: number;
-  age: number;
-}]], -- All 'string's should be 'number'
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson5_exercise1_target.txt")
                 },
                 feedback = "Test 5.1 complete!",
             },
              {
                 instruction = "In this Vue snippet, use Line Visual (`V`) to select the lines inside the `<script>` block and delete them (`d`). Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.5.2 (Vue SFC) ---
-" Instruction: In this Vue snippet, use Line Visual (`V`) to select the lines inside the `<script>` block and delete them (`d`). Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-<template>
-  <div>{{ message }}</div>
-</template>
-
-<script>
-export default {
-  data() {
-    return {
-      message: 'Hello Vue!'
-    }
-  }
-}
-</script>
-
-<style scoped>
-div {
-  color: blue;
-}
-</style>]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson5_exercise2_setup.txt"),
                 start_cursor = {8, 0}, -- Cursor on 'export default {'
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.5.2 (Vue SFC) ---
-" Instruction: In this Vue snippet, use Line Visual (`V`) to select the lines inside the `<script>` block and delete them (`d`). Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-<template>
-  <div>{{ message }}</div>
-</template>
-
-<script>
-</script>
-
-<style scoped>
-div {
-  color: blue;
-}
-</style>]] -- The content inside script tags should be gone
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson5_exercise2_target.txt")
                 },
                 feedback = "Test 5.2 complete!",
             },
@@ -505,68 +226,22 @@ Almost done with the practice exercises!
             {
                 instruction = "In this Assembly snippet, use Block Visual (`<C-v>`) to delete the leading spaces on the lines within the `section .data`. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.6.1 (Assembly - NASM) ---
-" Instruction: In this Assembly snippet, use Block Visual (`<C-v>`) to delete the leading spaces on the lines within the `section .data`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-section .data
-    msg db 'Hello, world!', 0xA
-    len equ $ - msg
-
-section .text
-    global _start]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson6_exercise1_setup.txt"),
                 start_cursor = {6, 4}, -- Cursor on the first space of msg db
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.6.1 (Assembly - NASM) ---
-" Instruction: In this Assembly snippet, use Block Visual (`<C-v>`) to delete the leading spaces on the lines within the `section .data`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-section .data
-msg db 'Hello, world!', 0xA
-len equ $ - msg
-
-section .text
-    global _start]] -- Leading spaces removed from msg and len lines
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson6_exercise1_target.txt")
                 },
                 feedback = "Test 6.1 complete!",
             },
              {
                 instruction = "In this C snippet, change the word `int` to `float` in the function signature. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.6.2 (C) ---
-" Instruction: In this C snippet, change the word `int` to `float` in the function signature. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-#include <stdio.h>
-
-int add(int a, int b) {
-    return a + b;
-}
-
-int main() {
-    // ...
-}]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson6_exercise2_setup.txt"),
                 start_cursor = {6, 0}, -- Cursor on 'i' of the first 'int'
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.6.2 (C) ---
-" Instruction: In this C snippet, change the word `int` to `float` in the function signature. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-#include <stdio.h>
-
-float add(int a, int b) {
-    return a + b;
-}
-
-int main() {
-    // ...
-}]], -- The first 'int' should be 'float'
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson6_exercise2_target.txt")
                 },
                 feedback = "Test 6.2 complete!",
             },
@@ -583,62 +258,22 @@ Almost at the end of the practice exercises!
             {
                 instruction = "In this Fortran snippet, use `:s` to replace the first occurrence of `10` with `20` on the line containing `x = 10`. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.7.1 (Fortran) ---
-" Instruction: In this Fortran snippet, use `:s` to replace the first occurrence of `10` with `20` on the line containing `x = 10`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-PROGRAM Variables
-  INTEGER :: x, y
-  x = 10
-  y = 20
-  PRINT *, 'x = ', x
-END PROGRAM Variables]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson7_exercise1_setup.txt"),
                 start_cursor = {7, 0}, -- Cursor on the line 'x = 10'
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.7.1 (Fortran) ---
-" Instruction: In this Fortran snippet, use `:s` to replace the first occurrence of `10` with `20` on the line containing `x = 10`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-PROGRAM Variables
-  INTEGER :: x, y
-  x = 20
-  y = 20
-  PRINT *, 'x = ', x
-END PROGRAM Variables]] -- '10' should be '20' on the specified line
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson7_exercise1_target.txt")
                 },
                 feedback = "Test 7.1 complete!",
             },
              {
                 instruction = "In this COBOL snippet, use Line Visual (`V`) to select the two lines containing `DISPLAY` and `STOP RUN` and yank them (`y`). Then move to the line below `PROGRAM-ID. HELLOWORLD.` and paste them (`p`). Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.7.2 (COBOL) ---
-" Instruction: In this COBOL snippet, use Line Visual (`V`) to select the two lines containing `DISPLAY` and `STOP RUN` and yank them (`y`). Then move to the line below `PROGRAM-ID. HELLOWORLD.` and paste them (`p`). Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-       IDENTIFICATION DIVISION.
-       PROGRAM-ID. HELLOWORLD.
-       PROCEDURE DIVISION.
-           DISPLAY 'Hello, World!'.
-           STOP RUN.
-]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson7_exercise2_setup.txt"),
                 start_cursor = {8, 7}, -- Cursor on the DISPLAY line
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.7.2 (COBOL) ---
-" Instruction: In this COBOL snippet, use Line Visual (`V`) to select the two lines containing `DISPLAY` and `STOP RUN` and yank them (`y`). Then move to the line below `PROGRAM-ID. HELLOWORLD.` and paste them (`p`). Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-       IDENTIFICATION DIVISION.
-       PROGRAM-ID. HELLOWORLD.
-           DISPLAY 'Hello, World!'.
-           STOP RUN.
-       PROCEDURE DIVISION.
-]] -- The DISPLAY and STOP RUN lines should be duplicated below PROGRAM-ID
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson7_exercise2_target.txt")
                 },
                 feedback = "Test 7.2 complete!",
             },
@@ -655,51 +290,22 @@ Just a few more exercises to go!
             {
                 instruction = "In this Common Lisp snippet, change the word `defun` to `defmacro`. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.8.1 (Common Lisp) ---
-" Instruction: In this Common Lisp snippet, change the word `defun` to `defmacro`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-(defun greet (name)
-  (format nil "Hello, ~a!" name))]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson8_exercise1_setup.txt"),
                 start_cursor = {5, 1}, -- Cursor on 'd' of defun
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.8.1 (Common Lisp) ---
-" Instruction: In this Common Lisp snippet, change the word `defun` to `defmacro`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-(defmacro greet (name)
-  (format nil "Hello, ~a!" name))]] -- 'defun' should be 'defmacro'
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson8_exercise1_target.txt")
                 },
                 feedback = "Test 8.1 complete!",
             },
              {
                 instruction = "In this Prolog snippet, delete the line containing `ancestor(X, Y) :- parent(X, Y).`. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.8.2 (Prolog) ---
-" Instruction: In this Prolog snippet, delete the line containing `ancestor(X, Y) :- parent(X, Y).`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-parent(X, Y) :- father(X, Y).
-parent(X, Y) :- mother(X, Y).
-ancestor(X, Y) :- parent(X, Y).
-ancestor(X, Y) :- parent(X, Z), ancestor(Z, Y).
-]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson8_exercise2_setup.txt"),
                 start_cursor = {7, 0}, -- Cursor on the ancestor(X, Y) :- parent(X, Y). line
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.8.2 (Prolog) ---
-" Instruction: In this Prolog snippet, delete the line containing `ancestor(X, Y) :- parent(X, Y).`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-parent(X, Y) :- father(X, Y).
-parent(X, Y) :- mother(X, Y).
-ancestor(X, Y) :- parent(X, Z), ancestor(Z, Y).
-]] -- The specified ancestor line should be gone
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson8_exercise2_target.txt")
                 },
                 feedback = "Test 8.2 complete!",
             },
@@ -716,60 +322,22 @@ Wrapping up the practice exercises.
             {
                 instruction = "In this Haskell snippet, change the word `x` to `a`, `y` to `b`, and `z` to `c`. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.9.1 (Haskell) ---
-" Instruction: In this Haskell snippet, change the word `x` to `a`, `y` to `b`, and `z` to `c`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-x = 10
-y = 20
-z = x + y]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson9_exercise1_setup.txt"),
                 start_cursor = {5, 0}, -- Cursor on 'x'
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.9.1 (Haskell) ---
-" Instruction: In this Haskell snippet, change the word `x` to `a`, `y` to `b`, and `z` to `c`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-a = 10
-b = 20
-c = a + b]] -- x, y, z changed to a, b, c
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson9_exercise1_target.txt")
                 },
                 feedback = "Test 9.1 complete!",
             },
              {
                 instruction = "In this Scala snippet, use `:s` to replace the first occurrence of `println` with `printf` on the last line. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.9.2 (Scala) ---
-" Instruction: In this Scala snippet, use `:s` to replace the first occurrence of `println` with `printf` on the last line. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-object Main {
-  def main(args: Array[String]): Unit = {
-    val name = "Alice"
-    val age = 30
-    val city = "Paris"
-    println(s"$name is $age in $city")
-  }
-}]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson9_exercise2_setup.txt"),
                 start_cursor = {10, 4}, -- Cursor on the last line
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.9.2 (Scala) ---
-" Instruction: In this Scala snippet, use `:s` to replace the first occurrence of `println` with `printf` on the last line. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-object Main {
-  def main(args: Array[String]): Unit = {
-    val name = "Alice"
-    val age = 30
-    val city = "Paris"
-    printf(s"$name is $age in $city")
-  }
-}]], -- println changed to printf on the last line
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson9_exercise2_target.txt")
                 },
                 feedback = "Test 9.2 complete!",
             },
@@ -786,55 +354,22 @@ Almost done!
             {
                 instruction = "In this Clojure snippet, delete the line containing `(println \"Hello\")`. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.10.1 (Clojure) ---
-" Instruction: In this Clojure snippet, delete the line containing `(println \"Hello\")`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-(defn greet []
-  (println "Hello")
-  (println "World"))]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson10_exercise1_setup.txt"),
                 start_cursor = {6, 2}, -- Cursor on the println "Hello" line
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.10.1 (Clojure) ---
-" Instruction: In this Clojure snippet, delete the line containing `(println \"Hello\")`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-(defn greet []
-  (println "World"))]] -- The first println line should be gone
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson10_exercise1_target.txt")
                 },
                 feedback = "Test 10.1 complete!",
             },
              {
                 instruction = "In this Elixir snippet, change the word `greet` to `say_hello`. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.10.2 (Elixir) ---
-" Instruction: In this Elixir snippet, change the word `greet` to `say_hello`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-defmodule MyModule do
-  def greet(name) do
-    message = "Hello, #{name}"
-    IO.puts(message)
-  end
-end]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson10_exercise2_setup.txt"),
                 start_cursor = {6, 6}, -- Cursor on 'g' of greet
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.10.2 (Elixir) ---
-" Instruction: In this Elixir snippet, change the word `greet` to `say_hello`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-defmodule MyModule do
-  def say_hello(name) do
-    message = "Hello, #{name}"
-    IO.puts(message)
-  end
-end]] -- 'greet' should be 'say_hello'
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson10_exercise2_target.txt")
                 },
                 feedback = "Test 10.2 complete!",
             },
@@ -851,62 +386,22 @@ Just a few more!
             {
                 instruction = "In this Erlang snippet, use `:s` to replace the first occurrence of `io:format` with `io:fwrite` on the first case branch. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.11.1 (Erlang) ---
-" Instruction: In this Erlang snippet, use `:s` to replace the first occurrence of `io:format` with `io:fwrite` on the first case branch. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-greet(Name) ->
-    case Name of
-        "Alice" -> io:format("Hello Alice~n");
-        "Bob" -> io:format("Hello Bob~n");
-        _ -> io:format("Hello Unknown~n")
-    end.
-]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson11_exercise1_setup.txt"),
                 start_cursor = {7, 8}, -- Cursor on the first case branch line
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.11.1 (Erlang) ---
-" Instruction: In this Erlang snippet, use `:s` to replace the first occurrence of `io:format` with `io:fwrite` on the first case branch. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-greet(Name) ->
-    case Name of
-        "Alice" -> io:fwrite("Hello Alice~n");
-        "Bob" -> io:format("Hello Bob~n");
-        _ -> io:format("Hello Unknown~n")
-    end.
-]] -- 'io:format' changed to 'io:fwrite' on the first branch
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson11_exercise1_target.txt")
                 },
                 feedback = "Test 11.1 complete!",
             },
              {
                 instruction = "In this F# snippet, use Line Visual (`V`) to select the two lines defining `name` and `age` and yank them (`y`). Then paste them below the `printfn` line (`p`). Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.11.2 (F#) ---
-" Instruction: In this F# snippet, use Line Visual (`V`) to select the two lines defining `name` and `age` and yank them (`y`). Then paste them below the `printfn` line (`p`). Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-let name = "Alice"
-let age = 30
-let city = "London"
-printfn "%s is %d in %s" name age city]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson11_exercise2_setup.txt"),
                 start_cursor = {5, 0}, -- Cursor on the 'let name' line
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.11.2 (F#) ---
-" Instruction: In this F# snippet, use Line Visual (`V`) to select the two lines defining `name` and `age` and yank them (`y`). Then paste them below the `printfn` line (`p`). Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-let name = "Alice"
-let age = 30
-let city = "London"
-printfn "%s is %d in %s" name age city
-let name = "Alice"
-let age = 30]] -- The name and age lines should be duplicated below printfn
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson11_exercise2_target.txt")
                 },
                 feedback = "Test 11.2 complete!",
             },
@@ -923,62 +418,22 @@ Keep going! You're doing great!
             {
                 instruction = "In this TypeScript snippet, use Block Visual (`<C-v>`) to delete the semicolons `;` at the end of the interface properties. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.12.1 (TypeScript) ---
-" Instruction: In this TypeScript snippet, use Block Visual (`<C-v>`) to delete the semicolons `;` at the end of the interface properties. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-interface User {
-  id: string;
-  name: string;
-  age: number;
-}]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson12_exercise1_setup.txt"),
                 start_cursor = {6, 12}, -- Cursor on the ';' after id: string
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.12.1 (TypeScript) ---
-" Instruction: In this TypeScript snippet, use Block Visual (`<C-v>`) to delete the semicolons `;` at the end of the interface properties. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-interface User {
-  id: string
-  name: string
-  age: number
-}]], -- Semicolons should be deleted
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson12_exercise1_target.txt")
                 },
                 feedback = "Test 12.1 complete!",
             },
              {
                 instruction = "In this Vue snippet, change the word `message` to `greeting` in the `<template>` block. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.12.2 (Vue SFC) ---
-" Instruction: In this Vue snippet, change the word `message` to `greeting` in the `<template>` block. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-<template>
-  <div>{{ message }}</div>
-</template>
-
-<script>
-// ...
-</script>]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson12_exercise2_setup.txt"),
                 start_cursor = {6, 12}, -- Cursor on 'm' of message
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.12.2 (Vue SFC) ---
-" Instruction: In this Vue snippet, change the word `message` to `greeting` in the `<template>` block. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-<template>
-  <div>{{ greeting }}</div>
-</template>
-
-<script>
-// ...
-</script>]] -- 'message' should be 'greeting'
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson12_exercise2_target.txt")
                 },
                 feedback = "Test 12.2 complete!",
             },
@@ -995,63 +450,22 @@ Almost there! Just a couple more practice exercises.
             {
                 instruction = "In this Assembly snippet, use `:s` to replace the first occurrence of `0xA` with `0xD, 0xA` on the line containing `msg db`. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.13.1 (Assembly - NASM) ---
-" Instruction: In this Assembly snippet, use `:s` to replace the first occurrence of `0xA` with `0xD, 0xA` on the line containing `msg db`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-section .data
-    msg db 'Hello, world!', 0xA
-    len equ $ - msg]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson13_exercise1_setup.txt"),
                 start_cursor = {6, 4}, -- Cursor on the msg db line
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.13.1 (Assembly - NASM) ---
-" Instruction: In this Assembly snippet, use `:s` to replace the first occurrence of `0xA` with `0xD, 0xA` on the line containing `msg db`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-section .data
-    msg db 'Hello, world!', 0xD, 0xA
-    len equ $ - msg]] -- '0xA' should be '0xD, 0xA'
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson13_exercise1_target.txt")
                 },
                 feedback = "Test 13.1 complete!",
             },
              {
                 instruction = "In this C snippet, yank the line containing `return a + b;` and paste it below the line containing `int main() {`. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.13.2 (C) ---
-" Instruction: In this C snippet, yank the line containing `return a + b;` and paste it below the line containing `int main() {`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-#include <stdio.h>
-
-int add(int a, int b) {
-    return a + b;
-}
-
-int main() {
-    // ...
-}]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson13_exercise2_setup.txt"),
                 start_cursor = {7, 4}, -- Cursor on the return line
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.13.2 (C) ---
-" Instruction: In this C snippet, yank the line containing `return a + b;` and paste it below the line containing `int main() {`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-#include <stdio.h>
-
-int add(int a, int b) {
-    return a + b;
-}
-
-int main() {
-    return a + b;
-    // ...
-}]] -- The return line should be duplicated below int main() {
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson13_exercise2_target.txt")
                 },
                 feedback = "Test 13.2 complete!",
             },
@@ -1079,40 +493,22 @@ Use `:LearnVim exc` to check when you're done!
             {
                 instruction = "Insert text to complete the sentence: 'You have successfully completed the LearnVim tutorial!'. Place your cursor after 'You have successfully completed the ' and insert 'LearnVim tutorial!'. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.14.1 ---
-" Instruction: Insert text to complete the sentence: 'You have successfully completed the LearnVim tutorial!'. Place your cursor after 'You have successfully completed the ' and insert 'LearnVim tutorial!'. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-You have successfully completed the .]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson14_exercise1_setup.txt"),
                 start_cursor = {5, 35}, -- Cursor after "the "
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 11.14.1 ---
-" Instruction: Insert text to complete the sentence: 'You have successfully completed the LearnVim tutorial!'. Place your cursor after 'You have successfully completed the ' and insert 'LearnVim tutorial!'. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-You have successfully completed the LearnVim tutorial!.]] -- Sentence should be complete
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson14_exercise1_target.txt")
                 },
                 feedback = "Almost there! Now for the final message.",
             },
              {
                 instruction = "Replace the placeholder text `[Your Name]` with your name and `[Your Effort]` with a word describing your effort (e.g., 'great', 'hard'). Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 11.14.2 ---
-" Instruction: Replace the placeholder text `[Your Name]` with your name and `[Your Effort]` with a word describing your effort (e.g., 'great', 'hard'). Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Congratulations, [Your Name]! Your [Your Effort] work learning Vim has paid off. You've mastered the basics and are well on your way to becoming a Vim expert!]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson14_exercise2_setup.txt"),
                 start_cursor = {5, 17}, -- Cursor on '[' of [Your Name]
                 validation = {
                     type = 'check_buffer_content_regex', -- Need regex validation
-                    target_content_pattern = [[^" --- Exercise 11\.14\.2 ---\n" Instruction: Replace the placeholder text `\[Your Name\]` with your name and `\[Your Effort\]` with a word describing your effort \(e\.g\., 'great', 'hard'\)\. Type `:LearnVim exc` to check\.\n" Use `:LearnVim exc` to check, `:LearnVim exr` to reset\.\n" ---------------------------------------------\n\nCongratulations, .+! Your .+ work learning Vim has paid off\. You've mastered the basics and are well on your way to becoming a Vim expert!$]], -- Regex to check for non-empty replacements
+                    target_content_pattern = Utils.read_file_content("lua/learn_vim/exercise_content/module11_lesson14_exercise2_target.txt")
                 },
                 feedback = "Congratulations on completing the LearnVim tutorial!",
                 -- TODO: Implement 'check_buffer_content_regex' validation type.

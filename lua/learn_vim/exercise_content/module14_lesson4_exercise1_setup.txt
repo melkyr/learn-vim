@@ -1,0 +1,6 @@
+" --- Exercise 14.4.1 ---
+" Instruction: Set your leader key in your config. Then map `<leader>t` to `:tabnew`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Set your leader key and create a mapping using it.]

@@ -1,0 +1,8 @@
+" --- Exercise 11.11.2 (F#) ---
+" Instruction: In this F# snippet, use Line Visual (`V`) to select the two lines defining `name` and `age` and yank them (`y`). Then paste them below the `printfn` line (`p`). Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+let name = "Alice"
+let age = 30
+let city = "London"
+printfn "%s is %d in %s" name age city

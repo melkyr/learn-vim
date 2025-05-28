@@ -1,0 +1,6 @@
+" --- Exercise 7.1.1 ---
+" Instruction: Using `f`, jump to the first 'a' on the line below. Then type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Jinxed wizards pluck ivy from the big quilt.

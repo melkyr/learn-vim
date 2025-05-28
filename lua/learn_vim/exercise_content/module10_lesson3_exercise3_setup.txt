@@ -1,0 +1,9 @@
+" --- Exercise 10.3.3 (JavaScript) ---
+" Instruction: In this JavaScript snippet, record a macro into register `e` that changes the word 'let' to 'const' and moves to the next line. Keystrokes: `qe` `cw` `const<Esc>` `j` `0` `q`. Then play the macro 2 times using `2@e`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+function updateVariables() {
+    let count = 0;
+    let name = "Alice";
+    let isActive = true;
+}

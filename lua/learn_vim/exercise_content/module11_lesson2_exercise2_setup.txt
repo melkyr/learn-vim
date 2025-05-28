@@ -1,0 +1,8 @@
+" --- Exercise 11.2.2 (Common Lisp) ---
+" Instruction: In this Common Lisp snippet, use Line Visual (`V`) to select the two lines inside the `let` form and delete them (`d`). Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+(defun greet (name)
+  (let ((message (format nil "Hello, ~a!" name))
+        (greeting-prefix "Greeting: "))
+    (concatenate 'string greeting-prefix message)))

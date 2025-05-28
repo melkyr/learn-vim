@@ -1,0 +1,8 @@
+" --- Exercise 6.4.2 ---
+" Instruction: Use `V` to select the line 'Change this line.', then press `c` to change it. Type 'This line is changed.' and press `<Esc>`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Keep this line.
+This line is changed.
+Keep this line too.]

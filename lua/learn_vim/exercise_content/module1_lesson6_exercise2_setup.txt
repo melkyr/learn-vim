@@ -1,0 +1,7 @@
+" --- Exercise 1.6.2 ---
+" Instruction: Now, type `:wq` and press `<Enter>` to save and quit cleanly. Type `:LearnVim exc` to check. Exit and restart Neovim to verify progress was saved.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Make changes here that you want to save.
+Add some text.

@@ -1,0 +1,16 @@
+" --- Exercise 11.5.2 (Vue SFC) ---
+" Instruction: In this Vue snippet, use Line Visual (`V`) to select the lines inside the `<script>` block and delete them (`d`). Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+<template>
+  <div>{{ message }}</div>
+</template>
+
+<script>
+</script>
+
+<style scoped>
+div {
+  color: blue;
+}
+</style>

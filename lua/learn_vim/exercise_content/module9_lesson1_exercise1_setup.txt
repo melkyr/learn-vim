@@ -1,0 +1,9 @@
+" --- Exercise 9.1.1 (Python) ---
+" Instruction: Using Line Visual (`V`) and `d`, delete the three lines of the Python function body. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+def my_function():
+    # This is line 1
+    # This is line 2
+    # This is line 3
+    pass # Keep this line

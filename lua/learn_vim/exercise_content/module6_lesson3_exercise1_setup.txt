@@ -1,0 +1,8 @@
+" --- Exercise 6.3.1 ---
+" Instruction: Press `<C-v>` to enter Block Visual mode, move right 3 characters and down 2 lines to select a block, then press `<Esc>`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+Column A Column B Column C
+Column A Column B Column C
+Column A Column B Column C
+Column A Column B Column C

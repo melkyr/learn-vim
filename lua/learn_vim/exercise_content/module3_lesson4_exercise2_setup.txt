@@ -1,0 +1,16 @@
+" --- Exercise 3.4.2 ---
+" Instruction: Using a numerical prefix with `k`, move up exactly 4 lines from the starting position. Then type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+Line 1
+Line 2
+Line 3
+Line 4
+Target line.
+Line 6
+Line 7
+Line 8
+Line 9
+Start here.
+Line 11
+Line 12

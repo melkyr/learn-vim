@@ -1,0 +1,6 @@
+" --- Exercise 4.2.1 ---
+" Instruction: Using `cw`, change the word 'quick' to 'slow'. Press `<Esc>` after typing. Then type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+The slow brown fox.

@@ -3,6 +3,8 @@
 -- This file contains the content for Module 14: Customizing Vim.
 -- It introduces configuration files, mappings, and options.
 
+local Utils = require('learn_vim.utils')
+
 return {
     title = "Customizing Vim",
     lesson1 = {
@@ -24,13 +26,7 @@ Let's open your configuration file. Use `:LearnVim exc` to check and `:LearnVim 
                 instruction = "Type `:e $MYVIMRC` and press <Enter> to open your main Neovim configuration file (init.lua or init.vim). Explore the file if it exists. Type `:LearnVim exc` to check.",
                 type = "command", -- We'll check if the command was likely executed
                 target_command = ":e $MYVIMRC",
-                setup_text = [[
-" --- Exercise 14.1.1 ---
-" Instruction: Type `:e $MYVIMRC` and press <Enter> to open your main Neovim configuration file (init.lua or init.vim). Explore the file if it exists. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Open your configuration file using :e $MYVIMRC.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module14_lesson1_exercise1_setup.txt"),
                 start_cursor = {5, 0},
                 validation = { type = 'check_mode', target_mode = 'n' }, -- Basic validation
                 feedback = "You opened your configuration file!",
@@ -58,14 +54,7 @@ Remember to use `:LearnVim exc` to check and `:LearnVim exr` to reset.
                 instruction = "Type `:set wrap` and press <Enter> to turn on line wrapping in the exercise pane. Then type `:set nowrap` and press <Enter> to turn it off. Type `:LearnVim exc` to check.",
                 type = "command", -- Check mode
                 target_command = ":set nowrap",
-                setup_text = [[
-" --- Exercise 14.2.1 ---
-" Instruction: Type `:set wrap` and press <Enter> to turn on line wrapping in the exercise pane. Then type `:set nowrap` and press <Enter> to turn it off. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-This is a very long line that will demonstrate line wrapping if you enable it.
-Experiment with `:set wrap` and `:set nowrap`.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module14_lesson2_exercise1_setup.txt"),
                 start_cursor = {5, 0},
                 validation = { type = 'check_mode', target_mode = 'n' }, -- Basic validation
                 feedback = "You experimented with line wrapping!",
@@ -74,13 +63,7 @@ Experiment with `:set wrap` and `:set nowrap`.]],
              {
                 instruction = "If you are using Neovim with a Lua config, open your init.lua (`:e $MYVIMRC`). Add the line `vim.opt.relativenumber = true` somewhere in the file. Save the file (`:w`). Close and reopen Neovim to see the change. Type `:LearnVim exc` to check.",
                 type = "mode_switch", -- Check mode
-                setup_text = [[
-" --- Exercise 14.2.2 ---
-" Instruction: If you are using Neovim with a Lua config, open your init.lua (`:e $MYVIMRC`). Add the line `vim.opt.relativenumber = true` somewhere in the file. Save the file (`:w`). Close and reopen Neovim to see the change. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Add vim.opt.relativenumber = true to your init.lua and restart Neovim.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module14_lesson2_exercise2_setup.txt"),
                 start_cursor = {5, 0},
                 validation = { type = 'check_mode', target_mode = 'n' }, -- Basic validation
                 feedback = "You modified your configuration file!",
@@ -115,13 +98,7 @@ Let's practice creating a simple mapping. Use `:LearnVim exc` to check and `:Lea
                 instruction = "Type `:nnoremap <F2> :set nonumber<CR>` and press <Enter> to map the F2 key to turn off line numbers. Press F2 to test it. Type `:LearnVim exc` to check.",
                 type = "command", -- Check mode
                 target_command = ":nnoremap <F2> :set nonumber<CR>",
-                setup_text = [[
-" --- Exercise 14.3.1 ---
-" Instruction: Type `:nnoremap <F2> :set nonumber<CR>` and press <Enter> to map the F2 key to turn off line numbers. Press F2 to test it. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Create a mapping for the F2 key.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module14_lesson3_exercise1_setup.txt"),
                 start_cursor = {5, 0},
                 validation = { type = 'check_mode', target_mode = 'n' }, -- Basic validation
                 feedback = "You created a mapping!",
@@ -153,13 +130,7 @@ Remember to use `:LearnVim exc` to check and `:LearnVim exr` to reset.
                 instruction = "If you are using Neovim with a Lua config, open your init.lua (`:e $MYVIMRC`). Add the line `vim.g.mapleader = ','` to set your leader key to comma. Save the file (`:w`). Close and reopen Neovim. Then come back to this lesson and type `:nnoremap <leader>t :tabnew<CR>` to map your leader key followed by 't' to create a new tab. Type `:LearnVim exc` to check.",
                 type = "command", -- Check mode
                 target_command = ":nnoremap <leader>t :tabnew<CR>",
-                setup_text = [[
-" --- Exercise 14.4.1 ---
-" Instruction: Set your leader key in your config. Then map `<leader>t` to `:tabnew`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Set your leader key and create a mapping using it.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module14_lesson4_exercise1_setup.txt"),
                 start_cursor = {5, 0},
                 validation = { type = 'check_mode', target_mode = 'n' }, -- Basic validation
                 feedback = "You created a leader mapping!",
@@ -189,13 +160,7 @@ Remember to use `:LearnVim exc` to check and `:LearnVim exr` to reset.
             {
                 instruction = "Read the explanation about `<Plug>`. This lesson is informative and does not require a specific action in the exercise pane. Type `:LearnVim exc` to continue.",
                 type = "mode_switch", -- Check mode
-                setup_text = [[
-" --- Exercise 14.5.1 ---
-" Instruction: Read the explanation about `<Plug>`. This lesson is informative and does not require a specific action in the exercise pane. Type `:LearnVim exc` to continue.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-This exercise is about understanding <Plug>. Read the text above.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module14_lesson5_exercise1_setup.txt"),
                 start_cursor = {5, 0},
                 validation = { type = 'check_mode', target_mode = 'n' }, -- Basic validation
                 feedback = "You learned about <Plug>!",
@@ -228,13 +193,7 @@ Remember to use `:LearnVim exc` to check and `:LearnVim exr` to reset.
                 instruction = "Type `:set cursorline` and press <Enter> to highlight the current line. Then type `:set cursorline&` and press <Enter> to revert it to its default. Type `:LearnVim exc` to check.",
                 type = "command", -- Check mode
                 target_command = ":set cursorline&",
-                setup_text = [[
-" --- Exercise 14.6.1 ---
-" Instruction: Type `:set cursorline` and press <Enter> to highlight the current line. Then type `:set cursorline&` and press <Enter> to revert it to its default. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Experiment with highlighting the current line.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module14_lesson6_exercise1_setup.txt"),
                 start_cursor = {5, 0},
                 validation = { type = 'check_mode', target_mode = 'n' }, -- Basic validation
                 feedback = "You experimented with an option!",
@@ -244,13 +203,7 @@ Experiment with highlighting the current line.]],
                 instruction = "Type `:highlight Normal guibg=red` and press <Enter> to change the background color of normal text (this might affect the tutorial pane!). Then type `:highlight Normal guibg=NONE` and press <Enter> to reset it. Type `:LearnVim exc` to check.",
                 type = "command", -- Check mode
                 target_command = ":highlight Normal guibg=NONE",
-                setup_text = [[
-" --- Exercise 14.6.2 ---
-" Instruction: Type `:highlight Normal guibg=red` and press <Enter> to change the background color of normal text (this might affect the tutorial pane!). Then type `:highlight Normal guibg=NONE` and press <Enter> to reset it. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Experiment with changing highlight colors.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module14_lesson6_exercise2_setup.txt"),
                 start_cursor = {5, 0},
                 validation = { type = 'check_mode', target_mode = 'n' }, -- Basic validation
                 feedback = "You experimented with highlight colors!",
@@ -281,13 +234,7 @@ Thank you for using LearnVim!
             {
                 instruction = "Read the congratulatory message. You've completed the tutorial! Type `:LearnVim exc` to finish this lesson and the module.",
                 type = "mode_switch", -- Check mode
-                setup_text = [[
-" --- Exercise 14.7.1 ---
-" Instruction: Read the congratulatory message. You've completed the tutorial! Type `:LearnVim exc` to finish this lesson and the module.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module14_lesson7_exercise1_setup.txt"),
                 start_cursor = {5, 0},
                 validation = { type = 'check_mode', target_mode = 'n' }, -- Basic validation
                 feedback = "Tutorial complete! Congratulations!",
@@ -295,17 +242,7 @@ Thank you for using LearnVim!
              {
                 instruction = "Here is a small ASCII art Ace of Spades as a token of your mastery. You don't need to do anything with it. Type `:LearnVim exc` to finish this exercise.",
                 type = "mode_switch", -- Check mode
-                setup_text = [[
-" --- Exercise 14.7.2 ---
-" Instruction: Here is a small ASCII art Ace of Spades as a token of your mastery. You don't need to do anything with it. Type `:LearnVim exc` to finish this exercise.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-.------.
-|A_ .-.|
-|( \\| )|
-| \\ / |
-|  `  |
-'------']],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module14_lesson7_exercise2_setup.txt"),
                 start_cursor = {5, 0},
                 validation = { type = 'check_mode', target_mode = 'n' }, -- Basic validation
                 feedback = "Enjoy your Ace of Spades!",

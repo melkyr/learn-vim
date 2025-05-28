@@ -1,0 +1,10 @@
+" --- Exercise 11.4.2 (Erlang) ---
+" Instruction: In this Erlang snippet, use Block Visual (`<C-v>`) to delete the leading spaces on the lines within the `case` expression. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+greet(Name) ->
+    case Name of
+    "Alice" -> io:format("Hello Alice~n");
+    "Bob" -> io:format("Hello Bob~n");
+    _ -> io:format("Hello Unknown~n")
+    end.

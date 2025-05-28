@@ -1,0 +1,8 @@
+" --- Exercise 10.6.1 (Ruby) ---
+" Instruction: In this Ruby snippet, record a macro into register `l` that deletes the word 'puts' and moves to the next line. Keystrokes: `ql` `dw` `j` `0` `q`. Then play the macro 2 times using `2@l`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+puts "First message"
+puts "Second message"
+puts "Third message"
+# This line is different

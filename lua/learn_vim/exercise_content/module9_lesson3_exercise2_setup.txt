@@ -1,0 +1,8 @@
+" --- Exercise 9.3.2 (Racket) ---
+" Instruction: In this Racket snippet, place your cursor on the opening parenthesis `(` on the first line and press `%`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+(define (factorial n)
+  (if (= n 0)
+      1
+      (* n (factorial (- n 1)))))]

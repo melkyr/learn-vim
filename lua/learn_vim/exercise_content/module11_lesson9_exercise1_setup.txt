@@ -1,0 +1,7 @@
+" --- Exercise 11.9.1 (Haskell) ---
+" Instruction: In this Haskell snippet, change the word `x` to `a`, `y` to `b`, and `z` to `c`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+x = 10
+y = 20
+z = x + y

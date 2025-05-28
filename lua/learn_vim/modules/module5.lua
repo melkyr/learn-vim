@@ -3,6 +3,8 @@
 -- This file contains the content for Module 5: Repeat, Undo, and Redo, and Practice/Test exercises.
 -- It returns a table representing this module's structure and lessons.
 
+local Utils = require('learn_vim.utils')
+
 return {
     title = "Repeat, Undo, Redo, and Practice", -- Updated title
     lesson1 = {
@@ -22,54 +24,22 @@ Let's practice repeating actions. Use `:LearnVim exc` to check and `:LearnVim ex
             {
                 instruction = "Delete the word 'delete' on the first line using `dw`. Then move to the next two lines and use the `.` command to delete the words 'delete' on those lines. Type `:LearnVim exc` to check.",
                 type = "insert_text",
-                setup_text = [[
-" --- Exercise 5.1.1 ---
-" Instruction: Delete the word 'delete' on the first line using `dw`. Then move to the next two lines and use the `.` command to delete the words 'delete' on those lines. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Please delete this word.
-Also delete this word.
-And delete this word too.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson1_exercise1_setup.txt"),
                 start_cursor = {5, 7}, -- Cursor on 'd' of 'delete' on the first line
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 5.1.1 ---
-" Instruction: Delete the word 'delete' on the first line using `dw`. Then move to the next two lines and use the `.` command to delete the words 'delete' on those lines. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Please  this word.
-Also  this word.
-And  this word too.]] -- 'delete ' should be removed from all three lines
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson1_exercise1_target.txt")
                 },
                 feedback = "You successfully repeated the delete action!",
             },
              {
                 instruction = "Change the word 'CHANGE' to 'EDIT' on the first line using `cw`. Then move to the next two lines and use the `.` command to repeat the change. Press `<Esc>` after each change. Type `:LearnVim exc` to check.",
                 type = "insert_text",
-                setup_text = [[
-" --- Exercise 5.1.2 ---
-" Instruction: Change the word 'CHANGE' to 'EDIT' on the first line using `cw`. Then move to the next two lines and use the `.` command to repeat the change. Press `<Esc>` after each change. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Please CHANGE this.
-Also CHANGE this.
-And CHANGE this too.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson1_exercise2_setup.txt"),
                 start_cursor = {5, 7}, -- Cursor on 'C' of 'CHANGE' on the first line
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 5.1.2 ---
-" Instruction: Change the word 'CHANGE' to 'EDIT' on the first line using `cw`. Then move to the next two lines and use the `.` command to repeat the change. Press `<Esc>` after each change. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Please EDIT this.
-Also EDIT this.
-And EDIT this too.]]
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson1_exercise2_target.txt")
                 },
                 feedback = "You successfully repeated the change action!",
             },
@@ -94,37 +64,19 @@ Let's practice undoing and redoing changes. Use `:LearnVim exc` to check and `:L
             {
                 instruction = "Delete the word 'delete' using `dw`. Then use `u` to undo the deletion. Type `:LearnVim exc` to check.",
                 type = "insert_text",
-                setup_text = [[
-" --- Exercise 5.2.1 ---
-" Instruction: Delete the word 'delete' using `dw`. Then use `u` to undo the deletion. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Please delete this word.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson2_exercise1_setup.txt"),
                 start_cursor = {5, 7}, -- Cursor on 'd' of 'delete'
                 validation = {
                     type = 'check_buffer_content',
                     -- The target content is the original setup_text after undoing the delete
-                    target_content = [[
-" --- Exercise 5.2.1 ---
-" Instruction: Delete the word 'delete' using `dw`. Then use `u` to undo the deletion. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Please delete this word.]]
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson2_exercise1_target.txt")
                 },
                 feedback = "You successfully undid the deletion!",
             },
              {
                 instruction = "Make a change (e.g., delete a word). Then use `u` to undo it. Then use `<C-r>` to redo the change. Type `:LearnVim exc` to check.",
                 type = "insert_text",
-                setup_text = [[
-" --- Exercise 5.2.2 ---
-" Instruction: Make a change (e.g., delete a word). Then use `u` to undo it. Then use `<C-r>` to redo the change. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Make a change here.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson2_exercise2_setup.txt"),
                 start_cursor = {5, 10}, -- Cursor on 'c' of 'change'
                 validation = {
                     type = 'check_buffer_content',
@@ -159,22 +111,12 @@ Remember to use `:LearnVim exc` when you think you're done and `:LearnVim exr` t
             {
                 instruction = "Edit the paragraph to match the target content. Apply commands learned in Modules 3-5.",
                 type = "insert_text",
-                setup_text = [[
-" --- Exercise 5.3.1 ---
-" Instruction: Edit the paragraph to match the target content. Apply commands learned in Modules 3-5.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-The quick brown fox jumps over the lazy dog. This is a simple sentence for practicing editing commands. We will delete some words, change others, and maybe move a few things around. Undo and repeat can be helpful here.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson3_exercise1_setup.txt"),
                 start_cursor = {5, 0}, -- Start at the beginning of the paragraph
                 -- Target: Change "quick brown" to "agile", delete "jumps over the lazy", change "dog" to "cat".
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 5.3.1 ---
-" Instruction: Edit the paragraph to match the target content. Apply commands learned in Modules 3-5.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-The agile fox  cat. This is a simple sentence for practicing editing commands. We will delete some words, change others, and maybe move a few things around. Undo and repeat can be helpful here.]] -- Note the extra space after 'fox'
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson3_exercise1_target.txt")
                 },
                 feedback = "Practice complete! You edited the paragraph.",
             },
@@ -197,117 +139,56 @@ Good luck!
             {
                 instruction = "Edit the paragraph to match the target content. Hint: Use `dw`, `dd`, `p`, and `.`",
                 type = "insert_text",
-                setup_text = [[
-" --- Exercise 5.4.1 ---
-" Instruction: Edit the paragraph to match the target content. Hint: Use `dw`, `dd`, `p`, and `.`
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair.]], -- From A Tale of Two Cities by Charles Dickens
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise1_setup.txt"),
                 -- Target: Remove all phrases starting with "it was the" except the first one, and keep only "best of times".
                 -- This requires deleting words and lines.
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 5.4.1 ---
-" Instruction: Edit the paragraph to match the target content. Hint: Use `dw`, `dd`, `p`, and `.`
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-It was the best of times.]]
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise1_target.txt")
                 },
                 feedback = "Test 1 completed! You practiced deleting and potentially repeating.",
             },
              {
                 instruction = "Edit the paragraph to match the target content. Hint: Use `cw`, `cc`, `r`, and `<Esc>`.",
                 type = "insert_text",
-                setup_text = [[
-" --- Exercise 5.4.2 ---
-" Instruction: Edit the paragraph to match the target content. Hint: Use `cw`, `cc`, `r`, and `<Esc>`.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.]], -- From Moby Dick by Herman Melville
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise2_setup.txt"),
                 -- Target: Change "Ishmael" to "Ahab", "money" to "gold", "sail" to "travel", and replace the '.' after "world" with '!'.
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 5.4.2 ---
-" Instruction: Edit the paragraph to match the target content. Hint: Use `cw`, `cc`, `r`, and `<Esc>`.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-Call me Ahab. Some years ago—never mind how long precisely—having little or no gold in my purse, and nothing particular to interest me on shore, I thought I would travel about a little and see the watery part of the world!]]
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise2_target.txt")
                 },
                 feedback = "Test 2 completed! You practiced changing and replacing.",
             },
              {
                 instruction = "Edit the paragraph to match the target content. Hint: Use `yy`, `p`, `dd`, and navigation commands.",
                 type = "insert_text",
-                setup_text = [[
-" --- Exercise 5.4.3 ---
-" Instruction: Edit the paragraph to match the target content. Hint: Use `yy`, `p`, `dd`, and navigation commands.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Line A.
-Line B.
-Line C.
-Line D.
-Line E.]], -- Simple lines for moving
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise3_setup.txt"),
                 -- Target: Reorder the lines to be D, B, E, A, C
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 5.4.3 ---
-" Instruction: Edit the paragraph to match the target content. Hint: Use `yy`, `p`, `dd`, and navigation commands.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Line D.
-Line B.
-Line E.
-Line A.
-Line C.]]
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise3_target.txt")
                 },
                 feedback = "Test 3 completed! You practiced moving lines.",
             },
              {
                 instruction = "Edit the paragraph to match the target content. Hint: Combine navigation and actions. Use `u` and `<C-r>` if you make mistakes.",
                 type = "insert_text",
-                setup_text = [[
-" --- Exercise 5.4.4 ---
-" Instruction: Edit the paragraph to match the target content. Hint: Combine navigation and actions. Use `u` and `<C-r>` if you make mistakes.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.
-However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered the rightful property of some one or other of their daughters.]], -- From Pride and Prejudice by Jane Austen
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise4_setup.txt"),
                 -- Target: Delete the second paragraph entirely. Change "single man" to "wealthy person". Replace "wife" with "partner".
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 5.4.4 ---
-" Instruction: Edit the paragraph to match the target content. Hint: Combine navigation and actions. Use `u` and `<C-r>` if you make mistakes.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-It is a truth universally acknowledged, that a wealthy person in possession of a good fortune, must be in want of a partner.]]
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise4_target.txt")
                 },
                 feedback = "Test 4 completed! You applied a range of commands.",
             },
             { -- New Exercise 5.4.5
                 instruction = "Edit the paragraph to match the target content. Hint: Use a variety of commands from Modules 3-5.",
                 type = "insert_text",
-                setup_text = [[
-" --- Exercise 5.4.5 ---
-" Instruction: Edit the paragraph to match the target content. Hint: Use a variety of commands from Modules 3-5.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-All that is gold does not glitter, Not all those who wander are lost; The old that is strong does not wither, Deep roots are not reached by the frost. From the ashes a fire shall be woken, A light from the shadows shall spring; Renewed shall be blade that was broken, The crownless again shall be king.]], -- From The Fellowship of the Ring by J.R.R. Tolkien ("All that is gold does not glitter" poem)
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise5_setup.txt"),
                 -- Target: Change "gold" to "silver", "wander" to "roam", "old" to "ancient", "frost" to "sun", "fire" to "spark", "light" to "glow", "broken" to "mended", "king" to "queen".
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 5.4.5 ---
-" Instruction: Edit the paragraph to match the target content. Hint: Use a variety of commands from Modules 3-5.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-All that is silver does not glitter, Not all those who roam are lost; The ancient that is strong does not wither, Deep roots are not reached by the sun. From the ashes a spark shall be woken, A glow from the shadows shall spring; Renewed shall be blade that was mended, The crownless again shall be queen.]]
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise5_target.txt")
                 },
                 feedback = "Test 5 completed! You're getting good at this!",
             },

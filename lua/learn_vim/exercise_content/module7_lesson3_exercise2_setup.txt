@@ -1,0 +1,10 @@
+" --- Exercise 7.3.2 ---
+" Instruction: Using a numerical prefix with `/`, search forward for the 2nd occurrence of 'Line'. Type `:LearnVim exc` to check after the search.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Line 1
+Line 2
+Line 3
+Line 4
+Line 5

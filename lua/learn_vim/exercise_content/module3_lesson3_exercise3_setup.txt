@@ -1,0 +1,5 @@
+" --- Exercise 3.3.3 ---
+" Instruction: Move the cursor to the first non-blank character using `^`. Then type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+    This line has leading spaces.

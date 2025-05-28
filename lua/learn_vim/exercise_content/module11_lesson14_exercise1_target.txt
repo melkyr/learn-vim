@@ -1,0 +1,6 @@
+" --- Exercise 11.14.1 ---
+" Instruction: Insert text to complete the sentence: 'You have successfully completed the LearnVim tutorial!'. Place your cursor after 'You have successfully completed the ' and insert 'LearnVim tutorial!'. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+You have successfully completed the LearnVim tutorial!.

@@ -1,0 +1,7 @@
+" --- Exercise 8.6.1 ---
+" Instruction: Yank the word 'CLIPBOARD' into the system clipboard using '\"+yw'. Then move to the next line and paste from the system clipboard using '\"+p'. Type ':LearnVim exc' to check.
+" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
+" ---------------------------------------------
+
+CLIPBOARD text.
+Paste from clipboard here:CLIPBOARD

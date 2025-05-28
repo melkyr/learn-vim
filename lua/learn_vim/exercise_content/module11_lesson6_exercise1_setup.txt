@@ -1,0 +1,10 @@
+" --- Exercise 11.6.1 (Assembly - NASM) ---
+" Instruction: In this Assembly snippet, use Block Visual (`<C-v>`) to delete the leading spaces on the lines within the `section .data`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+section .data
+    msg db 'Hello, world!', 0xA
+    len equ $ - msg
+
+section .text
+    global _start

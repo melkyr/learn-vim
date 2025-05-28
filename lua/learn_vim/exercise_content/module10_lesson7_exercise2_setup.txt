@@ -1,0 +1,10 @@
+" --- Exercise 10.7.2 (Kotlin) ---
+" Instruction: In this Kotlin snippet, record a macro into register `p` that changes the word 'val' to 'var' and moves to the next line. Keystrokes: `qp` `cw` `var<Esc>` `j` `0` `q`. Then play the macro 2 times using `2@p`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+fun main() {
+    val name = "Alice"
+    val age = 30
+    val city = "Berlin"
+    println("$name is $age")
+}

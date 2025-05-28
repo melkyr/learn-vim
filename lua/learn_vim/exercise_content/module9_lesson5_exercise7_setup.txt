@@ -1,0 +1,7 @@
+" --- Exercise 9.5.7 (Ruby) ---
+" Instruction: In this Ruby snippet, place your cursor on the opening parenthesis `(` and press `%`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+def greet(name)
+  puts "Hello, #{name}!"
+end

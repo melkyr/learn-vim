@@ -1,0 +1,6 @@
+" --- Exercise 1.5.1 ---
+" Instruction: Type `:w` and press `<Enter>`. Then type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+This buffer needs saving. Changes were made here.

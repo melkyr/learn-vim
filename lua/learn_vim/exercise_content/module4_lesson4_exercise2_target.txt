@@ -1,0 +1,8 @@
+" --- Exercise 4.4.2 ---
+" Instruction: Move the line 'Move this line.' to below the line 'To here.'. Use `dd` and `p`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Keep this line.
+To here.
+Move this line.

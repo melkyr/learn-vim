@@ -1,0 +1,16 @@
+" --- Exercise 8.2.1 ---
+" Instruction: Using a range with ':d', delete lines 7 through 9. Type ':LearnVim exc' to check.
+" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
+" ---------------------------------------------
+Line 1
+Line 2
+Line 3
+Line 4
+Line 5
+Line 6
+DELETE THIS LINE 7
+DELETE THIS LINE 8
+DELETE THIS LINE 9
+Line 10
+Line 11
+Line 12

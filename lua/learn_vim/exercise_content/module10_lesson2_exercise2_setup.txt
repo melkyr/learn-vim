@@ -1,0 +1,9 @@
+" --- Exercise 10.2.2 ---
+" Instruction: Record a macro into register `b` that deletes the current line (`dd`). Start with `qb`, type `dd`, stop with `q`. Then play it back twice using `2@b` to delete the next two lines. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Delete this line 1.
+Delete this line 2.
+Delete this line 3.
+Keep this line.]

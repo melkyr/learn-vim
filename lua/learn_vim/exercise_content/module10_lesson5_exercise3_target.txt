@@ -1,0 +1,9 @@
+" --- Exercise 10.5.3 (Swift) ---
+" Instruction: In this Swift snippet, record a macro into register `k` that changes the word 'var' to 'let' and moves to the next line. Keystrokes: `qk` `cw` `let<Esc>` `j` `0` `q`. Then play the macro 2 times using `2@k`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+struct Point {
+    let x: Int
+    let y: Int
+    var description: String
+}

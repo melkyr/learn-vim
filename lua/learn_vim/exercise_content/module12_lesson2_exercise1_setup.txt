@@ -1,0 +1,6 @@
+" --- Exercise 12.2.1 ---
+" Instruction: Type `:bnext` and press <Enter> to switch to the next buffer. Then type `:bprev` and press <Enter> to switch back to this exercise buffer. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Switch away and back using :bnext and :bprev.]

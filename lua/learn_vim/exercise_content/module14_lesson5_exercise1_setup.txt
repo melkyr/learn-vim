@@ -1,0 +1,6 @@
+" --- Exercise 14.5.1 ---
+" Instruction: Read the explanation about `<Plug>`. This lesson is informative and does not require a specific action in the exercise pane. Type `:LearnVim exc` to continue.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+This exercise is about understanding <Plug>. Read the text above.]

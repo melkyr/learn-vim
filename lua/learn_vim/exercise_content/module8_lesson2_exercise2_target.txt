@@ -1,0 +1,7 @@
+" --- Exercise 8.2.2 ---
+" Instruction: Using the ':%' range with ':s', replace all occurrences of 'old' with 'new' in the entire buffer. Type ':LearnVim exc' to check.
+" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
+" ---------------------------------------------
+This line has new text.
+Another line with new text.
+A third line also has new text.]

@@ -1,0 +1,6 @@
+" --- Exercise 4.2.4 ---
+" Instruction: Using `R`, enter Replace mode and change 'overwriting' to 'replacing'. Press `<Esc>` when done. Then type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Practice overwriting text here.

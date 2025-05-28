@@ -1,0 +1,8 @@
+" --- Exercise 8.4.2 ---
+" Instruction: Yank the word 'YANKED' using 'yw'. Then move to the next line and paste *only* the yanked text (not deleted text) using '\"0p'. Type ':LearnVim exc' to check.
+" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
+" ---------------------------------------------
+
+YANKED word.
+DELETE this line.
+Paste yanked text here:YANKED

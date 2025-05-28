@@ -1,0 +1,8 @@
+" --- Exercise 10.7.3 (Shell Script) ---
+" Instruction: In this Shell Script snippet, record a macro into register `r` that deletes the word 'echo' and moves to the next line. Keystrokes: `qr` `dw` `j` `0` `q`. Then play the macro 2 times using `2@r`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+echo "Message 1"
+echo "Message 2"
+echo "Message 3"
+# This is a comment
