@@ -3,6 +3,7 @@
 -- This module serves as the central point for accessing all curriculum content.
 -- It requires individual module files and combines their data.
 
+local module0 = require('learn_vim.modules.module0')
 -- Require individual module files from the lua/learn_vim/modules directory.
 -- Make sure you have created these files (e.g., module1.lua, module2.lua, ..., module8.lua)
 -- and placed the content for each module within them.
@@ -27,6 +28,7 @@ local module14 = require('learn_vim.modules.module14')
 -- The keys (module1, module2, etc.) are used by the navigation logic
 -- to access the content for a specific module.
 local curriculum = {
+    module0 = module0,
     module1 = module1,
     module2 = module2,
     module3 = module3,
