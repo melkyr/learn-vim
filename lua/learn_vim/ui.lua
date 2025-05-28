@@ -392,15 +392,8 @@ return function(M) -- Accept the parent module M as an argument
 
         local function key_press_callback(key)
             return function()
-                if vim.api.nvim_win_is_valid(menu_winid) then
-                    -- First, clear namespace if buffer is valid
-                    if menu_bufnr and vim.api.nvim_buf_is_valid(menu_bufnr) and ns_id then
-                        vim.api.nvim_buf_clear_namespace(menu_bufnr, ns_id, 0, -1)
-                    end
-                    -- Then, close the window
-                    vim.api.nvim_win_close(menu_winid, true)
-                end
                 vim.notify("Pressed " .. key)
+                -- Window remains open, namespace is not cleared here.
             end
         end
 
