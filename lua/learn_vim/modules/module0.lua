@@ -85,8 +85,6 @@ It takes practice, but these will become second nature. Try to avoid using the a
                 start_cursor = {1, 1}, -- Start at the beginning of the file (line 1, column 1)
                 validation = {
                     type = 'check_buffer_content',
-                    -- We need to create the target content file for this.
-                    type = 'check_buffer_content',
                     target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module0_lesson2_exercise1_target.txt")
                 },
                 feedback = "Great job! You've successfully navigated and made a change using basic motion keys.",
