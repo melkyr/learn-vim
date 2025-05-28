@@ -358,12 +358,19 @@ return function(M) -- Accept the parent module M as an argument
         vim.api.nvim_set_hl(0, 'LearnVimJKey', { fg = 'Green', bold = true })
         vim.api.nvim_set_hl(0, 'LearnVimHKey', { fg = 'Blue', bold = true })
         vim.api.nvim_set_hl(0, 'LearnVimLKey', { fg = 'Yellow', bold = true })
+        vim.api.nvim_set_hl(0, 'LearnVimMotionActiveKey', { fg = 'White', bg = '#0000FF', bold = true }) -- Active key highlight
 
-        -- Apply highlights (0-indexed lines, 0-indexed byte-based columns)
-        vim.api.nvim_buf_add_highlight(menu_bufnr, ns_id, 'LearnVimKKey', 1, 5, 6)
-        vim.api.nvim_buf_add_highlight(menu_bufnr, ns_id, 'LearnVimHKey', 4, 2, 3)
-        vim.api.nvim_buf_add_highlight(menu_bufnr, ns_id, 'LearnVimLKey', 4, 10, 11)
-        vim.api.nvim_buf_add_highlight(menu_bufnr, ns_id, 'LearnVimJKey', 7, 5, 6)
+        local motion_keys_info = {
+            k = { char = 'k', line = 1, col_start = 5, col_end = 6, hl_group = 'LearnVimKKey' },
+            h = { char = 'h', line = 4, col_start = 2, col_end = 3, hl_group = 'LearnVimHKey' },
+            l = { char = 'l', line = 4, col_start = 10, col_end = 11, hl_group = 'LearnVimLKey' },
+            j = { char = 'j', line = 7, col_start = 5, col_end = 6, hl_group = 'LearnVimJKey' }
+        }
+
+        -- Apply initial highlights (0-indexed lines, 0-indexed byte-based columns)
+        for _, key_info in pairs(motion_keys_info) do
+            vim.api.nvim_buf_add_highlight(menu_bufnr, ns_id, key_info.hl_group, key_info.line, key_info.col_start, key_info.col_end)
+        end
 
         -- Set final buffer options (nomodifiable)
         Utils.set_buffer_options(menu_bufnr, {
@@ -390,10 +397,32 @@ return function(M) -- Accept the parent module M as an argument
         vim.api.nvim_buf_set_keymap(menu_bufnr, 'n', '<Esc>', '', { noremap = true, silent = true, callback = close_callback })
         vim.api.nvim_buf_set_keymap(menu_bufnr, 'n', 'q', '', { noremap = true, silent = true, callback = close_callback })
 
-        local function key_press_callback(key)
+        local current_active_key_char = nil -- Variable to keep track of the active key
+
+        local function key_press_callback(pressed_key_char)
             return function()
-                vim.notify("Pressed " .. key)
-                -- Window remains open, namespace is not cleared here.
+                vim.notify("Pressed " .. pressed_key_char)
+
+                -- 1. Reset all motion keys to their original highlights
+                for key_char_loop, key_info in pairs(motion_keys_info) do
+                    -- Clear the specific highlight region for this key on its line
+                    vim.api.nvim_buf_clear_namespace(menu_bufnr, ns_id, key_info.line, key_info.line + 1)
+                    -- Re-apply its original highlight
+                    vim.api.nvim_buf_add_highlight(menu_bufnr, ns_id, key_info.hl_group, key_info.line, key_info.col_start, key_info.col_end)
+                end
+                
+                -- If other non-motion key highlights were on the same lines and cleared by clear_namespace, they would need to be reapplied.
+                -- For this menu, only motion keys are highlighted on these specific lines (1, 4, 7), so direct re-application is fine.
+
+                -- 2. Apply active highlight to the pressed key
+                local active_key_info = motion_keys_info[pressed_key_char]
+                if active_key_info then
+                    -- Clear its specific region again before applying new highlight (already done above, but good for safety if logic changes)
+                    -- vim.api.nvim_buf_clear_namespace(menu_bufnr, ns_id, active_key_info.line, active_key_info.line + 1)
+                    vim.api.nvim_buf_add_highlight(menu_bufnr, ns_id, 'LearnVimMotionActiveKey', active_key_info.line, active_key_info.col_start, active_key_info.col_end)
+                    current_active_key_char = pressed_key_char -- Keep track
+                end
+                -- Menu remains open.
             end
         end
 
