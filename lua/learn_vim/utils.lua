@@ -4,6 +4,17 @@
 
 local Utils = {}
 
+-- Determine the plugin's root path.
+-- This assumes Utils.lua is at 'lua/learn_vim/utils.lua' relative to the plugin root.
+local script_info = debug.getinfo(1, "S")
+local script_path = script_info.source
+if script_path:sub(1,1) == "@" then
+    script_path = script_path:sub(2) -- Remove leading '@'
+end
+-- Example script_path: /home/user/.config/nvim/plugged/learn-vim/lua/learn_vim/utils.lua
+-- We want to get to /home/user/.config/nvim/plugged/learn-vim
+local PLUGIN_ROOT = vim.fn.gsub(script_path, "/lua/learn_vim/utils.lua$", "")
+
 --- Sets multiple buffer options at once.
 -- @param bufnr (integer) The buffer number.
 -- @param options (table) A table where keys are option names (strings)
@@ -25,30 +36,33 @@ function Utils.set_buffer_options(bufnr, options)
 end
 
 --- Reads the content of a file.
--- @param file_path (string) The path to the file.
+-- @param relative_file_path (string) The path to the file, relative to the plugin root.
 -- @return (string|nil) The file content as a string, or nil if an error occurred.
-function Utils.read_file_content(file_path)
-    if type(file_path) ~= 'string' then
-        vim.notify("Error: Invalid argument to read_file_content. file_path must be a string.", vim.log.levels.ERROR)
+function Utils.read_file_content(relative_file_path)
+    if type(relative_file_path) ~= 'string' then
+        vim.notify("Error: Invalid argument to read_file_content. relative_file_path must be a string.", vim.log.levels.ERROR)
         return nil
     end
 
-    local file, err_open = io.open(file_path, "r")
+    -- Construct the full path
+    local full_path = PLUGIN_ROOT .. "/" .. relative_file_path
+
+    local file, err_open = io.open(full_path, "r")
     if not file then
-        vim.notify("Error opening file '" .. file_path .. "': " .. tostring(err_open), vim.log.levels.ERROR)
+        vim.notify("Error opening file '" .. full_path .. "': " .. tostring(err_open), vim.log.levels.ERROR)
         return nil
     end
 
     local content, err_read = file:read("*a")
     if not content and err_read then -- Check for actual read error, not just empty file
-        vim.notify("Error reading file '" .. file_path .. "': " .. tostring(err_read), vim.log.levels.ERROR)
+        vim.notify("Error reading file '" .. full_path .. "': " .. tostring(err_read), vim.log.levels.ERROR)
         file:close() -- Still attempt to close
         return nil
     end
 
     local ok_close, err_close = file:close()
     if not ok_close then
-        vim.notify("Error closing file '" .. file_path .. "': " .. tostring(err_close), vim.log.levels.WARN)
+        vim.notify("Error closing file '" .. full_path .. "': " .. tostring(err_close), vim.log.levels.WARN)
         -- Continue, as content was read, but warn about closing issue.
     end
 
