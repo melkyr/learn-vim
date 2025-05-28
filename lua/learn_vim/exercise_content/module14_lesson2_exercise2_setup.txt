@@ -1,0 +1,6 @@
+" --- Exercise 14.2.2 ---
+" Instruction: If you are using Neovim with a Lua config, open your init.lua (`:e $MYVIMRC`). Add the line `vim.opt.relativenumber = true` somewhere in the file. Save the file (`:w`). Close and reopen Neovim to see the change. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Add vim.opt.relativenumber = true to your init.lua and restart Neovim.]

@@ -1,0 +1,6 @@
+" --- Exercise 11.3.1 (Haskell) ---
+" Instruction: In this Haskell snippet, delete the line containing `y = 20`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+x = 10
+z = x + y

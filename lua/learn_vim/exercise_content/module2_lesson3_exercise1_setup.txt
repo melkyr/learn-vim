@@ -1,0 +1,8 @@
+" --- Exercise 2.3.1 ---
+" Instruction: Navigate to the character 'X' in this text using only `h`, `j`, `k`, and `l`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Move around here.
+Find the X here.
+Go to the X.

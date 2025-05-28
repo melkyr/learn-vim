@@ -1,0 +1,5 @@
+" --- Exercise 9.4.2 (SQL) ---
+" Instruction: In this SQL snippet, place your cursor on the opening parenthesis `(` after `VALUES` and use `c%` to change the values inside. Type `1, 2, 3` and press `<Esc>`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+INSERT INTO users (id, name) VALUES ('abc', 'def');

@@ -1,0 +1,6 @@
+" --- Exercise 11.8.1 (Common Lisp) ---
+" Instruction: In this Common Lisp snippet, change the word `defun` to `defmacro`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+(defmacro greet (name)
+  (format nil "Hello, ~a!" name))

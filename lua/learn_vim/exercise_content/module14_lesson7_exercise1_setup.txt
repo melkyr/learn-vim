@@ -1,0 +1,4 @@
+" --- Exercise 14.7.1 ---
+" Instruction: Read the congratulatory message. You've completed the tutorial! Type `:LearnVim exc` to finish this lesson and the module.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------

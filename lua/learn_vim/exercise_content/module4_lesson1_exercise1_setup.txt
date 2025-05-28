@@ -1,0 +1,6 @@
+" --- Exercise 4.1.1 ---
+" Instruction: Using `dw`, delete the word 'quick'. Then type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+The quick brown fox jumps over the lazy dog.

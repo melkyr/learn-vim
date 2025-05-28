@@ -1,0 +1,9 @@
+" --- Exercise 9.5.6 (Swift) ---
+" Instruction: In this Swift snippet, use Line Visual (`V`) to select the two lines inside the `struct` and delete them (`d`). Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+struct Person {
+    var name: String
+    var age: Int
+}
+let person = Person(name: "Alice", age: 30)]

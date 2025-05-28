@@ -1,0 +1,7 @@
+" --- Exercise 4.3.1 ---
+" Instruction: Using `yw`, yank the word 'copy'. Then move to the line below and use `p` to paste it. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Copy this word.
+Paste here: copy

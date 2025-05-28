@@ -1,0 +1,7 @@
+" --- Exercise 9.5.4 (SQL) ---
+" Instruction: In this SQL snippet, use Line Visual (`V`) to select the `FROM` and `WHERE` clauses and delete them (`d`). Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+SELECT column1, column2
+FROM your_table
+WHERE condition = true;

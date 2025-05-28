@@ -1,0 +1,6 @@
+" --- Exercise 9.2.1 ---
+" Instruction: Delete the first block of 3 lines using `3dd`. Then move to the start of the second block and use `.` to delete it. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+Keep this line.
+Keep this line too.]

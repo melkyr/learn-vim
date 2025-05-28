@@ -1,0 +1,7 @@
+" --- Exercise 12.6.1 ---
+" Instruction: Yank the line 'YANK THIS LINE' using `yy`. Then type `:tabnew` to open a new tab. In the new tab, type `p` to paste the line. Then type `:tabclose` to close the new tab and return here. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+YANK THIS LINE
+This line should remain unchanged.]

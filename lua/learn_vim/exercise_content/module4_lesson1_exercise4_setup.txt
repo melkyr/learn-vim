@@ -1,0 +1,9 @@
+" --- Exercise 4.1.4 ---
+" Instruction: Using a count with `dd`, delete the next 2 lines (including the current one). Then type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Line 1
+Delete this line 1.
+Delete this line 2.
+Keep this line.

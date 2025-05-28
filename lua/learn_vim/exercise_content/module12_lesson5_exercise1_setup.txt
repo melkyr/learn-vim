@@ -1,0 +1,6 @@
+" --- Exercise 12.5.1 ---
+" Instruction: Type `:tabnew` and press <Enter> to create a new tab page. You should see a new blank tab. Then type `:tabprev` and press <Enter> (or use `gT`) to return to the tutorial tab. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Practice creating and navigating tabs.]

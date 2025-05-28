@@ -1,0 +1,10 @@
+" --- Exercise 11.11.1 (Erlang) ---
+" Instruction: In this Erlang snippet, use `:s` to replace the first occurrence of `io:format` with `io:fwrite` on the first case branch. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+greet(Name) ->
+    case Name of
+        "Alice" -> io:format("Hello Alice~n");
+        "Bob" -> io:format("Hello Bob~n");
+        _ -> io:format("Hello Unknown~n")
+    end.

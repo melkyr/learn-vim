@@ -1,0 +1,8 @@
+" --- Exercise 11.4.3 (F#) ---
+" Instruction: In this F# snippet, change the word `let` to `mutable` on the first two variable declarations. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+let name = "Alice"
+let age = 30
+let city = "London"
+printfn "%s is %d in %s" name age city

@@ -1,0 +1,7 @@
+" --- Exercise 9.5.12 (Shell Script) ---
+" Instruction: In this Shell Script snippet, use Block Visual (`<C-v>`) to delete the leading '#' characters used for comments. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+# This is a comment
+# Another comment line
+# And a third one

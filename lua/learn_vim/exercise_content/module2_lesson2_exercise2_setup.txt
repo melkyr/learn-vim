@@ -1,0 +1,8 @@
+" --- Exercise 2.2.2 ---
+" Instruction: Using only the `k` key, move the cursor up to 'Line 1'. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Line 1
+Line 2
+Line 3

@@ -1,0 +1,7 @@
+" --- Exercise 9.4.1 (Dart) ---
+" Instruction: In this Dart snippet, place your cursor on the opening parenthesis `(` and use `d%` to delete everything between the parentheses (including the parentheses themselves). Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+void printMessage(String message) {
+  print(message);
+}]

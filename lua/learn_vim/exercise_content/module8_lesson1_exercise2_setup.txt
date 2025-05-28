@@ -1,0 +1,5 @@
+" --- Exercise 8.1.2 ---
+" Instruction: Type ':set number' and press '<Enter>' to show line numbers in the exercise pane. Then type ':LearnVim exc' to check.
+" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
+" ---------------------------------------------
+            -- TODO: Implement a proper validation check for option values.

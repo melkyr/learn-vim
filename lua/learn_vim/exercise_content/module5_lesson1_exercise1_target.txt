@@ -1,0 +1,8 @@
+" --- Exercise 5.1.1 ---
+" Instruction: Delete the word 'delete' on the first line using `dw`. Then move to the next two lines and use the `.` command to delete the words 'delete' on those lines. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Please  this word.
+Also  this word.
+And  this word too.

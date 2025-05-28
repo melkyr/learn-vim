@@ -1,0 +1,7 @@
+" --- Exercise 9.5.5 (Rust) ---
+" Instruction: In this Rust snippet, place your cursor on the opening curly brace `{` of the `main` function and press `%`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+fn main() {
+    println!("Hello, world!");
+}]

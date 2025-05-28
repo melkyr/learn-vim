@@ -1,0 +1,8 @@
+" --- Exercise 8.3.2 ---
+" Instruction: Delete the line 'DELETE THIS' into register 'b' using '\"bdd'. Then move to the line below 'Paste here:' and paste from register 'b' using '\"bp'. Type ':LearnVim exc' to check.
+" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
+" ---------------------------------------------
+
+Keep this line.
+DELETE THIS
+Paste here:]

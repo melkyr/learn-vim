@@ -1,0 +1,8 @@
+" --- Exercise 13.1.2 (HTML) ---
+" Instruction: In this HTML snippet, place your cursor anywhere on the word 'Item' in the first list item and use `daw` to delete around the word. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+<ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+</ul>

@@ -1,0 +1,8 @@
+" --- Exercise 8.5.1 ---
+" Instruction: Yank the word 'YANKED' using 'yw'. Then, delete the word 'DELETE' using '\"_dw' (into the black hole register). Finally, paste using 'p'. The pasted text should be 'YANKED', not 'DELETE'. Type ':LearnVim exc' to check.
+" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
+" ---------------------------------------------
+
+YANKED word.
+DELETE this word.
+Paste here:]

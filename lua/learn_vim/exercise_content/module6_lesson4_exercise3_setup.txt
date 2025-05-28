@@ -1,0 +1,7 @@
+" --- Exercise 6.4.3 ---
+" Instruction: Use `<C-v>` to select the 'Column' text in the first two lines. Press `d` to delete the block. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+Column A Column B Column C
+Column A Column B Column C
+Column A Column B Column C

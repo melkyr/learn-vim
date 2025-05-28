@@ -1,0 +1,10 @@
+" --- Exercise 10.5.1 (Java) ---
+" Instruction: In this Java snippet, record a macro into register `i` that deletes the word 'public' and moves to the next line. Keystrokes: `qi` `dw` `j` `0` `q`. Then play the macro 2 times using `2@i`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+ class MyClass {
+     int myField;
+     void myMethod() {
+        // ...
+    }
+}

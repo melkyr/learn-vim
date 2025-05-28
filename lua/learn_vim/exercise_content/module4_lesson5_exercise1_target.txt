@@ -1,0 +1,9 @@
+" --- Exercise 4.5.1 ---
+" Instruction: Place your cursor anywhere in the paragraph below and type `gqap` to wrap it. Then type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+This is a very long line of text that needs to be wrapped so that it fits
+nicely within the width of the window. It's important for readability,
+especially in documentation or comments. Vim's `gq` operator is perfect for
+this task when combined with a text object like 'ap' for 'a paragraph'.

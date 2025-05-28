@@ -1,0 +1,6 @@
+" --- Exercise 13.3.3 (Python) ---
+" Instruction: In this Python snippet, place your cursor anywhere inside the single quotes `''` and use `ya'` to yank the inner single quotes. Then move to the line below and paste using `p`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+my_string = 'Yank this content'
+Paste here:Yank this content

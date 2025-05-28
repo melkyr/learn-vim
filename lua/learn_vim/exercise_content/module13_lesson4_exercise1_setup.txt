@@ -1,0 +1,10 @@
+" --- Exercise 13.4.1 (C++) ---
+" Instruction: In this C++ snippet, place your cursor anywhere inside the curly braces `{}` of the function body and use `va{` to visually select around the curly braces. Then press `d` to delete the selection. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+#include <iostream>
+
+int main() {
+    std::cout << "Hello, world!" << std::endl;
+    return 0;
+}

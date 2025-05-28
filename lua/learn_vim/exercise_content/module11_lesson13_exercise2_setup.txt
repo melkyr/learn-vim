@@ -1,0 +1,13 @@
+" --- Exercise 11.13.2 (C) ---
+" Instruction: In this C snippet, yank the line containing `return a + b;` and paste it below the line containing `int main() {`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+#include <stdio.h>
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    // ...
+}

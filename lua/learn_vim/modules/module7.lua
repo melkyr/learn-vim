@@ -3,6 +3,8 @@
 -- This file contains the content for Module 7: Finding, Searching, and Replacing.
 -- It returns a table representing this module's structure and lessons.
 
+local Utils = require('learn_vim.utils')
+
 return {
     title = "Finding, Searching, and Replacing",
     lesson1 = {
@@ -28,13 +30,7 @@ Let's practice finding characters on a line. Use `:LearnVim exc` to check and `:
             {
                 instruction = "Using `f`, jump to the first 'a' on the line below. Then type `:LearnVim exc` to check.",
                 type = "cursor_move",
-                setup_text = [[
-" --- Exercise 7.1.1 ---
-" Instruction: Using `f`, jump to the first 'a' on the line below. Then type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Jinxed wizards pluck ivy from the big quilt.]], -- Changed phrase
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson1_exercise1_setup.txt"),
                 start_cursor = {5, 0}, -- Start at the beginning of the line
                 validation = { type = 'check_cursor_position', target_cursor = {5, 7} }, -- Target is the first 'a' in 'wizards'
                 feedback = "You found the character!",
@@ -42,13 +38,7 @@ Jinxed wizards pluck ivy from the big quilt.]], -- Changed phrase
              {
                 instruction = "Using `t`, jump just before the 'f' in 'from'. Then type `:LearnVim exc` to check.",
                 type = "cursor_move",
-                setup_text = [[
-" --- Exercise 7.1.2 ---
-" Instruction: Using `t`, jump just before the 'f' in 'from'. Then type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Jinxed wizards pluck ivy from the big quilt.]], -- Changed phrase
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson1_exercise2_setup.txt"),
                 start_cursor = {5, 0}, -- Start at the beginning
                 validation = { type = 'check_cursor_position', target_cursor = {5, 23} }, -- Target is the space before 'f' in 'from'
                 feedback = "You jumped just before the character!",
@@ -56,13 +46,7 @@ Jinxed wizards pluck ivy from the big quilt.]], -- Changed phrase
              {
                 instruction = "Using `f`, jump to the first 'i'. Then use `;` to jump to the next 'i'. Type `:LearnVim exc` to check.",
                 type = "cursor_move",
-                setup_text = [[
-" --- Exercise 7.1.3 ---
-" Instruction: Using `f`, jump to the first 'i'. Then use `;` to jump to the next 'i'. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Jinxed wizards pluck ivy from the big quilt.]], -- Changed phrase
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson1_exercise3_setup.txt"),
                 start_cursor = {5, 0}, -- Start at the beginning
                 validation = { type = 'check_cursor_position', target_cursor = {5, 20} }, -- Target is the 'i' in 'ivy'
                 feedback = "You repeated the find forward!",
@@ -70,13 +54,7 @@ Jinxed wizards pluck ivy from the big quilt.]], -- Changed phrase
              {
                 instruction = "Using `f`, jump to the first 'i'. Then use `;` to jump to the next 'i'. Then use `,` to jump back to the previous 'i'. Type `:LearnVim exc` to check.",
                 type = "cursor_move",
-                setup_text = [[
-" --- Exercise 7.1.4 ---
-" Instruction: Using `f`, jump to the first 'i'. Then use `;` to jump to the next 'i'. Then use `,` to jump back to the previous 'i'. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Jinxed wizards pluck ivy from the big quilt.]], -- Changed phrase
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson1_exercise4_setup.txt"),
                 start_cursor = {5, 0}, -- Start at the beginning
                 validation = { type = 'check_cursor_position', target_cursor = {5, 17} }, -- Target is the 'i' in 'quilt'
                 feedback = "You repeated the find backward!",
@@ -104,15 +82,7 @@ Let's practice searching. Type the search command and the pattern, press `<Enter
             {
                 instruction = "Search forward for the word 'jumps' using `/`. Type `:LearnVim exc` to check after the search.",
                 type = "cursor_move", -- Check cursor position after search
-                setup_text = [[
-" --- Exercise 7.2.1 ---
-" Instruction: Search forward for the word 'jumps' using `/`. Type `:LearnVim exc` to check after the search.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Line 1: The quick brown fox
-Line 2: jumps over the lazy
-Line 3: dog.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson2_exercise1_setup.txt"),
                 start_cursor = {5, 0}, -- Start at the beginning
                 validation = { type = 'check_cursor_position', target_cursor = {6, 0} }, -- Target is the start of "jumps" on line 6
                 feedback = "You found the word using search!",
@@ -120,15 +90,7 @@ Line 3: dog.]],
              {
                 instruction = "Search backward for the word 'quick' using `?`. Type `:LearnVim exc` to check after the search.",
                 type = "cursor_move",
-                setup_text = [[
-" --- Exercise 7.2.2 ---
-" Instruction: Search backward for the word 'quick' using `?`. Type `:LearnVim exc` to check after the search.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Line 1: The quick brown fox
-Line 2: jumps over the lazy
-Line 3: dog.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson2_exercise2_setup.txt"),
                 start_cursor = {7, 0}, -- Start at the end
                 validation = { type = 'check_cursor_position', target_cursor = {5, 4} }, -- Target is the start of "quick" on line 5
                 feedback = "You found the word using backward search!",
@@ -136,17 +98,7 @@ Line 3: dog.]],
              {
                 instruction = "Search forward for 'Line'. Then use `n` to find the next 'Line'. Type `:LearnVim exc` to check.",
                 type = "cursor_move",
-                 setup_text = [[
-" --- Exercise 7.2.3 ---
-" Instruction: Search forward for 'Line'. Then use `n` to find the next 'Line'. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Line 1
-Line 2
-Line 3
-Line 4
-Line 5]],
+                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson2_exercise3_setup.txt"),
                  start_cursor = {5, 0}, -- Start on "Line 1"
                  validation = { type = 'check_cursor_position', target_cursor = {7, 0} }, -- Target is the start of "Line 3"
                  feedback = "You repeated the search forward!",
@@ -172,13 +124,7 @@ Let's practice using counts with find and search. Use `:LearnVim exc` to check a
             {
                 instruction = "Using a numerical prefix with `f`, jump to the 3rd 'i' on the line below. Then type `:LearnVim exc` to check.",
                 type = "cursor_move",
-                setup_text = [[
-" --- Exercise 7.3.1 ---
-" Instruction: Using a numerical prefix with `f`, jump to the 3rd 'i' on the line below. Then type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Jinxed wizards pluck ivy from the big quilt.]], -- Changed phrase
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson3_exercise1_setup.txt"),
                 start_cursor = {5, 0}, -- Start at the beginning
                 validation = { type = 'check_cursor_position', target_cursor = {5, 20} }, -- Target is the 'i' in 'ivy' (1st in Jinxed, 2nd in wizards, 3rd in ivy)
                 feedback = "You jumped to the 3rd 'i'!",
@@ -186,17 +132,7 @@ Jinxed wizards pluck ivy from the big quilt.]], -- Changed phrase
              {
                 instruction = "Using a numerical prefix with `/`, search forward for the 2nd occurrence of 'Line'. Type `:LearnVim exc` to check after the search.",
                 type = "cursor_move",
-                 setup_text = [[
-" --- Exercise 7.3.2 ---
-" Instruction: Using a numerical prefix with `/`, search forward for the 2nd occurrence of 'Line'. Type `:LearnVim exc` to check after the search.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Line 1
-Line 2
-Line 3
-Line 4
-Line 5]],
+                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson3_exercise2_setup.txt"),
                  start_cursor = {5, 0}, -- Start on "Line 1"
                  validation = { type = 'check_cursor_position', target_cursor = {6, 0} }, -- Target is the start of "Line 2" (2nd occurrence)
                  feedback = "You found the 2nd occurrence using search and a count!",
@@ -226,46 +162,22 @@ Let's practice a simple find and replace on the current line. Use `:LearnVim exc
             {
                 instruction = "Using `:s`, replace the first occurrence of 'old' with 'new' on the line below. Type `:LearnVim exc` to check.",
                 type = "insert_text",
-                setup_text = [[
-" --- Exercise 7.4.1 ---
-" Instruction: Using `:s`, replace the first occurrence of 'old' with 'new' on the line below. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-This line has old text and also old text.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson4_exercise1_setup.txt"),
                 start_cursor = {5, 0},
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 7.4.1 ---
-" Instruction: Using `:s`, replace the first occurrence of 'old' with 'new' on the line below. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-This line has new text and also old text.]] -- Only the first 'old' is replaced
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson4_exercise1_target.txt")
                 },
                 feedback = "You performed a simple substitution!",
             },
              {
                 instruction = "Using `:s` with the `g` flag, replace all occurrences of 'old' with 'new' on the line below. Type `:LearnVim exc` to check.",
                 type = "insert_text",
-                setup_text = [[
-" --- Exercise 7.4.2 ---
-" Instruction: Using `:s` with the `g` flag, replace all occurrences of 'old' with 'new' on the line below. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-This line has old text and also old text.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson4_exercise2_setup.txt"),
                 start_cursor = {5, 0},
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 7.4.2 ---
-" Instruction: Using `:s` with the `g` flag, replace all occurrences of 'old' with 'new' on the line below. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-This line has new text and also new text.]] -- Both 'old's are replaced
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson4_exercise2_target.txt")
                 },
                 feedback = "You performed a global substitution on the line!",
             },

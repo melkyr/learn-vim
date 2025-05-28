@@ -1,0 +1,10 @@
+" --- Exercise 13.3.2 (Go) ---
+" Instruction: In this Go snippet, place your cursor anywhere inside the curly braces `{}` of the slice literal and use `da{` to delete around the curly braces. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+package main
+
+func main() {
+    numbers := []int
+    // Keep this line
+}

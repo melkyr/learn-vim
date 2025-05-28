@@ -1,0 +1,9 @@
+" --- Exercise 11.2.1 (COBOL) ---
+" Instruction: In this COBOL snippet, use Block Visual (`<C-v>`) to delete the leading spaces on the lines within the PROCEDURE DIVISION. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. HELLOWORLD.
+       PROCEDURE DIVISION.
+           DISPLAY 'Hello, World!'.
+           STOP RUN.

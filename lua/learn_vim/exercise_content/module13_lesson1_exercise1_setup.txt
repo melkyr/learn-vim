@@ -1,0 +1,5 @@
+" --- Exercise 13.1.1 (Python) ---
+" Instruction: In this Python snippet, place your cursor anywhere on the word 'example' and use `diw` to delete the inner word. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+my_variable = "This is an example sentence."

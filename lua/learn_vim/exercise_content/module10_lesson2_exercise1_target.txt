@@ -1,0 +1,6 @@
+" --- Exercise 10.2.1 ---
+" Instruction: Assuming you recorded `dw` into register `a` in the previous lesson: Place your cursor on the word 'DELETE', then type `@a` to play the macro and delete the word. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+ this word.]

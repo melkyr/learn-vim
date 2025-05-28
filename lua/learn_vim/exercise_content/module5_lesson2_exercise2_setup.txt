@@ -1,0 +1,6 @@
+" --- Exercise 5.2.2 ---
+" Instruction: Make a change (e.g., delete a word). Then use `u` to undo it. Then use `<C-r>` to redo the change. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Make a change here.

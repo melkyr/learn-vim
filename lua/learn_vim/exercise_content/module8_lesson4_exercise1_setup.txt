@@ -1,0 +1,7 @@
+" --- Exercise 8.4.1 ---
+" Instruction: Insert some text (e.g., 'hello'). Press '<Esc>'. Then move to the next line and paste the inserted text using '\".p'. Type ':LearnVim exc' to check.
+" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
+" ---------------------------------------------
+
+Insert text here:
+Paste last inserted text here:]

@@ -1,0 +1,6 @@
+" --- Exercise 5.2.1 ---
+" Instruction: Delete the word 'delete' using `dw`. Then use `u` to undo the deletion. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Please delete this word.

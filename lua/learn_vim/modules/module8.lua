@@ -3,6 +3,8 @@
 -- This file contains the content for Module 8: Command-line Mode and Registers.
 -- It returns a table representing this module's structure and lessons.
 
+local Utils = require('learn_vim.utils')
+
 return {
     title = "Command-line Mode and Registers",
     lesson1 = {
@@ -22,13 +24,7 @@ Let's practice entering and exiting Command-line mode. Use ':LearnVim exc' to ch
             {
                 instruction = "Type ':' to enter Command-line mode, then press '<Esc>' to return to Normal mode. Type ':LearnVim exc' to check.", -- Changed backticks to single quotes
                 type = "mode_switch", -- Check final mode is Normal
-                setup_text = [[
-" --- Exercise 8.1.1 ---
-" Instruction: Type ':' to enter Command-line mode, then press '<Esc>' to return to Normal mode. Type ':LearnVim exc' to check.
-" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
-" ---------------------------------------------
-
-Practice entering and exiting command-line mode here.]], -- Changed backticks to single quotes
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module8_lesson1_exercise1_setup.txt"),
                 start_cursor = {5, 0},
                 validation = { type = 'check_mode', target_mode = 'n' },
                 feedback = "You entered and exited Command-line mode!",
@@ -40,6 +36,7 @@ Practice entering and exiting command-line mode here.]], -- Changed backticks to
                  -- Validation for this will need to check the 'number' option is true.
                  -- We might need to add a new validation type or check option state directly in exercise.lua.
                  -- For now, let's use a placeholder and rely on the instruction.
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module8_lesson1_exercise2_setup.txt"),
                 validation = { type = 'check_mode', target_mode = 'n' }, -- Placeholder: check they returned to Normal mode
                 feedback = "You executed a command to set an option!",
                 -- TODO: Implement a proper validation check for option values.
@@ -66,65 +63,22 @@ Let's practice using ranges with the ':delete' command (':d'). Use ':LearnVim ex
             {
                 instruction = "Using a range with ':d', delete lines 7 through 9. Type ':LearnVim exc' to check.", -- Changed backticks to single quotes
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 8.2.1 ---
-" Instruction: Using a range with ':d', delete lines 7 through 9. Type ':LearnVim exc' to check.
-" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
-" ---------------------------------------------
-Line 1
-Line 2
-Line 3
-Line 4
-Line 5
-Line 6
-DELETE THIS LINE 7
-DELETE THIS LINE 8
-DELETE THIS LINE 9
-Line 10
-Line 11
-Line 12]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module8_lesson2_exercise1_setup.txt"),
                 start_cursor = {5, 0}, -- Start at the top
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 8.2.1 ---
-" Instruction: Using a range with ':d', delete lines 7 through 9. Type ':LearnVim exc' to check.
-" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
-" ---------------------------------------------
-Line 1
-Line 2
-Line 3
-Line 4
-Line 5
-Line 6
-Line 10
-Line 11
-Line 12]] -- Lines 7, 8, 9 should be gone
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module8_lesson2_exercise1_target.txt")
                 },
                 feedback = "You deleted a range of lines!",
             },
              {
                 instruction = "Using the ':%' range with ':s', replace all occurrences of 'old' with 'new' in the entire buffer. Type ':LearnVim exc' to check.", -- Changed backticks to single quotes
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 8.2.2 ---
-" Instruction: Using the ':%' range with ':s', replace all occurrences of 'old' with 'new' in the entire buffer. Type ':LearnVim exc' to check.
-" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
-" ---------------------------------------------
-This line has old text.
-Another line with old text.
-A third line also has old text.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module8_lesson2_exercise2_setup.txt"),
                 start_cursor = {5, 0},
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 8.2.2 ---
-" Instruction: Using the ':%' range with ':s', replace all occurrences of 'old' with 'new' in the entire buffer. Type ':LearnVim exc' to check.
-" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
-" ---------------------------------------------
-This line has new text.
-Another line with new text.
-A third line also has new text.]] -- All 'old's should be 'new'
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module8_lesson2_exercise2_target.txt")
                 },
                 feedback = "You performed a global substitution with a range!",
             },
@@ -154,52 +108,22 @@ Let's practice using named registers. Use ':LearnVim exc' to check and ':LearnVi
             {
                 instruction = "Yank the word 'YANK' into register 'a' using '\"ayw'. Then move to the line below and paste from register 'a' using '\"ap'. Type ':LearnVim exc' to check.", -- Changed backticks to single quotes
                 type = "insert_text",
-                setup_text = [[
-" --- Exercise 8.3.1 ---
-" Instruction: Yank the word 'YANK' into register 'a' using '\"ayw'. Then move to the line below and paste from register 'a' using '\"ap'. Type ':LearnVim exc' to check.
-" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
-" ---------------------------------------------
-
-YANK this word.
-Paste here:]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module8_lesson3_exercise1_setup.txt"),
                 start_cursor = {5, 0}, -- Cursor on 'Y' of 'YANK'
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 8.3.1 ---
-" Instruction: Yank the word 'YANK' into register 'a' using '\"ayw'. Then move to the line below and paste from register 'a' using '\"ap'. Type ':LearnVim exc' to check.
-" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
-" ---------------------------------------------
-
-YANK this word.
-Paste here: YANK]] -- 'YANK' pasted after the colon
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module8_lesson3_exercise1_target.txt")
                 },
                 feedback = "You yanked and pasted using a named register!",
             },
              {
                 instruction = "Delete the line 'DELETE THIS' into register 'b' using '\"bdd'. Then move to the line below 'Paste here:' and paste from register 'b' using '\"bp'. Type ':LearnVim exc' to check.", -- Changed backticks to single quotes
                 type = "insert_text",
-                setup_text = [[
-" --- Exercise 8.3.2 ---
-" Instruction: Delete the line 'DELETE THIS' into register 'b' using '\"bdd'. Then move to the line below 'Paste here:' and paste from register 'b' using '\"bp'. Type ':LearnVim exc' to check.
-" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
-" ---------------------------------------------
-
-Keep this line.
-DELETE THIS
-Paste here:]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module8_lesson3_exercise2_setup.txt"),
                 start_cursor = {6, 0}, -- Cursor on the line to delete
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 8.3.2 ---
-" Instruction: Delete the line 'DELETE THIS' into register 'b' using '\"bdd'. Then move to the line below 'Paste here:' and paste from register 'b' using '\"bp'. Type ':LearnVim exc' to check.
-" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
-" ---------------------------------------------
-
-Keep this line.
-Paste here:
-DELETE THIS]] -- The line should be pasted below "Paste here:"
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module8_lesson3_exercise2_target.txt")
                 },
                 feedback = "You deleted and pasted using a named register!",
             },
@@ -229,28 +153,14 @@ Let's practice using a few special registers. Use ':LearnVim exc' to check and '
             {
                 instruction = "Insert some text (e.g., 'hello'). Press '<Esc>'. Then move to the next line and paste the inserted text using '\".p'. Type ':LearnVim exc' to check.", -- Changed backticks to single quotes
                 type = "insert_text",
-                setup_text = [[
-" --- Exercise 8.4.1 ---
-" Instruction: Insert some text (e.g., 'hello'). Press '<Esc>'. Then move to the next line and paste the inserted text using '\".p'. Type ':LearnVim exc' to check.
-" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
-" ---------------------------------------------
-
-Insert text here:
-Paste last inserted text here:]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module8_lesson4_exercise1_setup.txt"),
                 start_cursor = {5, 18}, -- Cursor after "Insert text here:"
                 validation = {
                     type = 'check_buffer_content',
                     -- We can't know *exactly* what they inserted, but we can check if *something*
                     -- was pasted after the second line that wasn't there initially.
                     -- A simpler validation is to check if the second line is no longer empty.
-                    target_content = [[
-" --- Exercise 8.4.1 ---
-" Instruction: Insert some text (e.g., 'hello'). Press '<Esc>'. Then move to the next line and paste the inserted text using '\".p'. Type ':LearnVim exc' to check.
-" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
-" ---------------------------------------------
-
-Insert text here:hello
-Paste last inserted text here:hello]] -- Example target if they inserted 'hello'
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module8_lesson4_exercise1_target.txt")
                 },
                 feedback = "You pasted the last inserted text!",
                 -- TODO: Improve validation to check if the pasted text matches the inserted text.
@@ -258,27 +168,11 @@ Paste last inserted text here:hello]] -- Example target if they inserted 'hello'
              {
                 instruction = "Yank the word 'YANKED' using 'yw'. Then move to the next line and paste *only* the yanked text (not deleted text) using '\"0p'. Type ':LearnVim exc' to check.", -- Changed backticks to single quotes
                 type = "insert_text",
-                setup_text = [[
-" --- Exercise 8.4.2 ---
-" Instruction: Yank the word 'YANKED' using 'yw'. Then move to the next line and paste *only* the yanked text (not deleted text) using '\"0p'. Type ':LearnVim exc' to check.
-" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
-" ---------------------------------------------
-
-YANKED word.
-DELETE this line.
-Paste yanked text here:]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module8_lesson4_exercise2_setup.txt"),
                 start_cursor = {5, 0}, -- Cursor on 'Y' of 'YANKED'
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 8.4.2 ---
-" Instruction: Yank the word 'YANKED' using 'yw'. Then move to the next line and paste *only* the yanked text (not deleted text) using '\"0p'. Type ':LearnVim exc' to check.
-" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
-" ---------------------------------------------
-
-YANKED word.
-DELETE this line.
-Paste yanked text here:YANKED]] -- 'YANKED' pasted from register 0
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module8_lesson4_exercise2_target.txt")
                 },
                 feedback = "You pasted specifically from the yank register!",
             },
@@ -305,27 +199,11 @@ Let's practice deleting text without affecting the paste buffer. Use ':LearnVim 
             {
                 instruction = "Yank the word 'YANKED' using 'yw'. Then, delete the word 'DELETE' using '\"_dw' (into the black hole register). Finally, paste using 'p'. The pasted text should be 'YANKED', not 'DELETE'. Type ':LearnVim exc' to check.", -- Changed backticks to single quotes
                 type = "insert_text",
-                setup_text = [[
-" --- Exercise 8.5.1 ---
-" Instruction: Yank the word 'YANKED' using 'yw'. Then, delete the word 'DELETE' using '\"_dw' (into the black hole register). Finally, paste using 'p'. The pasted text should be 'YANKED', not 'DELETE'. Type ':LearnVim exc' to check.
-" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
-" ---------------------------------------------
-
-YANKED word.
-DELETE this word.
-Paste here:]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module8_lesson5_exercise1_setup.txt"),
                 start_cursor = {5, 0}, -- Start on 'Y' of 'YANKED'
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 8.5.1 ---
-" Instruction: Yank the word 'YANKED' using 'yw'. Then, delete the word 'DELETE' using '\"_dw' (into the black hole register). Finally, paste using 'p'. The pasted text should be 'YANKED', not 'DELETE'. Type ':LearnVim exc' to check.
-" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
-" ---------------------------------------------
-
-YANKED word.
- this word.
-Paste here:YANKED]] -- 'DELETE ' is gone, 'YANKED' is pasted
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module8_lesson5_exercise1_target.txt")
                 },
                 feedback = "You used the black hole register to delete without affecting the paste buffer!",
             },
@@ -356,25 +234,11 @@ Let's practice using the selection and clipboard registers. Use ':LearnVim exc' 
             {
                 instruction = "Yank the word 'CLIPBOARD' into the system clipboard using '\"+yw'. Then move to the next line and paste from the system clipboard using '\"+p'. Type ':LearnVim exc' to check.", -- Changed backticks to single quotes
                 type = "insert_text",
-                setup_text = [[
-" --- Exercise 8.6.1 ---
-" Instruction: Yank the word 'CLIPBOARD' into the system clipboard using '\"+yw'. Then move to the next line and paste from the system clipboard using '\"+p'. Type ':LearnVim exc' to check.
-" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
-" ---------------------------------------------
-
-CLIPBOARD text.
-Paste from clipboard here:]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module8_lesson6_exercise1_setup.txt"),
                 start_cursor = {5, 0}, -- Cursor on 'C' of 'CLIPBOARD'
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 8.6.1 ---
-" Instruction: Yank the word 'CLIPBOARD' into the system clipboard using '\"+yw'. Then move to the next line and paste from the system clipboard using '\"+p'. Type ':LearnVim exc' to check.
-" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
-" ---------------------------------------------
-
-CLIPBOARD text.
-Paste from clipboard here:CLIPBOARD]] -- 'CLIPBOARD' pasted from register +
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module8_lesson6_exercise1_target.txt")
                 },
                 feedback = "You yanked to and pasted from the system clipboard!",
             },
@@ -418,14 +282,7 @@ Once you have successfully pasted the text into the exercise buffer using '"+p',
             {
                 instruction = "Copy text from an external application and paste it into the line below 'Paste external text here:' using '\"+p'. Then type ':LearnVim exc' to check.", -- Changed backticks to single quotes
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 8.7.1 ---
-" Instruction: Copy text from an external application and paste it into the line below 'Paste external text here:' using '\"+p'. Then type ':LearnVim exc' to check.
-" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
-" ---------------------------------------------
-
-COPY THIS LINE TO EXTERNAL APP
-Paste external text here:]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module8_lesson7_exercise1_setup.txt"),
                 start_cursor = {6, 18}, -- Cursor after "Paste external text here:"
                 validation = {
                     type = 'check_buffer_content_contains', -- Need a new validation type

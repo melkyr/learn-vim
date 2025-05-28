@@ -1,0 +1,7 @@
+" --- Exercise 12.6.2 ---
+" Instruction: Yank the line 'YANK THIS LINE' using `yy`. Then type `:split` to open a new window. In the new window, type `:bnext` to switch to the tutorial text buffer. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+YANK THIS LINE
+This line is not the tutorial text.]

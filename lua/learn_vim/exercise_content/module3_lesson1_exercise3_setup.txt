@@ -1,0 +1,6 @@
+" --- Exercise 3.1.3 ---
+" Instruction: Using only the `b` key, move the cursor to the start of the word 'pluck'. Then type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Jinxed wizards pluck ivy from the big quilt.

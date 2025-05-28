@@ -1,0 +1,10 @@
+" --- Exercise 10.4.2 (Dart) ---
+" Instruction: In this Dart snippet, record a macro into register `g` that deletes the word 'final' and moves to the next line. Keystrokes: `qg` `dw` `j` `0` `q`. Then play the macro 3 times using `3@g`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+void main() {
+  final name = 'Alice';
+  final age = 30;
+  final city = 'New York';
+  var isStudent = false;
+}

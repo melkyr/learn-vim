@@ -1,0 +1,6 @@
+" --- Exercise 6.4.1 ---
+" Instruction: Use `v` to select the word 'delete', then press `d` to delete it. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Please  this word.

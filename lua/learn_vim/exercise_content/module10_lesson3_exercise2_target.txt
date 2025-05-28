@@ -1,0 +1,10 @@
+" --- Exercise 10.3.2 (HTML) ---
+" Instruction: In this HTML snippet, record a macro into register `d` that deletes the opening `<li>` tag and moves to the start of the next line. Keystrokes: `qd` `/<li><Enter>` `dw` `j` `0` `q`. Then play the macro 3 times using `3@d` to delete the next three `<li>` tags. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+<ul>
+     Item 1</li>
+     Item 2</li>
+     Item 3</li>
+     Item 4</li>
+</ul>

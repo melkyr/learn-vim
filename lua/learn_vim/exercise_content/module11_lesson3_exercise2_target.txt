@@ -1,0 +1,12 @@
+" --- Exercise 11.3.2 (Scala) ---
+" Instruction: In this Scala snippet, change the word `var` to `val` on the first two variable declarations. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+object Main {
+  def main(args: Array[String]): Unit = {
+    val name = "Alice"
+    val age = 30
+    val city = "Paris"
+    println(s"$name is $age in $city")
+  }
+}]

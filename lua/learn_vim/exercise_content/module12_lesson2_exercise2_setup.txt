@@ -1,0 +1,6 @@
+" --- Exercise 12.2.2 ---
+" Instruction: Type `:bd` and press <Enter> to delete this exercise buffer. (Don't worry, the tutorial will recreate it). Type `:LearnVim exc` to check after deleting.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Delete this buffer using :bd.]

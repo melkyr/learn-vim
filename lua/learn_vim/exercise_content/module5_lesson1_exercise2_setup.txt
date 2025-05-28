@@ -1,0 +1,8 @@
+" --- Exercise 5.1.2 ---
+" Instruction: Change the word 'CHANGE' to 'EDIT' on the first line using `cw`. Then move to the next two lines and use the `.` command to repeat the change. Press `<Esc>` after each change. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Please CHANGE this.
+Also CHANGE this.
+And CHANGE this too.

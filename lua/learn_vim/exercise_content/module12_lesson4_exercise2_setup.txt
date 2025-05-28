@@ -1,0 +1,6 @@
+" --- Exercise 12.4.2 ---
+" Instruction: Split the window vertically (`:vsplit`). Then use `<C-w> h` to move to the window on the left. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Move to the window on the left after splitting.]

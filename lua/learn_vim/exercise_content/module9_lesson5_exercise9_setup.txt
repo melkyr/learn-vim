@@ -1,0 +1,10 @@
+" --- Exercise 9.5.9 (C++) ---
+" Instruction: In this C++ snippet, place your cursor on the opening curly brace `{` of the `main` function and press `%`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+#include <iostream>
+
+int main() {
+    std::cout << "Hello, world!" << std::endl;
+    return 0;
+}]

@@ -1,0 +1,7 @@
+" --- Exercise 8.3.1 ---
+" Instruction: Yank the word 'YANK' into register 'a' using '\"ayw'. Then move to the line below and paste from register 'a' using '\"ap'. Type ':LearnVim exc' to check.
+" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
+" ---------------------------------------------
+
+YANK this word.
+Paste here:]

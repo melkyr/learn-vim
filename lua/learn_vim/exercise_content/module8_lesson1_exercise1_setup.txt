@@ -1,0 +1,6 @@
+" --- Exercise 8.1.1 ---
+" Instruction: Type ':' to enter Command-line mode, then press '<Esc>' to return to Normal mode. Type ':LearnVim exc' to check.
+" Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
+" ---------------------------------------------
+
+Practice entering and exiting command-line mode here.]
