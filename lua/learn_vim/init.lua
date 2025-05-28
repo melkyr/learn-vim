@@ -203,6 +203,17 @@ function M.load_progress()
     M.state.load_progress()
 end
 
+--- Displays the motion practice menu.
+-- Called by :LearnVim motion.
+function M.motion_practice()
+    -- Potentially add any logic here if needed before showing the menu
+    if M.ui and M.ui.display_motion_practice_menu then
+        M.ui.display_motion_practice_menu()
+    else
+        vim.notify("LearnVim Error: Motion practice UI function not available.", vim.log.levels.ERROR)
+    end
+end
+
 -- --- Plugin Setup ---
 -- Function to be called by the user in their init.lua to configure the plugin.
 -- Currently, just merges user config with defaults.

@@ -52,10 +52,12 @@ vim.api.nvim_create_user_command('LearnVim', function(opts)
         end
     elseif args_string == 'contents' then
         learn_vim.ui.display_contents_menu() -- Call the display_contents_menu function
+    elseif args_string == 'motion' then
+        learn_vim.motion_practice()
     else
         -- If no recognized command/argument combo, show help message
         vim.notify("Unknown command: :LearnVim " .. args_string, vim.log.levels.WARN)
-        vim.notify("Usage: :LearnVim [start | next | prev | restart | exc | exr | lesson <module>.<lesson> | contents]", vim.log.levels.INFO)
+        vim.notify("Usage: :LearnVim [start | next | prev | restart | exc | exr | lesson <module>.<lesson> | contents | motion]", vim.log.levels.INFO)
     end
 end, {
     nargs = '*', -- Allows any number of arguments after :LearnVim
