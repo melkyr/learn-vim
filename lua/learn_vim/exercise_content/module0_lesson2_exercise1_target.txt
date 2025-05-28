@@ -1,0 +1,13 @@
+Navigate this text:
+Use 'k' to move Up.
+Use 'j' to move Down.
+Use 'h' to move Left.
+Use 'l' to move Right.
+
+Target: Reach the [X]
+
+Line with stuff.
+Another line.
+  And one more.
+    The [O] is here.
+End of practice.
