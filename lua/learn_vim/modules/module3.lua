@@ -37,7 +37,7 @@ Use `:LearnVim exc` to check when you think you've completed the task!
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module3_lesson1_exercise2_setup.txt"),
                 start_cursor = {5, 15}, -- Start on 'p' of 'pluck'
-                validation = { type = 'check_cursor_position', target_cursor = {5, 21} }, -- Target on 'y' of 'ivy'
+                validation = { type = 'check_cursor_position', target_cursor = {5, 23} }, -- Target on 'y' of 'ivy'
                 feedback = "Correct! 'e' moves to the end of the word.",
             },
              {
@@ -130,7 +130,7 @@ Let's practice these precise line movements. Use `:LearnVim exc` after each step
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module3_lesson3_exercise4_setup.txt"),
                 start_cursor = {5, 0}, -- Start at the beginning
-                validation = { type = 'check_cursor_position', target_cursor = {5, 16} }, -- Target is the last character (the '.')
+                validation = { type = 'check_cursor_position', target_cursor = {5, 15} }, -- Target is the last character (the '.')
                 feedback = "Correct! '$' goes to the end of the line.",
             },
         },
@@ -174,15 +174,15 @@ Let's practice using counts with vertical and horizontal movements. Use `:LearnV
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module3_lesson4_exercise3_setup.txt"),
                 start_cursor = {5, 12}, -- Start on 'O' of "One"
-                validation = { type = 'check_cursor_position', target_cursor = {5, 34} }, -- Target is the start of "six" (5 words after "One")
+                validation = { type = 'check_cursor_position', target_cursor = {5, 36} }, -- Target is the start of "six"
                 feedback = "Great! You jumped forward multiple words.",
             },
              {
                 instruction = "Using a numerical prefix with `b`, move backward exactly 3 words from the starting position. Then type `:LearnVim exc` to check.",
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module3_lesson4_exercise4_setup.txt"),
-                start_cursor = {5, 38}, -- Start on 'S' of "Start"
-                validation = { type = 'check_cursor_position', target_cursor = {5, 23} }, -- Target is the start of "four" (3 words before "Start")
+                start_cursor = {5, 35}, -- Start on 'S' of "Start"
+                validation = { type = 'check_cursor_position', target_cursor = {5, 19} }, -- Target is the start of "five" (3 words before "Start")
                 feedback = "Excellent! You jumped backward multiple words.",
             },
         },

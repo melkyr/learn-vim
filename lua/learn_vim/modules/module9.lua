@@ -111,7 +111,7 @@ Let's practice using `%` in different languages. Use `:LearnVim exc` to check an
                 type = "cursor_move", -- Check cursor position
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module9_lesson3_exercise1_setup.txt"),
                 start_cursor = {5, 23}, -- Cursor on the first '{'
-                validation = { type = 'check_cursor_position', target_cursor = {10, 1} }, -- Target is the final '}'
+                validation = { type = 'check_cursor_position', target_cursor = {10, 0} }, -- Target is the final '}'
                 feedback = "You jumped to the matching curly brace!",
             },
              {
@@ -119,7 +119,7 @@ Let's practice using `%` in different languages. Use `:LearnVim exc` to check an
                 type = "cursor_move", -- Check cursor position
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module9_lesson3_exercise2_setup.txt"),
                 start_cursor = {5, 0}, -- Cursor on the first '('
-                validation = { type = 'check_cursor_position', target_cursor = {8, 27} }, -- Target is the final ')'
+                validation = { type = 'check_cursor_position', target_cursor = {8, 30} }, -- Target is the final ')'
                 feedback = "You jumped to the matching parenthesis!",
             },
              {
@@ -127,7 +127,7 @@ Let's practice using `%` in different languages. Use `:LearnVim exc` to check an
                 type = "cursor_move", -- Check cursor position
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module9_lesson3_exercise3_setup.txt"),
                 start_cursor = {8, 14}, -- Cursor on the '['
-                validation = { type = 'check_cursor_position', target_cursor = {8, 24} }, -- Target is the ']'
+                validation = { type = 'check_cursor_position', target_cursor = {8, 12} }, -- Target is the ']' of the '[]int' pair
                 feedback = "You jumped to the matching square bracket!",
             },
         },
@@ -221,7 +221,7 @@ Remember to use `:LearnVim exc` to check and `:LearnVim exr` to reset.
                 type = "cursor_move", -- Check cursor position
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module9_lesson5_exercise3_setup.txt"),
                 start_cursor = {6, 8}, -- Cursor on the '(' after print
-                validation = { type = 'check_cursor_position', target_cursor = {6, 22} }, -- Target is the closing ')'
+                validation = { type = 'check_cursor_position', target_cursor = {6, 23} }, -- Target is the closing ')'
                 feedback = "You jumped to the matching parenthesis in Dart!",
             },
              {
@@ -240,7 +240,7 @@ Remember to use `:LearnVim exc` to check and `:LearnVim exr` to reset.
                 type = "cursor_move", -- Check cursor position
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module9_lesson5_exercise5_setup.txt"),
                 start_cursor = {5, 10}, -- Cursor on the '{'
-                validation = { type = 'check_cursor_position', target_cursor = {7, 1} }, -- Target is the closing '}'
+                validation = { type = 'check_cursor_position', target_cursor = {7, 0} }, -- Target is the closing '}'
                 feedback = "You jumped to the matching curly brace in Rust!",
             },
              {
@@ -278,7 +278,7 @@ Remember to use `:LearnVim exc` to check and `:LearnVim exr` to reset.
                 type = "cursor_move", -- Check cursor position
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module9_lesson5_exercise9_setup.txt"),
                 start_cursor = {6, 14}, -- Cursor on the '{'
-                validation = { type = 'check_cursor_position', target_cursor = {9, 1} }, -- Target is the closing '}'
+                validation = { type = 'check_cursor_position', target_cursor = {9, 0} }, -- Target is the closing '}'
                 feedback = "You jumped to the matching curly brace in C++!",
             },
              {
@@ -297,7 +297,7 @@ Remember to use `:LearnVim exc` to check and `:LearnVim exr` to reset.
                 type = "cursor_move", -- Check cursor position
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module9_lesson5_exercise11_setup.txt"),
                 start_cursor = {6, 11}, -- Cursor on the '(' after println
-                validation = { type = 'check_cursor_position', target_cursor = {6, 27} }, -- Target is the closing ')'
+                validation = { type = 'check_cursor_position', target_cursor = {6, 28} }, -- Target is the closing ')'
                 feedback = "You jumped to the matching parenthesis in Kotlin!",
             },
              {
