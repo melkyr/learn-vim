@@ -300,12 +300,18 @@ return function(M) -- Accept the parent module M as an argument
     --- Display Motion Practice Menu ---
     function M_ui.display_motion_practice_menu()
         local menu_lines = {
-            "      k      ",
-            "    h   l    ",
-            "      j      ",
-            "",
-            "Press Esc or q to exit",
-            "Then type :LearnVim start or :LearnVim contents"
+            "    ---    ", -- Line 0
+            "   | k |   ", -- Line 1 (k at col 5)
+            "    ---    ", -- Line 2
+            " --- --- --- ", -- Line 3
+            "| h |   | l |", -- Line 4 (h at col 2, l at col 10)
+            " --- --- --- ", -- Line 5
+            "    ---    ", -- Line 6
+            "   | j |   ", -- Line 7 (j at col 5)
+            "    ---    ", -- Line 8
+            "",            -- Line 9
+            "Press Esc or q to exit", -- Line 10
+            "Then type :LearnVim start or :LearnVim contents" -- Line 11
         }
 
         -- Determine window size and position
@@ -316,7 +322,7 @@ return function(M) -- Accept the parent module M as an argument
             end
         end
 
-        local win_width = math.max(content_width + 4, 40) -- Add padding, min width 40
+        local win_width = math.max(content_width + 4, 25) -- Adjusted min width
         local win_height = #menu_lines + 2 -- Add padding for border
 
         local screen_width = vim.api.nvim_get_option_value('columns', {})
@@ -354,13 +360,10 @@ return function(M) -- Accept the parent module M as an argument
         vim.api.nvim_set_hl(0, 'LearnVimLKey', { fg = 'Yellow', bold = true })
 
         -- Apply highlights (0-indexed lines, 0-indexed byte-based columns)
-        -- Line 1 (idx 0): "      k      " -> k at col 6
-        vim.api.nvim_buf_add_highlight(menu_bufnr, ns_id, 'LearnVimKKey', 0, 6, 7)
-        -- Line 2 (idx 1): "    h   l    " -> h at col 4, l at col 8 (Note: original prompt said l at 10, but "    h   l    " has l at 8)
-        vim.api.nvim_buf_add_highlight(menu_bufnr, ns_id, 'LearnVimHKey', 1, 4, 5)
-        vim.api.nvim_buf_add_highlight(menu_bufnr, ns_id, 'LearnVimLKey', 1, 8, 9) -- Adjusted l position
-        -- Line 3 (idx 2): "      j      " -> j at col 6
-        vim.api.nvim_buf_add_highlight(menu_bufnr, ns_id, 'LearnVimJKey', 2, 6, 7)
+        vim.api.nvim_buf_add_highlight(menu_bufnr, ns_id, 'LearnVimKKey', 1, 5, 6)
+        vim.api.nvim_buf_add_highlight(menu_bufnr, ns_id, 'LearnVimHKey', 4, 2, 3)
+        vim.api.nvim_buf_add_highlight(menu_bufnr, ns_id, 'LearnVimLKey', 4, 10, 11)
+        vim.api.nvim_buf_add_highlight(menu_bufnr, ns_id, 'LearnVimJKey', 7, 5, 6)
 
         -- Set final buffer options (nomodifiable)
         Utils.set_buffer_options(menu_bufnr, {
@@ -375,10 +378,13 @@ return function(M) -- Accept the parent module M as an argument
         -- Define Keymaps
         local close_callback = function()
             if vim.api.nvim_win_is_valid(menu_winid) then
+                -- First, clear namespace if buffer is valid
+                if menu_bufnr and vim.api.nvim_buf_is_valid(menu_bufnr) and ns_id then
+                    vim.api.nvim_buf_clear_namespace(menu_bufnr, ns_id, 0, -1)
+                end
+                -- Then, close the window
                 vim.api.nvim_win_close(menu_winid, true)
             end
-            -- Clear highlights for this namespace to avoid issues if another buffer uses same ns_id
-            vim.api.nvim_buf_clear_namespace(menu_bufnr, ns_id, 0, -1)
         end
 
         vim.api.nvim_buf_set_keymap(menu_bufnr, 'n', '<Esc>', '', { noremap = true, silent = true, callback = close_callback })
@@ -387,11 +393,14 @@ return function(M) -- Accept the parent module M as an argument
         local function key_press_callback(key)
             return function()
                 if vim.api.nvim_win_is_valid(menu_winid) then
+                    -- First, clear namespace if buffer is valid
+                    if menu_bufnr and vim.api.nvim_buf_is_valid(menu_bufnr) and ns_id then
+                        vim.api.nvim_buf_clear_namespace(menu_bufnr, ns_id, 0, -1)
+                    end
+                    -- Then, close the window
                     vim.api.nvim_win_close(menu_winid, true)
                 end
                 vim.notify("Pressed " .. key)
-                -- Clear highlights for this namespace
-                vim.api.nvim_buf_clear_namespace(menu_bufnr, ns_id, 0, -1)
             end
         end
 
