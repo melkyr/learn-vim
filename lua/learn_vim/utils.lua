@@ -13,7 +13,7 @@ if script_path:sub(1,1) == "@" then
 end
 -- Example script_path: /home/user/.config/nvim/plugged/learn-vim/lua/learn_vim/utils.lua
 -- We want to get to /home/user/.config/nvim/plugged/learn-vim
-local PLUGIN_ROOT = vim.fn.gsub(script_path, "/lua/learn_vim/utils.lua$", "")
+local PLUGIN_ROOT = string.gsub(script_path, "/lua/learn_vim/utils.lua$", "")
 
 --- Sets multiple buffer options at once.
 -- @param bufnr (integer) The buffer number.
