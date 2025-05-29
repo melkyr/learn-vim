@@ -32,7 +32,7 @@ Let's practice finding characters on a line. Use `:LearnVim exc` to check and `:
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson1_exercise1_setup.txt"),
                 start_cursor = {5, 0}, -- Start at the beginning of the line
-                validation = { type = 'check_cursor_position', target_cursor = {5, 7} }, -- Target is the first 'a' in 'wizards'
+                validation = { type = 'check_cursor_position', target_cursor = {5, 10} }, -- Target is the first 'a' in 'wizards'
                 feedback = "You found the character!",
             },
              {
@@ -40,7 +40,7 @@ Let's practice finding characters on a line. Use `:LearnVim exc` to check and `:
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson1_exercise2_setup.txt"),
                 start_cursor = {5, 0}, -- Start at the beginning
-                validation = { type = 'check_cursor_position', target_cursor = {5, 23} }, -- Target is the space before 'f' in 'from'
+                validation = { type = 'check_cursor_position', target_cursor = {5, 24} }, -- Target is the space before 'f' in 'from'
                 feedback = "You jumped just before the character!",
             },
              {
@@ -48,7 +48,7 @@ Let's practice finding characters on a line. Use `:LearnVim exc` to check and `:
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson1_exercise3_setup.txt"),
                 start_cursor = {5, 0}, -- Start at the beginning
-                validation = { type = 'check_cursor_position', target_cursor = {5, 20} }, -- Target is the 'i' in 'ivy'
+                validation = { type = 'check_cursor_position', target_cursor = {5, 8} }, -- Target is the 'i' in 'wizards' (second 'i')
                 feedback = "You repeated the find forward!",
             },
              {
@@ -56,7 +56,7 @@ Let's practice finding characters on a line. Use `:LearnVim exc` to check and `:
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson1_exercise4_setup.txt"),
                 start_cursor = {5, 0}, -- Start at the beginning
-                validation = { type = 'check_cursor_position', target_cursor = {5, 17} }, -- Target is the 'i' in 'quilt'
+                validation = { type = 'check_cursor_position', target_cursor = {5, 1} }, -- Target is the 'i' in 'Jinxed' (first 'i')
                 feedback = "You repeated the find backward!",
             },
         },
@@ -92,7 +92,7 @@ Let's practice searching. Type the search command and the pattern, press `<Enter
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson2_exercise2_setup.txt"),
                 start_cursor = {7, 0}, -- Start at the end
-                validation = { type = 'check_cursor_position', target_cursor = {5, 4} }, -- Target is the start of "quick" on line 5
+                validation = { type = 'check_cursor_position', target_cursor = {5, 12} }, -- Target is the start of "quick" on line 5
                 feedback = "You found the word using backward search!",
             },
              {
@@ -100,7 +100,7 @@ Let's practice searching. Type the search command and the pattern, press `<Enter
                 type = "cursor_move",
                  setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson2_exercise3_setup.txt"),
                  start_cursor = {5, 0}, -- Start on "Line 1"
-                 validation = { type = 'check_cursor_position', target_cursor = {7, 0} }, -- Target is the start of "Line 3"
+                 validation = { type = 'check_cursor_position', target_cursor = {6, 0} }, -- Target is the start of "Line 2"
                  feedback = "You repeated the search forward!",
              },
         },
@@ -126,7 +126,7 @@ Let's practice using counts with find and search. Use `:LearnVim exc` to check a
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson3_exercise1_setup.txt"),
                 start_cursor = {5, 0}, -- Start at the beginning
-                validation = { type = 'check_cursor_position', target_cursor = {5, 20} }, -- Target is the 'i' in 'ivy' (1st in Jinxed, 2nd in wizards, 3rd in ivy)
+                validation = { type = 'check_cursor_position', target_cursor = {5, 21} }, -- Target is the 'i' in 'ivy' (1st in Jinxed, 2nd in wizards, 3rd in ivy)
                 feedback = "You jumped to the 3rd 'i'!",
             },
              {
