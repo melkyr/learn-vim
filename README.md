@@ -42,7 +42,7 @@ Install using your favorite Neovim package manager.
 Add this to your plugins list in `init.lua`:
 
 ```lua
-{ 'melkyr/learn-vim.nvim' }
+{ 'melkyr/learn-vim' }
 ```
 
 ### Using [Packer](https://github.com/wbthomason/packer.nvim)
@@ -50,7 +50,7 @@ Add this to your plugins list in `init.lua`:
 Add this to your plugins list in `init.lua`:
 
 ```lua
-use 'melkyr/learn-vim.nvim'
+use 'melkyr/learn-vim'
 ```
 
 ### Using [vim-plug](https://github.com/junegunn/vim-plug)
@@ -58,7 +58,7 @@ use 'melkyr/learn-vim.nvim'
 Add this to your `init.vim` or `init.lua`:
 
 ```vim
-Plug 'melkyr/learn-vim.nvim'
+Plug 'melkyr/learn-vim'
 ```
 
 After adding the plugin, run the appropriate command for your package manager to install it:
