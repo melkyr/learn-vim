@@ -1,0 +1,8 @@
+" --- Exercise 4.3.2 ---
+" Instruction: Using `yy`, yank the line 'Yank this line.'. Then move to the line below 'Paste here:' and use `p` to paste it. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Yank this line.
+Paste here:
+Yank this line.

@@ -1,0 +1,7 @@
+" --- Exercise 4.4.1 ---
+" Instruction: Move the word 'Move' from the first line to the end of the second line. Use `dw` and `p`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+ this word.
+To here. Move

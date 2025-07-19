@@ -1,0 +1,8 @@
+" --- Exercise 11.8.2 (Prolog) ---
+" Instruction: In this Prolog snippet, delete the line containing `ancestor(X, Y) :- parent(X, Y).`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+parent(X, Y) :- father(X, Y).
+parent(X, Y) :- mother(X, Y).
+ancestor(X, Y) :- parent(X, Y).
+ancestor(X, Y) :- parent(X, Z), ancestor(Z, Y).

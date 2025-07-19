@@ -1,0 +1,6 @@
+" --- Exercise 12.1.1 ---
+" Instruction: Type `:ls` and press <Enter> to list your current buffers. You should see at least two: one for the tutorial text and one for the exercise pane. Press <Enter> again to dismiss the listing. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Perform the `:ls` command in the command line.]

@@ -1,0 +1,7 @@
+" --- Exercise 10.8.1 (Racket) ---
+" Instruction: In this Racket snippet, record a macro into register `s` that deletes the word 'define' and moves to the next line. Keystrokes: `qs` `dw` `j` `0` `q`. Then play the macro 2 times using `2@s`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+( (func1 x) (+ x 1))
+( (func2 y) (* y 2))
+(define (func3 z) (- z 3))

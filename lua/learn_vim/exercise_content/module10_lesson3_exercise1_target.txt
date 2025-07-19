@@ -1,0 +1,9 @@
+" --- Exercise 10.3.1 (Python) ---
+" Instruction: In this Python snippet, record a macro into register `c` that deletes the word 'print' and moves to the next line. Keystrokes: `qc` `dw` `j` `q`. Then play the macro 3 times using `3@c` to delete 'print' on the next three lines. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+("Line 1")
+("Line 2")
+("Line 3")
+("Line 4")
+final_print("Done")]

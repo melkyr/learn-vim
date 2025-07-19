@@ -1,0 +1,10 @@
+" --- Exercise 14.7.2 ---
+" Instruction: Here is a small ASCII art Ace of Spades as a token of your mastery. You don't need to do anything with it. Type `:LearnVim exc` to finish this exercise.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+.------.
+|A_ .-.|
+|( \\| )|
+| \\ / |
+|  `  |
+'------']

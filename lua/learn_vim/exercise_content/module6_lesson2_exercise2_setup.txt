@@ -1,0 +1,9 @@
+" --- Exercise 6.2.2 ---
+" Instruction: Press `V` to enter Line Visual mode, move up 3 lines using `k`, then press `<Esc>`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+Line 1
+Line 2
+Line 3
+Line 4
+Line 5

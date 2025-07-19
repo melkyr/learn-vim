@@ -1,0 +1,9 @@
+" --- Exercise 9.1.2 (HTML) ---
+" Instruction: Using Block Visual (`<C-v>`) and `x`, delete the leading spaces on the three list items in this HTML snippet. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+<ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+</ul>

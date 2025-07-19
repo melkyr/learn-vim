@@ -1,0 +1,14 @@
+" --- Exercise 10.4.1 (Go) ---
+" Instruction: In this Go snippet, record a macro into register `f` that deletes the type `int` from the slice literal and moves to the next line. Keystrokes: `qf` `/int<Enter>` `dw` `j` `0` `q`. Then play the macro 2 times using `2@f`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+package main
+
+import "fmt"
+
+func main() {
+    numbers1 := []int{1, 2}
+    numbers2 := []int{3, 4}
+    numbers3 := []int{5, 6}
+    fmt.Println(numbers1, numbers2, numbers3)
+}

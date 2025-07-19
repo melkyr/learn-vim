@@ -1,0 +1,6 @@
+" --- Exercise 2.1.2 ---
+" Instruction: Using only the `h` key, move the cursor to the character 'E'. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+ABCDEFG

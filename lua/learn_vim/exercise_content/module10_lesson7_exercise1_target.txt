@@ -1,0 +1,9 @@
+" --- Exercise 10.7.1 (C#) ---
+" Instruction: In this C# snippet, record a macro into register `o` that deletes the word 'public' and moves to the next line. Keystrokes: `qo` `dw` `j` `0` `q`. Then play the macro 2 times using `2@o`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+ class Example {
+     string Name { get; set; }
+     int Age { get; set; }
+    private bool IsActive { get; set; }
+}

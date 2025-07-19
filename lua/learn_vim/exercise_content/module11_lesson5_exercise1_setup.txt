@@ -1,0 +1,10 @@
+" --- Exercise 11.5.1 (TypeScript) ---
+" Instruction: In this TypeScript snippet, use `:s` to replace all occurrences of `string` with `number` within the `interface` definition. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+interface User {
+  id: string;
+  name: string;
+  email: string;
+  age: number;
+}

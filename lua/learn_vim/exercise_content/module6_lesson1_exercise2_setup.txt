@@ -1,0 +1,6 @@
+" --- Exercise 6.1.2 ---
+" Instruction: Press `v`, move right 5 characters using `l`, then press `<Esc>`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Select 5 characters here.]

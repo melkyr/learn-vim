@@ -1,0 +1,6 @@
+" --- Exercise 3.4.4 ---
+" Instruction: Using a numerical prefix with `b`, move backward exactly 3 words from the starting position. Then type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+One two three four five six seven: Start here.

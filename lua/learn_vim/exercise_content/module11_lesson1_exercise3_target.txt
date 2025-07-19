@@ -1,0 +1,9 @@
+" --- Exercise 11.1.3 (Fortran) ---
+" Instruction: In this Fortran snippet, yank the line `  PRINT *, 'Hello'` and paste it below the line `  PRINT *, 'World'`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+PROGRAM HelloWorld
+  PRINT *, 'Hello'
+  PRINT *, 'World'
+  PRINT *, 'Hello'
+END PROGRAM HelloWorld

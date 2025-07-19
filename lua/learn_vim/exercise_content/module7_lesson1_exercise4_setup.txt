@@ -1,0 +1,6 @@
+" --- Exercise 7.1.4 ---
+" Instruction: Using `f`, jump to the first 'i'. Then use `;` to jump to the next 'i'. Then use `,` to jump back to the previous 'i'. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Jinxed wizards pluck ivy from the big quilt.

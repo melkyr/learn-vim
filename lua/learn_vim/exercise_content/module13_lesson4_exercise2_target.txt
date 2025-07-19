@@ -1,0 +1,5 @@
+" --- Exercise 13.4.2 (SQL) ---
+" Instruction: In this SQL snippet, place your cursor anywhere inside the parentheses `()` after `VALUES` and use `ci(` to change the inner parentheses. Type `1, 'Test User'` and press `<Esc>`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+INSERT INTO users (id, name) VALUES (1, 'Test User');

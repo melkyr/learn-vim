@@ -1,0 +1,10 @@
+" --- Exercise 11.7.1 (Fortran) ---
+" Instruction: In this Fortran snippet, use `:s` to replace the first occurrence of `10` with `20` on the line containing `x = 10`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+PROGRAM Variables
+  INTEGER :: x, y
+  x = 20
+  y = 20
+  PRINT *, 'x = ', x
+END PROGRAM Variables

@@ -1,0 +1,8 @@
+" --- Exercise 9.5.1 (Lua) ---
+" Instruction: In this Lua snippet, use Line Visual (`V`) to select the lines inside the `if` block and delete them (`d`). Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+local count = 0
+if count == 0 then
+end
+print("Done")]

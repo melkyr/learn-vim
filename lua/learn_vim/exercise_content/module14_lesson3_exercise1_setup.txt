@@ -1,0 +1,6 @@
+" --- Exercise 14.3.1 ---
+" Instruction: Type `:nnoremap <F2> :set nonumber<CR>` and press <Enter> to map the F2 key to turn off line numbers. Press F2 to test it. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Create a mapping for the F2 key.]

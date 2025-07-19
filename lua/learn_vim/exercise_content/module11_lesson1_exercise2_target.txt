@@ -1,0 +1,10 @@
+" --- Exercise 11.1.2 (Assembly - GAS) ---
+" Instruction: In this Assembly snippet, change the instruction `mov eax, 1` to `mov ebx, 0`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+.global _start
+
+_start:
+    mov ebx, 0
+    mov ebx, 0
+    int 0x80

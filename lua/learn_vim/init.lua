@@ -10,7 +10,7 @@ local M = {} -- The main module table
 -- Stores the current state of the tutorial for persistence.
 -- Initialize with default values. These will be overwritten if progress is loaded.
 M.current_state = {
-    module = 1,         -- Current module number (integer)
+    module = 0,         -- Current module number (integer)
     lesson = 1,         -- Current lesson number within the module (integer)
     exercise = 1,       -- Current exercise number within the lesson (integer)
     tutorial_bufnr = -1, -- Buffer number for the tutorial pane (-1 if not created)
@@ -157,7 +157,7 @@ function M.restart_tutorial()
     end
 
      -- Reset the state to the initial values.
-     M.current_state = { module = 1, lesson = 1, exercise = 1 }
+     M.current_state = { module = 0, lesson = 1, exercise = 1 }
      -- Reset UI state as well, so setup_tutorial_ui recreates windows/buffers cleanly.
      M.current_state.tutorial_bufnr = -1
      M.current_state.exercise_bufnr = -1
@@ -201,6 +201,17 @@ end
 -- Called internally at startup.
 function M.load_progress()
     M.state.load_progress()
+end
+
+--- Displays the motion practice menu.
+-- Called by :LearnVim motion.
+function M.motion_practice()
+    -- Potentially add any logic here if needed before showing the menu
+    if M.ui and M.ui.display_motion_practice_menu then
+        M.ui.display_motion_practice_menu()
+    else
+        vim.notify("LearnVim Error: Motion practice UI function not available.", vim.log.levels.ERROR)
+    end
 end
 
 -- --- Plugin Setup ---

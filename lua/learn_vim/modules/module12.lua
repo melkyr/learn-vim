@@ -3,6 +3,8 @@
 -- This file contains the content for Module 12: Buffers, Windows, and Tabs.
 -- It introduces these core concepts and provides exercises for practical use.
 
+local Utils = require('learn_vim.utils')
+
 return {
     title = "Buffers, Windows, and Tabs",
     lesson1 = {
@@ -28,13 +30,7 @@ Let's start by looking at your current buffers. Use `:LearnVim exc` to check and
                 instruction = "Type `:ls` and press <Enter> to list your current buffers. You should see at least two: one for the tutorial text and one for the exercise pane. Press <Enter> again to dismiss the listing. Type `:LearnVim exc` to check.",
                 type = "command", -- Check if the command was likely executed (by checking mode)
                 target_command = ":ls",
-                setup_text = [[
-" --- Exercise 12.1.1 ---
-" Instruction: Type `:ls` and press <Enter> to list your current buffers. You should see at least two: one for the tutorial text and one for the exercise pane. Press <Enter> again to dismiss the listing. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Perform the `:ls` command in the command line.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module12_lesson1_exercise1_setup.txt"),
                 start_cursor = {5, 0},
                 validation = { type = 'check_mode', target_mode = 'n' }, -- Basic validation: back to Normal mode
                 feedback = "You listed your buffers!",
@@ -60,23 +56,11 @@ Let's practice navigating buffers. Use `:LearnVim exc` to check and `:LearnVim e
             {
                 instruction = "Type `:bnext` and press <Enter> to switch to the next buffer. Then type `:bprev` and press <Enter> to switch back to this exercise buffer. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content
-                setup_text = [[
-" --- Exercise 12.2.1 ---
-" Instruction: Type `:bnext` and press <Enter> to switch to the next buffer. Then type `:bprev` and press <Enter> to switch back to this exercise buffer. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Switch away and back using :bnext and :bprev.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module12_lesson2_exercise1_setup.txt"),
                 start_cursor = {5, 0},
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 12.2.1 ---
-" Instruction: Type `:bnext` and press <Enter> to switch to the next buffer. Then type `:bprev` and press <Enter> to switch back to this exercise buffer. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Switch away and back using :bnext and :bprev.]] -- Ensure we are back in this buffer
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module12_lesson2_exercise1_target.txt")
                 },
                 feedback = "You navigated between buffers!",
             },
@@ -88,13 +72,7 @@ Switch away and back using :bnext and :bprev.]] -- Ensure we are back in this bu
                 -- and loading the next exercise. We can't check content *after* deletion.
                 -- Let's rely on the user following instructions and the tutorial
                 -- automatically loading the next exercise.
-                setup_text = [[
-" --- Exercise 12.2.2 ---
-" Instruction: Type `:bd` and press <Enter> to delete this exercise buffer. (Don't worry, the tutorial will recreate it). Type `:LearnVim exc` to check after deleting.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Delete this buffer using :bd.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module12_lesson2_exercise2_setup.txt"),
                 start_cursor = {5, 0},
                 validation = {
                     type = 'check_mode', -- Placeholder: just check they are back in Normal mode
@@ -123,13 +101,7 @@ Let's practice splitting windows. Use `:LearnVim exc` to check and `:LearnVim ex
             {
                 instruction = "Type `:split` and press <Enter> to split the current window horizontally. You should see two windows displaying this buffer. Type `:LearnVim exc` to check.",
                 type = "mode_switch", -- Check mode
-                setup_text = [[
-" --- Exercise 12.3.1 ---
-" Instruction: Type `:split` and press <Enter> to split the current window horizontally. You should see two windows displaying this buffer. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Split this window horizontally.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module12_lesson3_exercise1_setup.txt"),
                 start_cursor = {5, 0},
                 validation = { type = 'check_mode', target_mode = 'n' }, -- Basic validation
                 feedback = "You split the window horizontally!",
@@ -138,13 +110,7 @@ Split this window horizontally.]],
              {
                 instruction = "Type `:vsplit` and press <Enter> to split the current window vertically. You should now have three windows. Type `:LearnVim exc` to check.",
                 type = "mode_switch", -- Check mode
-                setup_text = [[
-" --- Exercise 12.3.2 ---
-" Instruction: Type `:vsplit` and press <Enter> to split the current window vertically. You should now have three windows. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Split this window vertically.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module12_lesson3_exercise2_setup.txt"),
                 start_cursor = {5, 0},
                 validation = { type = 'check_mode', target_mode = 'n' }, -- Basic validation
                 feedback = "You split the window vertically!",
@@ -174,13 +140,7 @@ Let's practice navigating and closing windows. Use `:LearnVim exc` to check and 
             {
                 instruction = "Split the window horizontally (`:split`). Then use `<C-w> k` to move to the window above. Type `:LearnVim exc` to check.",
                 type = "cursor_move", -- Check cursor position (which implies window focus)
-                setup_text = [[
-" --- Exercise 12.4.1 ---
-" Instruction: Split the window horizontally (`:split`). Then use `<C-w> k` to move to the window above. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Move to the window above after splitting.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module12_lesson4_exercise1_setup.txt"),
                 start_cursor = {5, 0},
                  -- After :split, cursor is usually in the bottom window.
                  -- After <C-w> k, cursor should be in the top window, at the same line/col.
@@ -193,13 +153,7 @@ Move to the window above after splitting.]],
              {
                 instruction = "Split the window vertically (`:vsplit`). Then use `<C-w> h` to move to the window on the left. Type `:LearnVim exc` to check.",
                 type = "mode_switch", -- Check mode
-                setup_text = [[
-" --- Exercise 12.4.2 ---
-" Instruction: Split the window vertically (`:vsplit`). Then use `<C-w> h` to move to the window on the left. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Move to the window on the left after splitting.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module12_lesson4_exercise2_setup.txt"),
                 start_cursor = {5, 0},
                 validation = { type = 'check_mode', target_mode = 'n' }, -- Basic validation
                 feedback = "You split and navigated windows!",
@@ -208,13 +162,7 @@ Move to the window on the left after splitting.]],
              {
                 instruction = "Split the window horizontally (`:split`). Then use `:close` and press <Enter> to close the new window. Type `:LearnVim exc` to check.",
                 type = "mode_switch", -- Check mode
-                setup_text = [[
-" --- Exercise 12.4.3 ---
-" Instruction: Split the window horizontally (`:split`). Then use `:close` and press <Enter> to close the new window. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Close the extra window.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module12_lesson4_exercise3_setup.txt"),
                 start_cursor = {5, 0},
                 validation = { type = 'check_mode', target_mode = 'n' }, -- Basic validation
                 feedback = "You closed a window!",
@@ -243,13 +191,7 @@ Let's practice working with tab pages. Use `:LearnVim exc` to check and `:LearnV
             {
                 instruction = "Type `:tabnew` and press <Enter> to create a new tab page. You should see a new blank tab. Then type `:tabprev` and press <Enter> (or use `gT`) to return to the tutorial tab. Type `:LearnVim exc` to check.",
                 type = "mode_switch", -- Check mode
-                setup_text = [[
-" --- Exercise 12.5.1 ---
-" Instruction: Type `:tabnew` and press <Enter> to create a new tab page. You should see a new blank tab. Then type `:tabprev` and press <Enter> (or use `gT`) to return to the tutorial tab. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Practice creating and navigating tabs.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module12_lesson5_exercise1_setup.txt"),
                 start_cursor = {5, 0},
                 validation = { type = 'check_mode', target_mode = 'n' }, -- Basic validation
                 feedback = "You created and navigated tabs!",
@@ -258,13 +200,7 @@ Practice creating and navigating tabs.]],
              {
                 instruction = "Type `:tabnew` and press <Enter> to create a new tab page. Then type `:tabclose` and press <Enter> to close that new tab and return to the tutorial. Type `:LearnVim exc` to check.",
                 type = "mode_switch", -- Check mode
-                setup_text = [[
-" --- Exercise 12.5.2 ---
-" Instruction: Type `:tabnew` and press <Enter> to create a new tab page. Then type `:tabclose` and press <Enter> to close that new tab and return to the tutorial. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Practice creating and closing tabs.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module12_lesson5_exercise2_setup.txt"),
                 start_cursor = {5, 0},
                 validation = { type = 'check_mode', target_mode = 'n' }, -- Basic validation
                 feedback = "You created and closed a tab!",
@@ -285,39 +221,18 @@ Let's perform a sequence of actions that uses buffers, windows, and tabs togethe
             {
                 instruction = "Yank the line 'YANK THIS LINE' using `yy`. Then type `:tabnew` to open a new tab. In the new tab, type `p` to paste the line. Then type `:tabclose` to close the new tab and return here. Type `:LearnVim exc` to check.",
                 type = "insert_text", -- Check buffer content (should be unchanged)
-                setup_text = [[
-" --- Exercise 12.6.1 ---
-" Instruction: Yank the line 'YANK THIS LINE' using `yy`. Then type `:tabnew` to open a new tab. In the new tab, type `p` to paste the line. Then type `:tabclose` to close the new tab and return here. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-YANK THIS LINE
-This line should remain unchanged.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module12_lesson6_exercise1_setup.txt"),
                 start_cursor = {5, 0}, -- Cursor on "YANK THIS LINE"
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = [[
-" --- Exercise 12.6.1 ---
-" Instruction: Yank the line 'YANK THIS LINE' using `yy`. Then type `:tabnew` to open a new tab. In the new tab, type `p` to paste the line. Then type `:tabclose` to close the new tab and return here. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-YANK THIS LINE
-This line should remain unchanged.]] -- The buffer content should be back to its original state
+                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module12_lesson6_exercise1_target.txt")
                 },
                 feedback = "You successfully yanked, tabnew'd, pasted, and tabclosed!",
             },
              {
                 instruction = "Yank the line 'YANK THIS LINE' using `yy`. Then type `:split` to open a new window. In the new window, type `:bnext` to switch to the tutorial text buffer. Type `:LearnVim exc` to check.",
                 type = "mode_switch", -- Check mode
-                setup_text = [[
-" --- Exercise 12.6.2 ---
-" Instruction: Yank the line 'YANK THIS LINE' using `yy`. Then type `:split` to open a new window. In the new window, type `:bnext` to switch to the tutorial text buffer. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-YANK THIS LINE
-This line is not the tutorial text.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module12_lesson6_exercise2_setup.txt"),
                 start_cursor = {5, 0}, -- Cursor on "YANK THIS LINE"
                 validation = { type = 'check_mode', target_mode = 'n' }, -- Basic validation
                 feedback = "You combined yanking, splitting, and buffer navigation!",

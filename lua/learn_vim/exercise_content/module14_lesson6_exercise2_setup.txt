@@ -1,0 +1,6 @@
+" --- Exercise 14.6.2 ---
+" Instruction: Type `:highlight Normal guibg=red` and press <Enter> to change the background color of normal text (this might affect the tutorial pane!). Then type `:highlight Normal guibg=NONE` and press <Enter> to reset it. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Experiment with changing highlight colors.]

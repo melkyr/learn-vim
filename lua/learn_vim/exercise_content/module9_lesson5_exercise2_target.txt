@@ -1,0 +1,12 @@
+" --- Exercise 9.5.2 (Go) ---
+" Instruction: In this Go snippet, use Block Visual (`<C-v>`) to delete the type declaration (`int`) from the slice definition. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+package main
+
+import "fmt"
+
+func main() {
+    numbers := []{1, 2, 3}
+    fmt.Println(numbers)
+}]

@@ -297,5 +297,143 @@ return function(M) -- Accept the parent module M as an argument
         })
     end
 
+    --- Display Motion Practice Menu ---
+    function M_ui.display_motion_practice_menu()
+        local menu_lines = {
+            "    ---    ", -- Line 0
+            "   | k |   ", -- Line 1 (k at col 5)
+            "    ---    ", -- Line 2
+            " --- --- --- ", -- Line 3
+            "| h |   | l |", -- Line 4 (h at col 2, l at col 10)
+            " --- --- --- ", -- Line 5
+            "    ---    ", -- Line 6
+            "   | j |   ", -- Line 7 (j at col 5)
+            "    ---    ", -- Line 8
+            "",            -- Line 9
+            "Press Esc or q to exit", -- Line 10
+            "Then type :LearnVim start or :LearnVim contents" -- Line 11
+        }
+
+        -- Determine window size and position
+        local content_width = 0
+        for _, line in ipairs(menu_lines) do
+            if #line > content_width then
+                content_width = #line
+            end
+        end
+
+        local win_width = math.max(content_width + 4, 25) -- Adjusted min width
+        local win_height = #menu_lines + 2 -- Add padding for border
+
+        local screen_width = vim.api.nvim_get_option_value('columns', {})
+        local screen_height = vim.api.nvim_get_option_value('lines', {})
+        local row = math.floor((screen_height - win_height) / 2)
+        local col = math.floor((screen_width - win_width) / 2)
+
+        -- Create buffer and window
+        local menu_bufnr = vim.api.nvim_create_buf(false, true) -- nofile, scratch
+        local win_opts = {
+            relative = 'editor', style = 'minimal', border = 'rounded',
+            width = win_width, height = win_height, row = row, col = col,
+            focusable = true, zindex = 50
+        }
+        local menu_winid = vim.api.nvim_open_win(menu_bufnr, true, win_opts)
+
+        -- Set buffer options (initially modifiable for setting lines)
+        Utils.set_buffer_options(menu_bufnr, {
+            modifiable = true,
+            bufhidden = 'wipe', -- Ensure it gets wiped when hidden
+            buftype = 'nofile',
+            swapfile = false,
+            cursorline = false,
+            buflisted = false
+        })
+
+        -- Populate buffer
+        vim.api.nvim_buf_set_lines(menu_bufnr, 0, -1, false, menu_lines)
+
+        -- Syntax Highlighting for h,j,k,l
+        local ns_id = vim.api.nvim_create_namespace('LearnVimMotionMenu')
+        vim.api.nvim_set_hl(0, 'LearnVimKKey', { fg = 'Red', bold = true })
+        vim.api.nvim_set_hl(0, 'LearnVimJKey', { fg = 'Green', bold = true })
+        vim.api.nvim_set_hl(0, 'LearnVimHKey', { fg = 'Blue', bold = true })
+        vim.api.nvim_set_hl(0, 'LearnVimLKey', { fg = 'Yellow', bold = true })
+        vim.api.nvim_set_hl(0, 'LearnVimMotionActiveKey', { fg = 'White', bg = '#0000FF', bold = true }) -- Active key highlight
+
+        local motion_keys_info = {
+            k = { char = 'k', line = 1, col_start = 5, col_end = 6, hl_group = 'LearnVimKKey' },
+            h = { char = 'h', line = 4, col_start = 2, col_end = 3, hl_group = 'LearnVimHKey' },
+            l = { char = 'l', line = 4, col_start = 10, col_end = 11, hl_group = 'LearnVimLKey' },
+            j = { char = 'j', line = 7, col_start = 5, col_end = 6, hl_group = 'LearnVimJKey' }
+        }
+
+        -- Apply initial highlights (0-indexed lines, 0-indexed byte-based columns)
+        for _, key_info in pairs(motion_keys_info) do
+            vim.api.nvim_buf_add_highlight(menu_bufnr, ns_id, key_info.hl_group, key_info.line, key_info.col_start, key_info.col_end)
+        end
+
+        -- Set final buffer options (nomodifiable)
+        Utils.set_buffer_options(menu_bufnr, {
+            modifiable = false,
+            bufhidden = 'wipe',
+            buftype = 'nofile',
+            swapfile = false,
+            cursorline = false,
+            buflisted = false
+        })
+
+        -- Define Keymaps
+        local close_callback = function()
+            if vim.api.nvim_win_is_valid(menu_winid) then
+                -- First, clear namespace if buffer is valid
+                if menu_bufnr and vim.api.nvim_buf_is_valid(menu_bufnr) and ns_id then
+                    vim.api.nvim_buf_clear_namespace(menu_bufnr, ns_id, 0, -1)
+                end
+                -- Then, close the window
+                vim.api.nvim_win_close(menu_winid, true)
+            end
+        end
+
+        vim.api.nvim_buf_set_keymap(menu_bufnr, 'n', '<Esc>', '', { noremap = true, silent = true, callback = close_callback })
+        vim.api.nvim_buf_set_keymap(menu_bufnr, 'n', 'q', '', { noremap = true, silent = true, callback = close_callback })
+
+        local current_active_key_char = nil -- Variable to keep track of the active key
+
+        local function key_press_callback(pressed_key_char)
+            return function()
+                vim.notify("Pressed " .. pressed_key_char)
+
+                -- 1. Reset all motion keys to their original highlights
+                for key_char_loop, key_info in pairs(motion_keys_info) do
+                    -- Clear the specific highlight region for this key on its line
+                    vim.api.nvim_buf_clear_namespace(menu_bufnr, ns_id, key_info.line, key_info.line + 1)
+                    -- Re-apply its original highlight
+                    vim.api.nvim_buf_add_highlight(menu_bufnr, ns_id, key_info.hl_group, key_info.line, key_info.col_start, key_info.col_end)
+                end
+                
+                -- If other non-motion key highlights were on the same lines and cleared by clear_namespace, they would need to be reapplied.
+                -- For this menu, only motion keys are highlighted on these specific lines (1, 4, 7), so direct re-application is fine.
+
+                -- 2. Apply active highlight to the pressed key
+                local active_key_info = motion_keys_info[pressed_key_char]
+                if active_key_info then
+                    -- Clear its specific region again before applying new highlight (already done above, but good for safety if logic changes)
+                    -- vim.api.nvim_buf_clear_namespace(menu_bufnr, ns_id, active_key_info.line, active_key_info.line + 1)
+                    vim.api.nvim_buf_add_highlight(menu_bufnr, ns_id, 'LearnVimMotionActiveKey', active_key_info.line, active_key_info.col_start, active_key_info.col_end)
+                    current_active_key_char = pressed_key_char -- Keep track
+                end
+                -- Menu remains open.
+            end
+        end
+
+        vim.api.nvim_buf_set_keymap(menu_bufnr, 'n', 'h', '', { noremap = true, silent = true, callback = key_press_callback('h') })
+        vim.api.nvim_buf_set_keymap(menu_bufnr, 'n', 'j', '', { noremap = true, silent = true, callback = key_press_callback('j') })
+        vim.api.nvim_buf_set_keymap(menu_bufnr, 'n', 'k', '', { noremap = true, silent = true, callback = key_press_callback('k') })
+        vim.api.nvim_buf_set_keymap(menu_bufnr, 'n', 'l', '', { noremap = true, silent = true, callback = key_press_callback('l') })
+
+        -- Set focus to the window
+        vim.api.nvim_set_current_win(menu_winid)
+    end
+
     return M_ui
 end

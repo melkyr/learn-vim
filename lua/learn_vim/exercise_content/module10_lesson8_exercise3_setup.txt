@@ -1,0 +1,9 @@
+" --- Exercise 10.8.3 (Kotlin) ---
+" Instruction: In this Kotlin snippet, record a macro into register `u` that deletes the word 'println' and moves to the next line. Keystrokes: `qu` `dw` `j` `0` `q`. Then play the macro 2 times using `2@u`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+fun main() {
+    println("Message 1")
+    println("Message 2")
+    println("Message 3")
+}

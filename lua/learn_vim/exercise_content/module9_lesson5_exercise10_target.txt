@@ -1,0 +1,22 @@
+" --- Exercise 9.5.10 (C#) ---
+" Instruction: In this C# snippet, use Line Visual (`V`) to select the two lines inside the `if` block and yank them (`y`). Then move to the line below the `else` block and paste them (`p`). Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+public class Greeter
+{
+    public void Greet(bool sayHello)
+    {
+        if (sayHello)
+        {
+            Console.WriteLine("Hello");
+            Console.WriteLine("World");
+        }
+        else
+        {
+            Console.WriteLine("Goodbye");
+        }
+        // Paste yanked lines here
+            Console.WriteLine("Hello");
+            Console.WriteLine("World");
+    }
+}

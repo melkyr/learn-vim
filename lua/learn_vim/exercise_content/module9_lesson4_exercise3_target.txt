@@ -1,0 +1,17 @@
+" --- Exercise 9.4.3 (Java) ---
+" Instruction: In this Java snippet, place your cursor on the opening curly brace `{` of the `if` statement and use `y%` to yank the content inside (including the braces). Then move to the line below the `else` block and paste it using `p`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+class Example {
+    void checkNumber(int num) {
+        if (num > 0) {
+            System.out.println("Positive");
+        } else {
+            System.out.println("Non-positive");
+        }
+        // Paste yanked text here
+        {
+            System.out.println("Positive");
+        }
+    }
+}

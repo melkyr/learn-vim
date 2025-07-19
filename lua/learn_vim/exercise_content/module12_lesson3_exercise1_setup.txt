@@ -1,0 +1,6 @@
+" --- Exercise 12.3.1 ---
+" Instruction: Type `:split` and press <Enter> to split the current window horizontally. You should see two windows displaying this buffer. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Split this window horizontally.]

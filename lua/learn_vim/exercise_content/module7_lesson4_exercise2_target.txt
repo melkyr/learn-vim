@@ -1,0 +1,6 @@
+" --- Exercise 7.4.2 ---
+" Instruction: Using `:s` with the `g` flag, replace all occurrences of 'old' with 'new' on the line below. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+This line has new text and also new text.]

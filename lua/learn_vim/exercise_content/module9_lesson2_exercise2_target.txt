@@ -1,0 +1,10 @@
+" --- Exercise 9.2.2 ---
+" Instruction: Using Block Visual (`<C-v>`) and `I`, insert 'Prefix: ' at the start of the first two lines. Type the text, press `<Esc>`. Then move to the next two lines and use `.` to repeat the block insertion. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+Prefix: Line A1
+Prefix: Line A2
+Prefix: Line B1
+Prefix: Line B2
+Line C1
+Line C2

@@ -1,0 +1,10 @@
+" --- Exercise 10.6.2 (PHP) ---
+" Instruction: In this PHP snippet, record a macro into register `m` that deletes the '$' character and moves to the next line. Keystrokes: `qm` `x` `j` `0` `q`. Then play the macro 3 times using `3@m`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+<?php
+name = "Alice";
+age = 30;
+city = "London";
+$isActive = true;
+?>

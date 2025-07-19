@@ -1,0 +1,6 @@
+" --- Exercise 12.3.2 ---
+" Instruction: Type `:vsplit` and press <Enter> to split the current window vertically. You should now have three windows. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Split this window vertically.]

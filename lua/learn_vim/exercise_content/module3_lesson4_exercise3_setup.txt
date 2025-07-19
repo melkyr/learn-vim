@@ -1,0 +1,6 @@
+" --- Exercise 3.4.3 ---
+" Instruction: Using a numerical prefix with `w`, move forward exactly 5 words from the starting position. Then type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+Start here: One two three four five six seven.

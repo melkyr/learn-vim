@@ -1,0 +1,6 @@
+" --- Exercise 1.4.1 ---
+" Instruction: Use `a` to append ' my first edit' to the line below. Press `<Esc>` to return to Normal mode. Then type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+This is the line.

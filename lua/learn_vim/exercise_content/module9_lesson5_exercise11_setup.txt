@@ -1,0 +1,7 @@
+" --- Exercise 9.5.11 (Kotlin) ---
+" Instruction: In this Kotlin snippet, place your cursor on the opening parenthesis `(` of the `println` call and press `%`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+fun main() {
+    println("Hello, Kotlin!")
+}]

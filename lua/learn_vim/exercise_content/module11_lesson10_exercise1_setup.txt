@@ -1,0 +1,7 @@
+" --- Exercise 11.10.1 (Clojure) ---
+" Instruction: In this Clojure snippet, delete the line containing `(println \"Hello\")`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+(defn greet []
+  (println "Hello")
+  (println "World"))

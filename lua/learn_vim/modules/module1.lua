@@ -3,6 +3,8 @@
 -- This file contains the content for Module 1: The Vim Mindset & Survival Basics.
 -- It returns a table representing this module's structure and lessons.
 
+local Utils = require('learn_vim.utils')
+
 return {
     title = "The Vim Mindset & Survival Basics",
     lesson1 = {
@@ -62,13 +64,7 @@ Let's practice!
              {
                 instruction = "Press `i` to enter Insert mode. Type some text, then press `<Esc>` again to return to Normal mode. After returning to Normal mode, type `:LearnVim exc` to check.", -- Updated instruction
                 type = "mode_switch",
-                setup_text = [[
-" --- Exercise 1.2.2 ---
-" Instruction: Press `i` to enter Insert mode. Type some text, then press `<Esc>` again to return to Normal mode. After returning to Normal mode, type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Type something here:]], -- Initial text in the exercise buffer
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module1_lesson2_exercise2_setup.txt"),
                 start_cursor = {5, 16}, -- Optional: position cursor after "Type something here:" (line 5, col 16)
                 validation = { type = 'check_mode', target_mode = 'n' }, -- Validation rule: check final mode is Normal
                 feedback = "Good! Switching modes is essential.",
@@ -90,23 +86,11 @@ Let's practice typing something *before* existing text. Remember to press `<Esc>
             {
                 instruction = "Press `i` to enter Insert mode. Type 'INSERTED ' before 'TARGET', then press `<Esc>`. Type `:LearnVim exc` to check.", -- Updated instruction
                 type = "insert_text", -- Indicates this exercise is about inserting text
-                setup_text = [[
-" --- Exercise 1.3.1 ---
-" Instruction: Press `i` to enter Insert mode. Type 'INSERTED ' before 'TARGET', then press `<Esc>`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Insert text before TARGET here.]], -- Initial text including header comments
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module1_lesson3_exercise1_setup.txt"),
                 start_cursor = {5, 20}, -- Position cursor on 'T' of TARGET (line 5, column 20 - 0-based)
                 validation = {
                      type = 'check_buffer_content', -- Validation rule: check the entire buffer content
-                     target_content = [[
-" --- Exercise 1.3.1 ---
-" Instruction: Press `i` to enter Insert mode. Type 'INSERTED ' before 'TARGET', then press `<Esc>`. Type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Insert text before INSERTED TARGET here.]] -- Expected buffer content *including* the header lines
+                     target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module1_lesson3_exercise1_target.txt")
                 },
                 feedback = "You typed before the text correctly!",
             },
@@ -127,23 +111,11 @@ Remember to use `:LearnVim exc` to check and `:LearnVim exr` to reset the exerci
             {
                 instruction = "Use `a` to append ' my first edit' to the line below. Press `<Esc>` to return to Normal mode. Then type `:LearnVim exc` to check.", -- Updated instruction
                 type = "insert_text",
-                setup_text = [[
-" --- Exercise 1.4.1 ---
-" Instruction: Use `a` to append ' my first edit' to the line below. Press `<Esc>` to return to Normal mode. Then type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-This is the line.]], -- Start text
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module1_lesson4_exercise1_setup.txt"),
                  start_cursor = {5, 20}, -- Cursor at the end of the line "This is the line." (line 5, column 20)
                 validation = {
                      type = 'check_buffer_content',
-                     target_content = [[
-" --- Exercise 1.4.1 ---
-" Instruction: Use `a` to append ' my first edit' to the line below. Press `<Esc>` to return to Normal mode. Then type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-This is the line. my first edit]]
+                     target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module1_lesson4_exercise1_target.txt")
                 },
                 feedback = "Append successful! You made your first edit.",
             },
@@ -169,13 +141,7 @@ In this tutorial, attempting to save the exercise buffer will show an error beca
                 instruction = "Type `:w` and press `<Enter>`. Then type `:LearnVim exc` to check.", -- Updated instruction
                 type = "command",
                 target_command = ":w",
-                setup_text = [[
-" --- Exercise 1.5.1 ---
-" Instruction: Type `:w` and press `<Enter>`. Then type `:LearnVim exc` to check.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-This buffer needs saving. Changes were made here.]] ,
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module1_lesson5_exercise1_setup.txt"),
                 -- setup_state = { modified = true }, -- TODO: Need to programmatically set modified flag in init.lua before loading this exercise
                 validation = { type = 'check_command', target_command = ':w' }, -- Validation updated in exercise.lua
                 feedback = "You attempted to save! The error message confirms you used the command.", -- Updated feedback
@@ -207,14 +173,7 @@ In this tutorial, these commands won't actually close Neovim, but they will affe
                 instruction = "Type `:q!` and press `<Enter>`. Then type `:LearnVim exc` to check. Exit and restart Neovim to verify progress was not saved.", -- Updated instruction
                 type = "command",
                 target_command = ":q!",
-                setup_text = [[
-" --- Exercise 1.6.1 ---
-" Instruction: Type `:q!` and press `<Enter>`. Then type `:LearnVim exc` to check. Exit and restart Neovim to verify progress was not saved.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Make changes here, then abandon them.
-Add some text.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module1_lesson6_exercise1_setup.txt"),
                 -- setup_state = { modified = true }, -- TODO: Need to programmatically set modified flag
                 validation = { type = 'check_command', target_command = ':q!' }, -- Validation updated in exercise.lua
                 feedback = "You attempted to quit without saving! Now exit Neovim completely (:qall), restart, and type :LearnVim start to see you're still on this lesson.", -- Updated feedback
@@ -223,14 +182,7 @@ Add some text.]],
                 instruction = "Now, type `:wq` and press `<Enter>` to save and quit cleanly. Type `:LearnVim exc` to check. Exit and restart Neovim to verify progress was saved.", -- Updated instruction
                 type = "command",
                 target_command = ":wq",
-                setup_text = [[
-" --- Exercise 1.6.2 ---
-" Instruction: Now, type `:wq` and press `<Enter>` to save and quit cleanly. Type `:LearnVim exc` to check. Exit and restart Neovim to verify progress was saved.
-" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
-" ---------------------------------------------
-
-Make changes here that you want to save.
-Add some text.]],
+                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module1_lesson6_exercise2_setup.txt"),
                 -- setup_state = { modified = true }, -- TODO: Need to programmatically set modified flag
                 validation = { type = 'check_command', target_command = ':wq' }, -- Validation updated in exercise.lua
                 feedback = "You attempted to save and quit! Now exit Neovim completely (:qall), restart, and type :LearnVim start. You should move to the next lesson.", -- Updated feedback

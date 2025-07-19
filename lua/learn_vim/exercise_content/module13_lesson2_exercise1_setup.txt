@@ -1,0 +1,7 @@
+" --- Exercise 13.2.1 ---
+" Instruction: In this text snippet, place your cursor anywhere on the first sentence and use `cis` to change the inner sentence. Type 'This is the new first sentence.' and press `<Esc>`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+This is the first sentence. This is the second sentence.
+
+This is a separate paragraph.]

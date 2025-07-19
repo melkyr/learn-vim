@@ -1,0 +1,11 @@
+" --- Exercise 9.3.1 (JavaScript) ---
+" Instruction: In this JavaScript snippet, place your cursor on the opening curly brace `{` and press `%`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+function calculate(a, b) {
+    if (a > b) {
+        return a - b;
+    } else {
+        return b - a;
+    }
+}]

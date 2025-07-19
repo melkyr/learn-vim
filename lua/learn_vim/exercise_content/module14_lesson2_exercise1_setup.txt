@@ -1,0 +1,7 @@
+" --- Exercise 14.2.1 ---
+" Instruction: Type `:set wrap` and press <Enter> to turn on line wrapping in the exercise pane. Then type `:set nowrap` and press <Enter> to turn it off. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+
+This is a very long line that will demonstrate line wrapping if you enable it.
+Experiment with `:set wrap` and `:set nowrap`.]

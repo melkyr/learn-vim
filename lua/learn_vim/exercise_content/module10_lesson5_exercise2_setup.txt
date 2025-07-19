@@ -1,0 +1,10 @@
+" --- Exercise 10.5.2 (Rust) ---
+" Instruction: In this Rust snippet, record a macro into register `j` that deletes the word 'let' and moves to the next line. Keystrokes: `qj` `dw` `j` `0` `q`. Then play the macro 2 times using `2@j`. Type `:LearnVim exc` to check.
+" Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
+" ---------------------------------------------
+fn main() {
+    let x = 10;
+    let y = 20;
+    let z = x + y;
+    println!("Sum: {}", z);
+}
