@@ -1,5 +1,5 @@
--- lua/learn_vim/locales/en.lua
--- English translations
+-- lua/learn_vim/locales/en/modules/module0.lua
+-- English translations for module 0
 
 return {
     -- Module 0

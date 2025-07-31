@@ -1,5 +1,5 @@
--- lua/learn_vim/locales/es.lua
--- Spanish translations (placeholders)
+-- lua/learn_vim/locales/es/modules/module0.lua
+-- Spanish translations for module 0 (placeholders)
 
 return {
     -- Module 0
