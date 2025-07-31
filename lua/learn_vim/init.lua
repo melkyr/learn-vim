@@ -13,6 +13,7 @@ M.current_state = {
     module = 0,         -- Current module number (integer)
     lesson = 1,         -- Current lesson number within the module (integer)
     exercise = 1,       -- Current exercise number within the lesson (integer)
+    language = "en",    -- Add language to the state
     tutorial_bufnr = -1, -- Buffer number for the tutorial pane (-1 if not created)
     exercise_bufnr = -1, -- Buffer number for the exercise pane (-1 if not created)
     tutorial_winid = -1, -- Window ID for the tutorial pane (-1 if not created)
@@ -81,6 +82,7 @@ if M.config.debug then
     vim.notify("LearnVim Debug: Type of state_setup: " .. type(state_setup), vim.log.levels.INFO)
 end
 M.state = state_setup(M) -- Call setup function and assign result
+M.locale = require('learn_vim.locale')
 
 
 -- --- Core Plugin Functions (exposed to plugin/learn_vim.lua) ---
@@ -91,6 +93,7 @@ M.state = state_setup(M) -- Call setup function and assign result
 function M.start()
     -- Now that modules are assigned their tables correctly, call their functions.
     M.state.load_progress() -- Load saved progress
+    M.locale.load_language(M.current_state.language)
 
     -- Close all other windows before setting up the tutorial UI.
     -- This ensures the tutorial is the only thing visible.
@@ -212,6 +215,23 @@ function M.motion_practice()
     else
         vim.notify("LearnVim Error: Motion practice UI function not available.", vim.log.levels.ERROR)
     end
+end
+
+function M.display_language_menu()
+    if M.ui and M.ui.display_language_menu then
+        M.ui.display_language_menu()
+    else
+        vim.notify("LearnVim Error: Language menu UI function not available.", vim.log.levels.ERROR)
+    end
+end
+
+function M.set_language(lang)
+    M.current_state.language = lang
+    M.locale.load_language(lang)
+    M.state.save_progress()
+    -- Redisplay the current lesson to show the new language
+    M.ui.display_lesson(M.current_state.module, M.current_state.lesson)
+    vim.notify("Language changed to " .. lang, vim.log.levels.INFO)
 end
 
 -- --- Plugin Setup ---
