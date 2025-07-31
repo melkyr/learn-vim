@@ -39,30 +39,41 @@ end
 -- @param relative_file_path (string) The path to the file, relative to the plugin root.
 -- @return (string|nil) The file content as a string, or nil if an error occurred.
 function Utils.read_file_content(relative_file_path)
+    local locale = require('learn_vim.locale')
+    local lang = locale.language
+    local localized_path = PLUGIN_ROOT .. "/lua/learn_vim/locales/" .. lang .. "/" .. relative_file_path:gsub("lua/learn_vim/", "")
+
+    local final_path
+    -- We need to check if the file exists without using io.open
+    local f = io.open(localized_path, "r")
+    if f then
+        f:close()
+        final_path = localized_path
+    else
+        final_path = PLUGIN_ROOT .. "/" .. relative_file_path
+    end
+
     if type(relative_file_path) ~= 'string' then
         vim.notify("Error: Invalid argument to read_file_content. relative_file_path must be a string.", vim.log.levels.ERROR)
         return nil
     end
 
-    -- Construct the full path
-    local full_path = PLUGIN_ROOT .. "/" .. relative_file_path
-
-    local file, err_open = io.open(full_path, "r")
+    local file, err_open = io.open(final_path, "r")
     if not file then
-        vim.notify("Error opening file '" .. full_path .. "': " .. tostring(err_open), vim.log.levels.ERROR)
+        vim.notify("Error opening file '" .. final_path .. "': " .. tostring(err_open), vim.log.levels.ERROR)
         return nil
     end
 
     local content, err_read = file:read("*a")
     if not content and err_read then -- Check for actual read error, not just empty file
-        vim.notify("Error reading file '" .. full_path .. "': " .. tostring(err_read), vim.log.levels.ERROR)
+        vim.notify("Error reading file '" .. final_path .. "': " .. tostring(err_read), vim.log.levels.ERROR)
         file:close() -- Still attempt to close
         return nil
     end
 
     local ok_close, err_close = file:close()
     if not ok_close then
-        vim.notify("Error closing file '" .. full_path .. "': " .. tostring(err_close), vim.log.levels.WARN)
+        vim.notify("Error closing file '" .. final_path .. "': " .. tostring(err_close), vim.log.levels.WARN)
         -- Continue, as content was read, but warn about closing issue.
     end
 
