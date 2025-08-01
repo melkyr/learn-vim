@@ -1,9 +1,16 @@
 -- lua/learn_vim/modules/module2.lua
+-- lua/learn_vim/locales/en/modules/module2.lua
 
 -- This file contains the content for Module 2: Basic Navigation (The Home Row).
 -- It returns a table representing this module's structure and lessons.
 
 local Utils = require('learn_vim.utils')
+local Locale = require('learn_vim.locale')
+local lang = Locale.get_language()
+
+local function get_exercise_path(filename)
+    return "lua/learn_vim/locales/" .. lang .. "/exercise_content/" .. filename
+end
 
 return {
     title = "Basic Navigation (The Home Row)",
@@ -24,7 +31,7 @@ Try moving the cursor left and right in the exercise pane. Remember to type `:Le
             {
                 instruction = "Using only the `l` key, move the cursor to the character 'D'. Type `:LearnVim exc` to check.", -- Updated instruction
                 type = "cursor_move", -- Indicates exercise is about cursor position
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module2_lesson1_exercise1_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module2_lesson1_exercise1_setup.txt")),
                 start_cursor = {5, 0}, -- Cursor starts on 'A' (line 5, column 0)
                 validation = { type = 'check_cursor_position', target_cursor = {6, 3} }, -- Target cursor is on 'D' (line 5, column 3)
                 feedback = "Correct! You moved right.",
@@ -32,7 +39,7 @@ Try moving the cursor left and right in the exercise pane. Remember to type `:Le
              {
                 instruction = "Using only the `h` key, move the cursor to the character 'E'. Type `:LearnVim exc` to check.", -- Updated instruction
                 type = "cursor_move",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module2_lesson1_exercise2_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module2_lesson1_exercise2_setup.txt")),
                 start_cursor = {5, 6}, -- Cursor starts on 'G' (line 5, column 6)
                 validation = { type = 'check_cursor_position', target_cursor = {6, 4} }, -- Target cursor is on 'E' (line 5, column 4)
                 feedback = "Correct! You moved left.",
@@ -54,7 +61,7 @@ These are incredibly common movements. Practice moving up and down in the exerci
             {
                 instruction = "Using only the `j` key, move the cursor down to 'Line 3'. Type `:LearnVim exc` to check.", -- Updated instruction
                 type = "cursor_move",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module2_lesson2_exercise1_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module2_lesson2_exercise1_setup.txt")),
                 start_cursor = {5, 0},
                 validation = { type = 'check_cursor_position', target_cursor = {7, 0} },
                 feedback = "Success! You moved down.",
@@ -62,7 +69,7 @@ These are incredibly common movements. Practice moving up and down in the exerci
             {
                 instruction = "Using only the `k` key, move the cursor up to 'Line 1'. Type `:LearnVim exc` to check.", -- Updated instruction
                 type = "cursor_move",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module2_lesson2_exercise2_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module2_lesson2_exercise2_setup.txt")),
                 start_cursor = {7, 0},
                 validation = { type = 'check_cursor_position', target_cursor = {5, 0} },
                 feedback = "Success! You moved up.",
@@ -84,7 +91,7 @@ Let's try navigating to a specific spot. Remember to type `:LearnVim exc` to che
             {
                 instruction = "Navigate to the character 'X' in this text using only `h`, `j`, `k`, and `l`. Type `:LearnVim exc` to check.", -- Updated instruction
                 type = "cursor_move",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module2_lesson3_exercise1_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module2_lesson3_exercise1_setup.txt")),
                 start_cursor = {5, 0},
                 validation = { type = 'check_cursor_position', target_cursor = {6, 12} },
                 feedback = "Great job navigating character by character!",

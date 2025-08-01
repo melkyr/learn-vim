@@ -1,9 +1,16 @@
 -- lua/learn_vim/modules/module4.lua
+-- lua/learn_vim/locales/en/modules/module4.lua
 
 -- This file contains the content for Module 4: Essential Actions (Operators).
 -- It returns a table representing this module's structure and lessons.
 
 local Utils = require('learn_vim.utils')
+local Locale = require('learn_vim.locale')
+local lang = Locale.get_language()
+
+local function get_exercise_path(filename)
+    return "lua/learn_vim/locales/" .. lang .. "/exercise_content/" .. filename
+end
 
 return {
     title = "Essential Actions (Operators)",
@@ -33,44 +40,44 @@ Let's practice deleting text. Remember to use `:LearnVim exc` to check and `:Lea
             {
                 instruction = "Using `dw`, delete the word 'quick'. Then type `:LearnVim exc` to check.",
                 type = "insert_text", -- Using insert_text type as we check buffer content
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson1_exercise1_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module4_lesson1_exercise1_setup.txt")),
                 start_cursor = {5, 4}, -- Cursor on 'q' of 'quick'
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson1_exercise1_target.txt")
+                    target_content = Utils.read_file_content(get_exercise_path("module4_lesson1_exercise1_target.txt"))
                 },
                 feedback = "You deleted the word!",
             },
              {
                 instruction = "Using `dd`, delete the line 'Delete this line.'. Then type `:LearnVim exc` to check.",
                 type = "insert_text",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson1_exercise2_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module4_lesson1_exercise2_setup.txt")),
                 start_cursor = {6, 0}, -- Cursor on the line to delete
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson1_exercise2_target.txt")
+                    target_content = Utils.read_file_content(get_exercise_path("module4_lesson1_exercise2_target.txt"))
                 },
                 feedback = "You deleted the line!",
             },
              {
                 instruction = "Using a count with `dw`, delete the next 3 words ('brown fox jumps'). Then type `:LearnVim exc` to check.",
                 type = "insert_text",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson1_exercise3_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module4_lesson1_exercise3_setup.txt")),
                 start_cursor = {5, 10}, -- Cursor on 'b' of 'brown'
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson1_exercise3_target.txt")
+                    target_content = Utils.read_file_content(get_exercise_path("module4_lesson1_exercise3_target.txt"))
                 },
                 feedback = "You deleted multiple words with a count!",
             },
              {
                 instruction = "Using a count with `dd`, delete the next 2 lines (including the current one). Then type `:LearnVim exc` to check.",
                 type = "insert_text",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson1_exercise4_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module4_lesson1_exercise4_setup.txt")),
                 start_cursor = {6, 0}, -- Cursor on "Delete this line 1."
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson1_exercise4_target.txt")
+                    target_content = Utils.read_file_content(get_exercise_path("module4_lesson1_exercise4_target.txt"))
                 },
                 feedback = "You deleted multiple lines with a count!",
             },
@@ -103,44 +110,44 @@ Let's practice changing and replacing text. Use `:LearnVim exc` to check and `:L
             {
                 instruction = "Using `cw`, change the word 'quick' to 'slow'. Press `<Esc>` after typing. Then type `:LearnVim exc` to check.",
                 type = "insert_text",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson2_exercise1_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module4_lesson2_exercise1_setup.txt")),
                 start_cursor = {5, 4}, -- Cursor on 'q' of 'quick'
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson2_exercise1_target.txt")
+                    target_content = Utils.read_file_content(get_exercise_path("module4_lesson2_exercise1_target.txt"))
                 },
                 feedback = "You changed the word!",
             },
              {
                 instruction = "Using `cc`, change the line 'Change this line.' to 'This line is changed.'. Press `<Esc>` after typing. Then type `:LearnVim exc` to check.",
                 type = "insert_text",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson2_exercise2_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module4_lesson2_exercise2_setup.txt")),
                 start_cursor = {6, 0}, -- Cursor on the line to change
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson2_exercise2_target.txt")
+                    target_content = Utils.read_file_content(get_exercise_path("module4_lesson2_exercise2_target.txt"))
                 },
                 feedback = "You changed the line!",
             },
              {
                 instruction = "Using `r`, replace the character 'X' with 'Y'. Then type `:LearnVim exc` to check.",
                 type = "insert_text",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson2_exercise3_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module4_lesson2_exercise3_setup.txt")),
                 start_cursor = {5, 12}, -- Cursor on 'X'
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson2_exercise3_target.txt")
+                    target_content = Utils.read_file_content(get_exercise_path("module4_lesson2_exercise3_target.txt"))
                 },
                 feedback = "You replaced a single character!",
             },
              {
                 instruction = "Using `R`, enter Replace mode and change 'overwriting' to 'replacing'. Press `<Esc>` when done. Then type `:LearnVim exc` to check.",
                 type = "insert_text",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson2_exercise4_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module4_lesson2_exercise4_setup.txt")),
                 start_cursor = {5, 9}, -- Cursor on 'o' of 'overwriting'
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson2_exercise4_target.txt")
+                    target_content = Utils.read_file_content(get_exercise_path("module4_lesson2_exercise4_target.txt"))
                 },
                 feedback = "You used Replace mode!",
             },
@@ -171,22 +178,22 @@ Let's practice yanking and putting text. Use `:LearnVim exc` to check and `:Lear
             {
                 instruction = "Using `yw`, yank the word 'copy'. Then move to the line below and use `p` to paste it. Type `:LearnVim exc` to check.",
                 type = "insert_text",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson3_exercise1_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module4_lesson3_exercise1_setup.txt")),
                 start_cursor = {5, 0}, -- Cursor on 'C' of 'Copy'
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson3_exercise1_target.txt")
+                    target_content = Utils.read_file_content(get_exercise_path("module4_lesson3_exercise1_target.txt"))
                 },
                 feedback = "You copied and pasted a word!",
             },
              {
                 instruction = "Using `yy`, yank the line 'Yank this line.'. Then move to the line below 'Paste here:' and use `p` to paste it. Type `:LearnVim exc` to check.",
                 type = "insert_text",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson3_exercise2_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module4_lesson3_exercise2_setup.txt")),
                 start_cursor = {5, 0}, -- Cursor on the line to yank
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson3_exercise2_target.txt")
+                    target_content = Utils.read_file_content(get_exercise_path("module4_lesson3_exercise2_target.txt"))
                 },
                 feedback = "You copied and pasted a line!",
             },
@@ -207,22 +214,22 @@ Let's practice moving words and lines using this delete-then-paste pattern. Use 
             {
                 instruction = "Move the word 'Move' from the first line to the end of the second line. Use `dw` and `p`. Type `:LearnVim exc` to check.",
                 type = "insert_text",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson4_exercise1_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module4_lesson4_exercise1_setup.txt")),
                 start_cursor = {5, 0}, -- Cursor on 'M' of 'Move'
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson4_exercise1_target.txt")
+                    target_content = Utils.read_file_content(get_exercise_path("module4_lesson4_exercise1_target.txt"))
                 },
                 feedback = "You moved the word!",
             },
              {
                 instruction = "Move the line 'Move this line.' to below the line 'To here.'. Use `dd` and `p`. Type `:LearnVim exc` to check.",
                 type = "insert_text",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson4_exercise2_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module4_lesson4_exercise2_setup.txt")),
                 start_cursor = {6, 0}, -- Cursor on the line to move
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson4_exercise2_target.txt")
+                    target_content = Utils.read_file_content(get_exercise_path("module4_lesson4_exercise2_target.txt"))
                 },
                 feedback = "You moved the line!",
             },
@@ -245,13 +252,13 @@ Let's practice wrapping a paragraph. Use `:LearnVim exc` to check and `:LearnVim
             {
                 instruction = "Place your cursor anywhere in the paragraph below and type `gqap` to wrap it. Then type `:LearnVim exc` to check.",
                 type = "insert_text",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson5_exercise1_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module4_lesson5_exercise1_setup.txt")),
                 start_cursor = {5, 10}, -- Start somewhere in the middle of the paragraph
                 -- NOTE: The target_content for wrapping is tricky as it depends on window width and 'textwidth'.
                 -- We'll provide a plausible wrapped version, but users might need to adjust window size slightly.
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module4_lesson5_exercise1_target.txt")
+                    target_content = Utils.read_file_content(get_exercise_path("module4_lesson5_exercise1_target.txt"))
                 },
                 feedback = "You wrapped the paragraph!",
             },

@@ -1,9 +1,16 @@
 -- lua/learn_vim/modules/module5.lua
+-- lua/learn_vim/locales/en/modules/module5.lua
 
 -- This file contains the content for Module 5: Repeat, Undo, and Redo, and Practice/Test exercises.
 -- It returns a table representing this module's structure and lessons.
 
 local Utils = require('learn_vim.utils')
+local Locale = require('learn_vim.locale')
+local lang = Locale.get_language()
+
+local function get_exercise_path(filename)
+    return "lua/learn_vim/locales/" .. lang .. "/exercise_content/" .. filename
+end
 
 return {
     title = "Repeat, Undo, Redo, and Practice", -- Updated title
@@ -24,22 +31,22 @@ Let's practice repeating actions. Use `:LearnVim exc` to check and `:LearnVim ex
             {
                 instruction = "Delete the word 'delete' on the first line using `dw`. Then move to the next two lines and use the `.` command to delete the words 'delete' on those lines. Type `:LearnVim exc` to check.",
                 type = "insert_text",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson1_exercise1_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module5_lesson1_exercise1_setup.txt")),
                 start_cursor = {5, 7}, -- Cursor on 'd' of 'delete' on the first line
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson1_exercise1_target.txt")
+                    target_content = Utils.read_file_content(get_exercise_path("module5_lesson1_exercise1_target.txt"))
                 },
                 feedback = "You successfully repeated the delete action!",
             },
              {
                 instruction = "Change the word 'CHANGE' to 'EDIT' on the first line using `cw`. Then move to the next two lines and use the `.` command to repeat the change. Press `<Esc>` after each change. Type `:LearnVim exc` to check.",
                 type = "insert_text",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson1_exercise2_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module5_lesson1_exercise2_setup.txt")),
                 start_cursor = {5, 7}, -- Cursor on 'C' of 'CHANGE' on the first line
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson1_exercise2_target.txt")
+                    target_content = Utils.read_file_content(get_exercise_path("module5_lesson1_exercise2_target.txt"))
                 },
                 feedback = "You successfully repeated the change action!",
             },
@@ -64,19 +71,19 @@ Let's practice undoing and redoing changes. Use `:LearnVim exc` to check and `:L
             {
                 instruction = "Delete the word 'delete' using `dw`. Then use `u` to undo the deletion. Type `:LearnVim exc` to check.",
                 type = "insert_text",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson2_exercise1_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module5_lesson2_exercise1_setup.txt")),
                 start_cursor = {5, 7}, -- Cursor on 'd' of 'delete'
                 validation = {
                     type = 'check_buffer_content',
                     -- The target content is the original setup_text after undoing the delete
-                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson2_exercise1_target.txt")
+                    target_content = Utils.read_file_content(get_exercise_path("module5_lesson2_exercise1_target.txt"))
                 },
                 feedback = "You successfully undid the deletion!",
             },
              {
                 instruction = "Make a change (e.g., delete a word). Then use `u` to undo it. Then use `<C-r>` to redo the change. Type `:LearnVim exc` to check.",
                 type = "insert_text",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson2_exercise2_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module5_lesson2_exercise2_setup.txt")),
                 start_cursor = {5, 10}, -- Cursor on 'c' of 'change'
                 validation = {
                     type = 'check_buffer_content',
@@ -111,12 +118,12 @@ Remember to use `:LearnVim exc` when you think you're done and `:LearnVim exr` t
             {
                 instruction = "Edit the paragraph to match the target content. Apply commands learned in Modules 3-5.",
                 type = "insert_text",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson3_exercise1_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module5_lesson3_exercise1_setup.txt")),
                 start_cursor = {5, 0}, -- Start at the beginning of the paragraph
                 -- Target: Change "quick brown" to "agile", delete "jumps over the lazy", change "dog" to "cat".
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson3_exercise1_target.txt")
+                    target_content = Utils.read_file_content(get_exercise_path("module5_lesson3_exercise1_target.txt"))
                 },
                 feedback = "Practice complete! You edited the paragraph.",
             },
@@ -139,56 +146,56 @@ Good luck!
             {
                 instruction = "Edit the paragraph to match the target content. Hint: Use `dw`, `dd`, `p`, and `.`",
                 type = "insert_text",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise1_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module5_lesson4_exercise1_setup.txt")),
                 -- Target: Remove all phrases starting with "it was the" except the first one, and keep only "best of times".
                 -- This requires deleting words and lines.
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise1_target.txt")
+                    target_content = Utils.read_file_content(get_exercise_path("module5_lesson4_exercise1_target.txt"))
                 },
                 feedback = "Test 1 completed! You practiced deleting and potentially repeating.",
             },
              {
                 instruction = "Edit the paragraph to match the target content. Hint: Use `cw`, `cc`, `r`, and `<Esc>`.",
                 type = "insert_text",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise2_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module5_lesson4_exercise2_setup.txt")),
                 -- Target: Change "Ishmael" to "Ahab", "money" to "gold", "sail" to "travel", and replace the '.' after "world" with '!'.
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise2_target.txt")
+                    target_content = Utils.read_file_content(get_exercise_path("module5_lesson4_exercise2_target.txt"))
                 },
                 feedback = "Test 2 completed! You practiced changing and replacing.",
             },
              {
                 instruction = "Edit the paragraph to match the target content. Hint: Use `yy`, `p`, `dd`, and navigation commands.",
                 type = "insert_text",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise3_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module5_lesson4_exercise3_setup.txt")),
                 -- Target: Reorder the lines to be D, B, E, A, C
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise3_target.txt")
+                    target_content = Utils.read_file_content(get_exercise_path("module5_lesson4_exercise3_target.txt"))
                 },
                 feedback = "Test 3 completed! You practiced moving lines.",
             },
              {
                 instruction = "Edit the paragraph to match the target content. Hint: Combine navigation and actions. Use `u` and `<C-r>` if you make mistakes.",
                 type = "insert_text",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise4_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module5_lesson4_exercise4_setup.txt")),
                 -- Target: Delete the second paragraph entirely. Change "single man" to "wealthy person". Replace "wife" with "partner".
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise4_target.txt")
+                    target_content = Utils.read_file_content(get_exercise_path("module5_lesson4_exercise4_target.txt"))
                 },
                 feedback = "Test 4 completed! You applied a range of commands.",
             },
             { -- New Exercise 5.4.5
                 instruction = "Edit the paragraph to match the target content. Hint: Use a variety of commands from Modules 3-5.",
                 type = "insert_text",
-                setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise5_setup.txt"),
+                setup_text = Utils.read_file_content(get_exercise_path("module5_lesson4_exercise5_setup.txt")),
                 -- Target: Change "gold" to "silver", "wander" to "roam", "old" to "ancient", "frost" to "sun", "fire" to "spark", "light" to "glow", "broken" to "mended", "king" to "queen".
                 validation = {
                     type = 'check_buffer_content',
-                    target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise5_target.txt")
+                    target_content = Utils.read_file_content(get_exercise_path("module5_lesson4_exercise5_target.txt"))
                 },
                 feedback = "Test 5 completed! You're getting good at this!",
             },

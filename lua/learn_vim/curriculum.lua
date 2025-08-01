@@ -3,26 +3,41 @@
 -- This module serves as the central point for accessing all curriculum content.
 -- It requires individual module files and combines their data.
 
-local module0 = require('learn_vim.modules.module0')
--- Require individual module files from the lua/learn_vim/modules directory.
--- Make sure you have created these files (e.g., module1.lua, module2.lua, ..., module8.lua)
--- and placed the content for each module within them.
-local module1 = require('learn_vim.modules.module1')
-local module2 = require('learn_vim.modules.module2')
-local module3 = require('learn_vim.modules.module3')
-local module4 = require('learn_vim.modules.module4')
-local module5 = require('learn_vim.modules.module5')
-local module6 = require('learn_vim.modules.module6')
-local module7 = require('learn_vim.modules.module7')
-local module8 = require('learn_vim.modules.module8')
-local module9 = require('learn_vim.modules.module9')
-local module10 = require('learn_vim.modules.module10')
-local module11 = require('learn_vim.modules.module11')
-local module12 = require('learn_vim.modules.module12')
-local module13 = require('learn_vim.modules.module13')
-local module14 = require('learn_vim.modules.module14')
--- Add more modules here as you create them:
--- local module9 = require('learn_vim.modules.module9')
+local Locale = require('learn_vim.locale')
+local lang = Locale.get_language()
+
+local function require_module(module_name)
+    local path = 'learn_vim.locales.' .. lang .. '.modules.' .. module_name
+    local p, module = pcall(require, path)
+    if p then
+        return module
+    else
+        -- Fallback to English if the module is not available in the selected language
+        local fallback_path = 'learn_vim.locales.en.modules.' .. module_name
+        local fp, fallback_module = pcall(require, fallback_path)
+        if fp then
+            return fallback_module
+        else
+            error("Failed to load module " .. module_name .. " for language " .. lang .. " and fallback English.")
+        end
+    end
+end
+
+local module0 = require_module('module0')
+local module1 = require_module('module1')
+local module2 = require_module('module2')
+local module3 = require_module('module3')
+local module4 = require_module('module4')
+local module5 = require_module('module5')
+local module6 = require_module('module6')
+local module7 = require_module('module7')
+local module8 = require_module('module8')
+local module9 = require_module('module9')
+local module10 = require_module('module10')
+local module11 = require_module('module11')
+local module12 = require_module('module12')
+local module13 = require_module('module13')
+local module14 = require_module('module14')
 
 -- Combine the data from the individual module files into a single curriculum table.
 -- The keys (module1, module2, etc.) are used by the navigation logic
