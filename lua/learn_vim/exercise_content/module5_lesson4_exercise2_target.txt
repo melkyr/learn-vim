@@ -2,4 +2,6 @@
 " Instruction: Edit the paragraph to match the target content. Hint: Use `cw`, `cc`, `r`, and `<Esc>`.
 " Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
+TARGET TEXT: Call me Ahab. Some years ago—never mind how long precisely—having little or no gold in my purse, and nothing particular to interest me on shore, I thought I would travel about a little and see the watery part of the world!
+
 Call me Ahab. Some years ago—never mind how long precisely—having little or no gold in my purse, and nothing particular to interest me on shore, I thought I would travel about a little and see the watery part of the world!
