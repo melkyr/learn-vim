@@ -137,12 +137,11 @@ Good luck!
 ]],
         exercises = {
             {
-                instruction = [[Edit the paragraph to match the target content below. Hint: Use `dw`, `dd`, `p`, and `.`
-
-TARGET:
-It was the best of times.]],
+                instruction = "Edit the paragraph to match the target content. Hint: Use `dw`, `dd`, `p`, and `.`",
                 type = "insert_text",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise1_setup.txt"),
+                -- Target: Remove all phrases starting with "it was the" except the first one, and keep only "best of times".
+                -- This requires deleting words and lines.
                 validation = {
                     type = 'check_buffer_content',
                     target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise1_target.txt")
@@ -150,12 +149,10 @@ It was the best of times.]],
                 feedback = "Test 1 completed! You practiced deleting and potentially repeating.",
             },
              {
-                instruction = [[Edit the paragraph to match the target content below. Hint: Use `cw`, `cc`, `r`, and `<Esc>`.
-
-TARGET:
-Call me Ahab. Some years ago—never mind how long precisely—having little or no gold in my purse, and nothing particular to interest me on shore, I thought I would travel about a little and see the watery part of the world!]],
+                instruction = "Edit the paragraph to match the target content. Hint: Use `cw`, `cc`, `r`, and `<Esc>`.",
                 type = "insert_text",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise2_setup.txt"),
+                -- Target: Change "Ishmael" to "Ahab", "money" to "gold", "sail" to "travel", and replace the '.' after "world" with '!'.
                 validation = {
                     type = 'check_buffer_content',
                     target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise2_target.txt")
@@ -163,16 +160,10 @@ Call me Ahab. Some years ago—never mind how long precisely—having little or 
                 feedback = "Test 2 completed! You practiced changing and replacing.",
             },
              {
-                instruction = [[Reorder the lines to match the target order below. Hint: Use `yy`, `p`, `dd`, and navigation commands.
-
-TARGET:
-Line D.
-Line B.
-Line E.
-Line A.
-Line C.]],
+                instruction = "Edit the paragraph to match the target content. Hint: Use `yy`, `p`, `dd`, and navigation commands.",
                 type = "insert_text",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise3_setup.txt"),
+                -- Target: Reorder the lines to be D, B, E, A, C
                 validation = {
                     type = 'check_buffer_content',
                     target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise3_target.txt")
@@ -180,12 +171,10 @@ Line C.]],
                 feedback = "Test 3 completed! You practiced moving lines.",
             },
              {
-                instruction = [[Edit the paragraph to match the target content below. Hint: Combine navigation and actions. Use `u` and `<C-r>` if you make mistakes.
-
-TARGET:
-It is a truth universally acknowledged, that a wealthy person in possession of a good fortune, must be in want of a partner.]],
+                instruction = "Edit the paragraph to match the target content. Hint: Combine navigation and actions. Use `u` and `<C-r>` if you make mistakes.",
                 type = "insert_text",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise4_setup.txt"),
+                -- Target: Delete the second paragraph entirely. Change "single man" to "wealthy person". Replace "wife" with "partner".
                 validation = {
                     type = 'check_buffer_content',
                     target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise4_target.txt")
@@ -193,12 +182,10 @@ It is a truth universally acknowledged, that a wealthy person in possession of a
                 feedback = "Test 4 completed! You applied a range of commands.",
             },
             { -- New Exercise 5.4.5
-                instruction = [[Edit the paragraph to match the target content below. Hint: Use a variety of commands from Modules 3-5.
-
-TARGET:
-All that is silver does not glitter, Not all those who roam are lost; The ancient that is strong does not wither, Deep roots are not reached by the sun. From the ashes a spark shall be woken, A glow from the shadows shall spring; Renewed shall be blade that was mended, The crownless again shall be queen.]],
+                instruction = "Edit the paragraph to match the target content. Hint: Use a variety of commands from Modules 3-5.",
                 type = "insert_text",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise5_setup.txt"),
+                -- Target: Change "gold" to "silver", "wander" to "roam", "old" to "ancient", "frost" to "sun", "fire" to "spark", "light" to "glow", "broken" to "mended", "king" to "queen".
                 validation = {
                     type = 'check_buffer_content',
                     target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module5_lesson4_exercise5_target.txt")

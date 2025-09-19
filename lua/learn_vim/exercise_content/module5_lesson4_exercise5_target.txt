@@ -2,4 +2,6 @@
 " Instruction: Edit the paragraph to match the target content. Hint: Use a variety of commands from Modules 3-5.
 " Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
+TARGET TEXT: All that is silver does not glitter, Not all those who roam are lost; The ancient that is strong does not wither, Deep roots are not reached by the sun. From the ashes a spark shall be woken, A glow from the shadows shall spring; Renewed shall be blade that was mended, The crownless again shall be queen.
+
 All that is silver does not glitter, Not all those who roam are lost; The ancient that is strong does not wither, Deep roots are not reached by the sun. From the ashes a spark shall be woken, A glow from the shadows shall spring; Renewed shall be blade that was mended, The crownless again shall be queen.

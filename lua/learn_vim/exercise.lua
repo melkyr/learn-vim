@@ -112,13 +112,14 @@ function M.check_current_exercise()
     -- Perform validation based on type
     if validation.type == 'check_buffer_content' then
         local current_lines = vim.api.nvim_buf_get_lines(exercise_bufnr, 0, -1, false)
-        -- Handle nil target_content gracefully
         local target_content = validation.target_content or ""
         local target_lines = vim.split(target_content, '\n')
 
-        -- If target file ends with a newline, vim.split creates an extra empty string.
-        -- We remove it to match the behavior of nvim_buf_get_lines.
-        if #target_lines > 0 and target_lines[#target_lines] == "" then
+        -- Trim any trailing empty lines from both the buffer and the target
+        while #current_lines > 0 and current_lines[#current_lines] == "" do
+            table.remove(current_lines)
+        end
+        while #target_lines > 0 and target_lines[#target_lines] == "" do
             table.remove(target_lines)
         end
 
