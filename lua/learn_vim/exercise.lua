@@ -78,7 +78,7 @@ end
 --- Checks if the current exercise is completed correctly.
 function M.check_current_exercise()
     local state = LEARN_VIM.current_state
-    if state.module == 0 or state.module == 1 then
+    if state.module == 0 then
         local module_data = LEARN_VIM.curriculum['module' .. state.module]
         local lesson_data = module_data and module_data['lesson' .. state.lesson]
         local exercise_data = lesson_data and lesson_data.exercises and lesson_data.exercises[state.exercise]
