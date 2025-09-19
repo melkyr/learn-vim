@@ -8,7 +8,7 @@ local LEARN_VIM = nil -- Placeholder for the main plugin module, set during setu
 
 -- --- Setup Function ---
 -- This function is called from init.lua to provide access to the main plugin module.
-function M.setup(learn_vim_module)
+local function setup(learn_vim_module)
     LEARN_VIM = learn_vim_module
     return M
 end
@@ -78,7 +78,7 @@ end
 --- Checks if the current exercise is completed correctly.
 function M.check_current_exercise()
     local state = LEARN_VIM.current_state
-    if state.module == 0 then
+    if state.module == 0 or state.module == 1 then
         local module_data = LEARN_VIM.curriculum['module' .. state.module]
         local lesson_data = module_data and module_data['lesson' .. state.lesson]
         local exercise_data = lesson_data and lesson_data.exercises and lesson_data.exercises[state.exercise]
@@ -89,7 +89,7 @@ function M.check_current_exercise()
         end
 
         vim.notify(exercise_data.feedback or "Exercise correct!", vim.log.levels.INFO)
-        LEARN_VIM.navigation.next_exercise() -- Move to the next exercise
+        LEARN_VIM.navigation.next_lesson() -- This function handles moving to the next exercise or lesson
         return
     end
     local module_data = LEARN_VIM.curriculum['module' .. state.module]
@@ -156,7 +156,7 @@ function M.check_current_exercise()
     -- Provide feedback and move to the next exercise if correct
     if is_correct then
         vim.notify(exercise_data.feedback or "Exercise correct!", vim.log.levels.INFO)
-        LEARN_VIM.navigation.next_exercise() -- Move to the next exercise
+        LEARN_VIM.navigation.next_lesson() -- This function handles moving to the next exercise or lesson
     else
         vim.notify("Exercise incorrect. Try again or use :LearnVim exr to reset.", vim.log.levels.WARN)
     end
@@ -202,4 +202,5 @@ end
 
 
 -- Return the module table M
-return M
+-- Return the setup function, which will then return the module table M
+return setup
