@@ -67,11 +67,11 @@ M.navigation = navigation_setup(M) -- Call setup function and assign result
 if M.config.debug then
     vim.notify("LearnVim Debug: Requiring exercise...", vim.log.levels.INFO)
 end
-local exercise_module = require('learn_vim.exercise') -- Renamed to exercise_module as it's a table
+local exercise_setup = require('learn_vim.exercise') -- It should be a setup function
 if M.config.debug then
-    vim.notify("LearnVim Debug: Type of exercise_module: " .. type(exercise_module), vim.log.levels.INFO)
+    vim.notify("LearnVim Debug: Type of exercise_setup: " .. type(exercise_setup), vim.log.levels.INFO)
 end
-M.exercise = exercise_module -- Assign exercise table directly (based on debug output)
+M.exercise = exercise_setup(M) -- Call the setup function to initialize and get the module table
 
 if M.config.debug then
     vim.notify("LearnVim Debug: Requiring state...", vim.log.levels.INFO)

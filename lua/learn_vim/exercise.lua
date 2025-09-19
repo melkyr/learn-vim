@@ -78,6 +78,20 @@ end
 --- Checks if the current exercise is completed correctly.
 function M.check_current_exercise()
     local state = LEARN_VIM.current_state
+    if state.module == 0 then
+        local module_data = LEARN_VIM.curriculum['module' .. state.module]
+        local lesson_data = module_data and module_data['lesson' .. state.lesson]
+        local exercise_data = lesson_data and lesson_data.exercises and lesson_data.exercises[state.exercise]
+
+        if not exercise_data then
+            vim.notify("Could not find exercise data for Module 0.", vim.log.levels.WARN)
+            return
+        end
+
+        vim.notify(exercise_data.feedback or "Exercise correct!", vim.log.levels.INFO)
+        LEARN_VIM.navigation.next_exercise() -- Move to the next exercise
+        return
+    end
     local module_data = LEARN_VIM.curriculum['module' .. state.module]
     local lesson_data = module_data and module_data['lesson' .. state.lesson]
     local exercise_data = lesson_data and lesson_data.exercises and lesson_data.exercises[state.exercise]
