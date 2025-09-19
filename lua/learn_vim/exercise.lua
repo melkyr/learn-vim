@@ -8,7 +8,7 @@ local LEARN_VIM = nil -- Placeholder for the main plugin module, set during setu
 
 -- --- Setup Function ---
 -- This function is called from init.lua to provide access to the main plugin module.
-local function setup(learn_vim_module)
+function M.setup(learn_vim_module)
     LEARN_VIM = learn_vim_module
     return M
 end
@@ -202,5 +202,4 @@ end
 
 
 -- Return the module table M
--- Return the setup function, which will then return the module table M
-return setup
+return M
