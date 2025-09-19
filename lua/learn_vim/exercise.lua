@@ -111,8 +111,28 @@ function M.check_current_exercise()
 
     -- Perform validation based on type
     if validation.type == 'check_buffer_content' then
-        local target_content = table.concat(vim.split(validation.target_content, '\n'), '\n')
-        is_correct = (current_buffer_content == target_content)
+        local current_lines = vim.api.nvim_buf_get_lines(exercise_bufnr, 0, -1, false)
+        -- Handle nil target_content gracefully
+        local target_content = validation.target_content or ""
+        local target_lines = vim.split(target_content, '\n')
+
+        -- If target file ends with a newline, vim.split creates an extra empty string.
+        -- We remove it to match the behavior of nvim_buf_get_lines.
+        if #target_lines > 0 and target_lines[#target_lines] == "" then
+            table.remove(target_lines)
+        end
+
+        if #current_lines ~= #target_lines then
+            is_correct = false
+        else
+            is_correct = true
+            for i = 1, #current_lines do
+                if current_lines[i] ~= target_lines[i] then
+                    is_correct = false
+                    break
+                end
+            end
+        end
 
     -- New validation type: check_buffer_content_regex
     elseif validation.type == 'check_buffer_content_regex' then
