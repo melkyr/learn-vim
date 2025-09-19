@@ -2,4 +2,6 @@
 " Instruction: Edit the paragraph to match the target content. Hint: Use `dw`, `dd`, `p`, and `.`
 " Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
+TARGET TEXT: It was the best of times.
+
 It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair.]

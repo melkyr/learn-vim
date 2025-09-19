@@ -2,4 +2,6 @@
 " Instruction: Edit the paragraph to match the target content. Hint: Combine navigation and actions. Use `u` and `<C-r>` if you make mistakes.
 " Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
+TARGET TEXT: It is a truth universally acknowledged, that a wealthy person in possession of a good fortune, must be in want of a partner.
+
 It is a truth universally acknowledged, that a wealthy person in possession of a good fortune, must be in want of a partner.

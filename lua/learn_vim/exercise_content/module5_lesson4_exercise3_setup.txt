@@ -2,6 +2,12 @@
 " Instruction: Edit the paragraph to match the target content. Hint: Use `yy`, `p`, `dd`, and navigation commands.
 " Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
+TARGET TEXT:
+Line D.
+Line B.
+Line E.
+Line A.
+Line C.
 
 Line A.
 Line B.
