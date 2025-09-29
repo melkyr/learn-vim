@@ -25,8 +25,8 @@ Try moving the cursor left and right in the exercise pane. Remember to type `:Le
                 instruction = "Using only the `l` key, move the cursor to the character 'D'. Type `:LearnVim exc` to check.", -- Updated instruction
                 type = "cursor_move", -- Indicates exercise is about cursor position
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module2_lesson1_exercise1_setup.txt"),
-                start_cursor = {5, 0}, -- Cursor starts on 'A' (line 5, column 0)
-                validation = { type = 'check_cursor_position', target_cursor = {6, 3} }, -- Target cursor is on 'D' (line 5, column 3)
+                start_cursor = {6, 0}, -- Cursor starts on 'A' (line 6, column 0)
+                validation = { type = 'check_cursor_position', target_cursor = {6, 4} }, -- Target cursor is on 'D' (line 6, column 4)
                 feedback = "Correct! You moved right.",
             },
              {
