@@ -82,11 +82,11 @@ Let's try navigating to a specific spot. Remember to type `:LearnVim exc` to che
 ]],
         exercises = {
             {
-                instruction = "Navigate to the character 'X' in this text using only `h`, `j`, `k`, and `l`. Type `:LearnVim exc` to check.", -- Updated instruction
+                instruction = "Navigate to the first 'X' character in this text using only `h`, `j`, `k`, and `l`. Type `:LearnVim exc` to check.", -- Updated instruction
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module2_lesson3_exercise1_setup.txt"),
                 start_cursor = {5, 0},
-                validation = { type = 'check_cursor_position', target_cursor = {6, 12} },
+                validation = { type = 'check_cursor_position', target_cursor = {7, 10} },
                 feedback = "Great job navigating character by character!",
             },
         },
