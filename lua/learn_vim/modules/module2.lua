@@ -56,7 +56,7 @@ These are incredibly common movements. Practice moving up and down in the exerci
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module2_lesson2_exercise1_setup.txt"),
                 start_cursor = {5, 0},
-                validation = { type = 'check_cursor_position', target_cursor = {7, 0} },
+                validation = { type = 'check_cursor_position', target_cursor = {8, 1} },
                 feedback = "Success! You moved down.",
             },
             {
@@ -64,7 +64,7 @@ These are incredibly common movements. Practice moving up and down in the exerci
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module2_lesson2_exercise2_setup.txt"),
                 start_cursor = {7, 0},
-                validation = { type = 'check_cursor_position', target_cursor = {5, 0} },
+                validation = { type = 'check_cursor_position', target_cursor = {6, 1} },
                 feedback = "Success! You moved up.",
             },
         },
