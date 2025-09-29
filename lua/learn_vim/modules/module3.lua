@@ -122,7 +122,7 @@ Let's practice these precise line movements. Use `:LearnVim exc` after each step
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module3_lesson3_exercise3_setup.txt"),
                 start_cursor = {5, 1}, -- Start at the very beginning (column 0)
-                validation = { type = 'check_cursor_position', target_cursor = {5, 4} }, -- Target is the first non-blank character ('T' at column 4)
+                validation = { type = 'check_cursor_position', target_cursor = {5, 5} }, -- Target is the first non-blank character ('T' at column 4)
                 feedback = "Correct! '^' skips leading whitespace.",
             },
             {
