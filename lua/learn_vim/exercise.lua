@@ -16,6 +16,16 @@ end
 --- Loads and displays the current exercise.
 function M.load_current_exercise()
     local state = LEARN_VIM.current_state
+    local exercise_winid = state.exercise_winid
+    local exercise_bufnr = state.exercise_bufnr
+
+    -- Guard against invalid window or buffer IDs
+    if not (exercise_winid and exercise_winid ~= -1 and vim.api.nvim_win_is_valid(exercise_winid) and
+            exercise_bufnr and exercise_bufnr ~= -1 and vim.api.nvim_buf_is_valid(exercise_bufnr)) then
+        vim.notify("LearnVim: Tutorial window is not open. Please run :LearnVim start.", vim.log.levels.WARN)
+        return
+    end
+
     local module_data = LEARN_VIM.curriculum['module' .. state.module]
 
     if not module_data then
@@ -36,13 +46,6 @@ function M.load_current_exercise()
         return
     end
 
-    -- Get the exercise buffer
-    local exercise_bufnr = state.exercise_bufnr
-    if exercise_bufnr == -1 or not vim.api.nvim_buf_is_valid(exercise_bufnr) then
-         vim.notify("Error: Exercise buffer not valid.", vim.log.levels.ERROR)
-         return
-    end
-
     -- Clear the exercise buffer and set its content
     vim.api.nvim_buf_set_lines(exercise_bufnr, 0, -1, false, {})
     local lines = vim.split(exercise_data.setup_text, '\n')
@@ -60,17 +63,17 @@ function M.load_current_exercise()
         -- Adjusting from 1-indexed Lua to 0-indexed Nvim
         local line = exercise_data.start_cursor[1]
         local col = exercise_data.start_cursor[2] - 1
-        vim.api.nvim_win_set_cursor(state.exercise_winid, {line, col})
+        vim.api.nvim_win_set_cursor(exercise_winid, {line, col})
     else
          -- Default to top-left if not specified
-         vim.api.nvim_win_set_cursor(state.exercise_winid, {0, 0})
+         vim.api.nvim_win_set_cursor(exercise_winid, {0, 0})
     end
 
     -- Make the exercise buffer editable
     Utils.set_buffer_options(exercise_bufnr, {modifiable = true, readonly = false})
 
     -- Ensure the exercise window is focused
-    vim.api.nvim_set_current_win(state.exercise_winid)
+    vim.api.nvim_set_current_win(exercise_winid)
 
     vim.notify("Exercise " .. state.module .. "." .. state.lesson .. "." .. state.exercise .. " loaded.", vim.log.levels.INFO)
 end
@@ -78,6 +81,16 @@ end
 --- Checks if the current exercise is completed correctly.
 function M.check_current_exercise()
     local state = LEARN_VIM.current_state
+    local exercise_winid = state.exercise_winid
+    local exercise_bufnr = state.exercise_bufnr
+
+    -- Guard against invalid window or buffer IDs
+    if not (exercise_winid and exercise_winid ~= -1 and vim.api.nvim_win_is_valid(exercise_winid) and
+            exercise_bufnr and exercise_bufnr ~= -1 and vim.api.nvim_buf_is_valid(exercise_bufnr)) then
+        vim.notify("LearnVim: Tutorial window is not open. Please run :LearnVim start.", vim.log.levels.WARN)
+        return
+    end
+
     if state.module == 0 then
         local module_data = LEARN_VIM.curriculum['module' .. state.module]
         local lesson_data = module_data and module_data['lesson' .. state.lesson]
@@ -105,7 +118,6 @@ function M.check_current_exercise()
     local is_correct = false
 
     -- Get the current state of the exercise buffer
-    local exercise_bufnr = state.exercise_bufnr
     local current_buffer_content = vim.api.nvim_buf_get_lines(exercise_bufnr, 0, -1, false)
     current_buffer_content = table.concat(current_buffer_content, '\n') -- Join lines for content checks
 
@@ -143,7 +155,7 @@ function M.check_current_exercise()
         is_correct = (regex:match_str(current_buffer_content) ~= nil) -- match_str returns nil if no match
 
     elseif validation.type == 'check_cursor_position' then
-        local current_cursor = vim.api.nvim_win_get_cursor(state.exercise_winid)
+        local current_cursor = vim.api.nvim_win_get_cursor(exercise_winid)
          -- Adjusting for row being 1-indexed, and column being 0-indexed
         local current_line = current_cursor[1]
         local current_col = current_cursor[2] + 1
@@ -186,6 +198,16 @@ end
 --- Resets the current exercise to its initial state.
 function M.reset_current_exercise()
     local state = LEARN_VIM.current_state
+    local exercise_winid = state.exercise_winid
+    local exercise_bufnr = state.exercise_bufnr
+
+    -- Guard against invalid window or buffer IDs
+    if not (exercise_winid and exercise_winid ~= -1 and vim.api.nvim_win_is_valid(exercise_winid) and
+            exercise_bufnr and exercise_bufnr ~= -1 and vim.api.nvim_buf_is_valid(exercise_bufnr)) then
+        vim.notify("LearnVim: Tutorial window is not open. Please run :LearnVim start.", vim.log.levels.WARN)
+        return
+    end
+
     local module_data = LEARN_VIM.curriculum['module' .. state.module]
     local lesson_data = module_data and module_data['lesson' .. state.lesson]
     local exercise_data = lesson_data and lesson_data.exercises and lesson_data.exercises[state.exercise]
@@ -193,13 +215,6 @@ function M.reset_current_exercise()
     if not exercise_data then
         vim.notify("No exercise data to reset.", vim.log.levels.WARN)
         return
-    end
-
-    -- Get the exercise buffer
-    local exercise_bufnr = state.exercise_bufnr
-     if exercise_bufnr == -1 or not vim.api.nvim_buf_is_valid(exercise_bufnr) then
-         vim.notify("Error: Exercise buffer not valid for reset.", vim.log.levels.ERROR)
-         return
     end
 
     -- Clear the exercise buffer and set its content back to the setup_text
@@ -212,10 +227,10 @@ function M.reset_current_exercise()
     if exercise_data.start_cursor then
         local line = exercise_data.start_cursor[1] - 1
         local col = exercise_data.start_cursor[2] - 1
-        vim.api.nvim_win_set_cursor(state.exercise_winid, {line, col})
+        vim.api.nvim_win_set_cursor(exercise_winid, {line, col})
     else
          -- Default to top-left if not specified
-         vim.api.nvim_win_set_cursor(state.exercise_winid, {0, 0})
+         vim.api.nvim_win_set_cursor(exercise_winid, {0, 0})
     end
 
     vim.notify("Exercise reset.", vim.log.levels.INFO)
