@@ -55,10 +55,10 @@ function M.load_current_exercise()
 
     -- Set cursor position if specified
     if exercise_data.start_cursor then
-        -- Nvim cursor is 0-indexed for line, 0-indexed for column
+        -- Nvim cursor is 1-indexed for line, 0-indexed for column
         -- Lua table is 1-indexed for line, 1-indexed for column
         -- Adjusting from 1-indexed Lua to 0-indexed Nvim
-        local line = exercise_data.start_cursor[1] - 1
+        local line = exercise_data.start_cursor[1]
         local col = exercise_data.start_cursor[2] - 1
         vim.api.nvim_win_set_cursor(state.exercise_winid, {line, col})
     else
@@ -144,8 +144,8 @@ function M.check_current_exercise()
 
     elseif validation.type == 'check_cursor_position' then
         local current_cursor = vim.api.nvim_win_get_cursor(state.exercise_winid)
-         -- Adjusting from 0-indexed Nvim to 1-indexed Lua for comparison with target
-        local current_line = current_cursor[1] + 1
+         -- Adjusting for row being 1-indexed, and column being 0-indexed
+        local current_line = current_cursor[1]
         local current_col = current_cursor[2] + 1
         local target_cursor = validation.target_cursor
         is_correct = (current_line == target_cursor[1] and current_col == target_cursor[2])

@@ -367,7 +367,7 @@ return function(M) -- Accept the parent module M as an argument
             j = { char = 'j', line = 7, col_start = 5, col_end = 6, hl_group = 'LearnVimJKey' }
         }
 
-        -- Apply initial highlights (0-indexed lines, 0-indexed byte-based columns)
+        -- Apply initial highlights (1-indexed lines, 0-indexed byte-based columns)
         for _, key_info in pairs(motion_keys_info) do
             vim.api.nvim_buf_add_highlight(menu_bufnr, ns_id, key_info.hl_group, key_info.line, key_info.col_start, key_info.col_end)
         end
