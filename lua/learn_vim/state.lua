@@ -12,9 +12,9 @@ return function(M) -- Accept the parent module M as an argument
     function M_state.load_progress()
         -- Check if the progress file exists and is readable using vim.fn.filereadable()
         -- filereadable() returns 1 if the file is readable, 0 otherwise.
-        if vim.fn.filereadable(M.progress_file) == 1 then -- Access progress_file via M
+        if vim.fn.filereadable(M.config.progress_file) == 1 then -- Access progress_file via M
             -- File exists, now attempt to read its content
-            local content = vim.fn.readfile(M.progress_file)
+            local content = vim.fn.readfile(M.config.progress_file)
             if #content > 0 then
                 -- readfile returns a list of lines, join them into a single string
                 local json_content = table.concat(content, '\n')
@@ -58,7 +58,7 @@ return function(M) -- Accept the parent module M as an argument
         local lines = vim.split(json_content, '\n')
         -- Attempt to write the lines to the progress file.
         -- writefile will create the file if it doesn't exist.
-        local ok, err = pcall(vim.fn.writefile, lines, M.progress_file) -- Access progress_file via M
+        local ok, err = pcall(vim.fn.writefile, lines, M.config.progress_file) -- Access progress_file via M
         if not ok then
             -- Handle file writing errors
             vim.notify("Failed to save learning progress: " .. tostring(err), vim.log.levels.ERROR)
