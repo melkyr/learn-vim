@@ -144,8 +144,8 @@ function M.check_current_exercise()
 
     elseif validation.type == 'check_cursor_position' then
         local current_cursor = vim.api.nvim_win_get_cursor(state.exercise_winid)
-         -- Adjusting from 0-indexed Nvim to 1-indexed Lua for comparison with target
-        local current_line = current_cursor[1] + 1
+         -- Adjusting for row being 1-indexed, and column being 0-indexed
+        local current_line = current_cursor[1]
         local current_col = current_cursor[2] + 1
         local target_cursor = validation.target_cursor
         is_correct = (current_line == target_cursor[1] and current_col == target_cursor[2])
