@@ -4,7 +4,12 @@
 
 local M = {} -- The module table
 local Utils = require('learn_vim.utils') -- Require the utils module
+local Constants = require('learn_vim.constants')
 local LEARN_VIM = nil -- Placeholder for the main plugin module, set during setup
+
+-- Used in cursor position checks
+local ANY_COLUMN = Constants.ANY_COLUMN
+local ANY_LINE = Constants.ANY_LINE
 
 -- --- Setup Function ---
 -- This function is called from init.lua to provide access to the main plugin module.
@@ -160,7 +165,10 @@ function M.check_current_exercise()
         local current_line = current_cursor[1]
         local current_col = current_cursor[2] + 1
         local target_cursor = validation.target_cursor
-        is_correct = (current_line == target_cursor[1] and current_col == target_cursor[2])
+
+        -- check the column, or line, or both
+        is_correct = (target_cursor[1] == ANY_LINE or current_line == target_cursor[1]) and
+                     (target_cursor[2] == ANY_COLUMN or current_col == target_cursor[2])
 
     elseif validation.type == 'check_mode' then
         local current_mode = vim.api.nvim_get_mode().mode
