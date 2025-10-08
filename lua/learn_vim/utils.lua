@@ -66,6 +66,11 @@ function Utils.read_file_content(relative_file_path)
         -- Continue, as content was read, but warn about closing issue.
     end
 
+    -- Trim trailing newlines/line breaks from the content
+    if content then
+        content = content:gsub("\n+$", "")
+    end
+
     return content
 end
 
