@@ -4,4 +4,4 @@
 " ---------------------------------------------
 
 Copy this word.
-Paste here:
+Paste here: 

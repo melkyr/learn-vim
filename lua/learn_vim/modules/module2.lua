@@ -4,6 +4,7 @@
 -- It returns a table representing this module's structure and lessons.
 
 local Utils = require('learn_vim.utils')
+local Constants = require('learn_vim.constants')
 
 return {
     title = "Basic Navigation (The Home Row)",
@@ -33,8 +34,8 @@ Try moving the cursor left and right in the exercise pane. Remember to type `:Le
                 instruction = "Using only the `h` key, move the cursor to the character 'E'. Type `:LearnVim exc` to check.", -- Updated instruction
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module2_lesson1_exercise2_setup.txt"),
-                start_cursor = {5, 6}, -- Cursor starts on 'G' (line 5, column 6)
-                validation = { type = 'check_cursor_position', target_cursor = {6, 4} }, -- Target cursor is on 'E' (line 5, column 4)
+                start_cursor = {6, 6}, -- Cursor starts on 'G' (line 6, column 6)
+                validation = { type = 'check_cursor_position', target_cursor = {6, 5} }, -- Target cursor is on 'E' (line 6, column 5)
                 feedback = "Correct! You moved left.",
              }
         },
@@ -56,7 +57,7 @@ These are incredibly common movements. Practice moving up and down in the exerci
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module2_lesson2_exercise1_setup.txt"),
                 start_cursor = {5, 0},
-                validation = { type = 'check_cursor_position', target_cursor = {7, 0} },
+                validation = { type = 'check_cursor_position', target_cursor = {8, Constants.ANY_COLUMN} },
                 feedback = "Success! You moved down.",
             },
             {
@@ -64,7 +65,7 @@ These are incredibly common movements. Practice moving up and down in the exerci
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module2_lesson2_exercise2_setup.txt"),
                 start_cursor = {7, 0},
-                validation = { type = 'check_cursor_position', target_cursor = {5, 0} },
+                validation = { type = 'check_cursor_position', target_cursor = {6, Constants.ANY_COLUMN} },
                 feedback = "Success! You moved up.",
             },
         },
@@ -82,11 +83,11 @@ Let's try navigating to a specific spot. Remember to type `:LearnVim exc` to che
 ]],
         exercises = {
             {
-                instruction = "Navigate to the character 'X' in this text using only `h`, `j`, `k`, and `l`. Type `:LearnVim exc` to check.", -- Updated instruction
+                instruction = "Navigate to the first 'X' character in this text using only `h`, `j`, `k`, and `l`. Type `:LearnVim exc` to check.", -- Updated instruction
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module2_lesson3_exercise1_setup.txt"),
                 start_cursor = {5, 0},
-                validation = { type = 'check_cursor_position', target_cursor = {6, 12} },
+                validation = { type = 'check_cursor_position', target_cursor = {7, 10} },
                 feedback = "Great job navigating character by character!",
             },
         },

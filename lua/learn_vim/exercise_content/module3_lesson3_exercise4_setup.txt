@@ -2,4 +2,4 @@
 " Instruction: Move the cursor to the end of the line using `$`. Then type `:LearnVim exc` to check.
 " Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
-This is a line.]
+This is a line.

@@ -4,6 +4,7 @@
 -- It returns a table representing this module's structure and lessons.
 
 local Utils = require('learn_vim.utils')
+local Constants = require('learn_vim.constants')
 
 return {
     title = "More Efficient Navigation (By Word & Line)", -- Updated title
@@ -71,7 +72,7 @@ Let's practice jumping around this exercise buffer. Use `:LearnVim exc` to check
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module3_lesson2_exercise1_setup.txt"),
                 start_cursor = {15, 5}, -- Start somewhere in the middle
-                validation = { type = 'check_cursor_position', target_cursor = {1, 1} }, -- Target is the first line (line 1, col 1)
+                validation = { type = 'check_cursor_position', target_cursor = {1, Constants.ANY_COLUMN} },
                 feedback = "Great! You jumped to the top of the file.",
             },
             {
@@ -80,7 +81,7 @@ Let's practice jumping around this exercise buffer. Use `:LearnVim exc` to check
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module3_lesson2_exercise2_setup.txt"),
                 start_cursor = {8, 10}, -- Start somewhere in the middle
                 -- Target is the last line (line 20)
-                validation = { type = 'check_cursor_position', target_cursor = {25, 1} },
+                validation = { type = 'check_cursor_position', target_cursor = {25, Constants.ANY_COLUMN} },
                 feedback = "Excellent! You jumped to the bottom of the file.",
             },
         },
@@ -106,7 +107,7 @@ Let's practice these precise line movements. Use `:LearnVim exc` after each step
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module3_lesson3_exercise1_setup.txt"),
                 start_cursor = {5, 1}, -- Start on line 5
-                validation = { type = 'check_cursor_position', target_cursor = {10, 1} }, -- Target is line 10
+                validation = { type = 'check_cursor_position', target_cursor = {10, Constants.ANY_COLUMN} }, -- Target is line 10
                 feedback = "You jumped to line 10!",
             },
              {
@@ -122,7 +123,7 @@ Let's practice these precise line movements. Use `:LearnVim exc` after each step
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module3_lesson3_exercise3_setup.txt"),
                 start_cursor = {5, 1}, -- Start at the very beginning (column 0)
-                validation = { type = 'check_cursor_position', target_cursor = {5, 4} }, -- Target is the first non-blank character ('T' at column 4)
+                validation = { type = 'check_cursor_position', target_cursor = {5, 5} }, -- Target is the first non-blank character ('T' at column 4)
                 feedback = "Correct! '^' skips leading whitespace.",
             },
             {
@@ -158,7 +159,7 @@ Let's practice using counts with vertical and horizontal movements. Use `:LearnV
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module3_lesson4_exercise1_setup.txt"),
                 start_cursor = {5, 1}, -- Start on "Start here."
-                validation = { type = 'check_cursor_position', target_cursor = {8, 1} }, -- Target is "Target line." (3 lines down)
+                validation = { type = 'check_cursor_position', target_cursor = {8, Constants.ANY_COLUMN} }, -- Target is "Target line." (3 lines down)
                 feedback = "Excellent! You moved down multiple lines with a count.",
             },
             {
@@ -166,23 +167,23 @@ Let's practice using counts with vertical and horizontal movements. Use `:LearnV
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module3_lesson4_exercise2_setup.txt"),
                 start_cursor = {10, 1}, -- Start on "Start here."
-                validation = { type = 'check_cursor_position', target_cursor = {6, 1} }, -- Target is "Target line." (4 lines up)
+                validation = { type = 'check_cursor_position', target_cursor = {6, Constants.ANY_COLUMN} }, -- Target is "Target line." (4 lines up)
                 feedback = "Well done! You moved up multiple lines with a count.",
             },
             {
                 instruction = "Using a numerical prefix with `w`, move forward exactly 5 words from the starting position. Then type `:LearnVim exc` to check.",
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module3_lesson4_exercise3_setup.txt"),
-                start_cursor = {5, 12}, -- Start on 'O' of "One"
-                validation = { type = 'check_cursor_position', target_cursor = {5, 36} }, -- Target is the start of "six"
+                start_cursor = {6, 12}, -- Start on 'O' of "One"
+                validation = { type = 'check_cursor_position', target_cursor = {6, 37} }, -- Target is the start of "six"
                 feedback = "Great! You jumped forward multiple words.",
             },
              {
                 instruction = "Using a numerical prefix with `b`, move backward exactly 3 words from the starting position. Then type `:LearnVim exc` to check.",
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module3_lesson4_exercise4_setup.txt"),
-                start_cursor = {5, 35}, -- Start on 'S' of "Start"
-                validation = { type = 'check_cursor_position', target_cursor = {5, 19} }, -- Target is the start of "five" (3 words before "Start")
+                start_cursor = {6, 35}, -- Start on 'S' of "Start"
+                validation = { type = 'check_cursor_position', target_cursor = {6, 20} }, -- Target is the start of "five" (3 words before "Start")
                 feedback = "Excellent! You jumped backward multiple words.",
             },
         },

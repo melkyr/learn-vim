@@ -112,7 +112,7 @@ Remember to use `:LearnVim exc` to check and `:LearnVim exr` to reset the exerci
                 instruction = "Use `a` to append ' my first edit' to the line below. Press `<Esc>` to return to Normal mode. Then type `:LearnVim exc` to check.", -- Updated instruction
                 type = "insert_text",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module1_lesson4_exercise1_setup.txt"),
-                 start_cursor = {5, 20}, -- Cursor at the end of the line "This is the line." (line 5, column 20)
+                 start_cursor = {6, 20}, -- Cursor at the end of the line "This is the line." (line 5, column 20)
                 validation = {
                      type = 'check_buffer_content',
                      target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module1_lesson4_exercise1_target.txt")
