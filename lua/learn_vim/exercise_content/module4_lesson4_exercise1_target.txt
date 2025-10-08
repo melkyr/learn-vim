@@ -3,5 +3,5 @@
 " Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
- this word.
-To here. Move
+this word.
+To here. Move 
