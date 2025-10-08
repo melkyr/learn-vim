@@ -3,4 +3,4 @@
 " Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
-The quick  over the lazy dog.
+The quick over the lazy dog.
