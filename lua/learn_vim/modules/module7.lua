@@ -83,24 +83,24 @@ Let's practice searching. Type the search command and the pattern, press `<Enter
                 instruction = "Search forward for the word 'jumps' using `/`. Type `:LearnVim exc` to check after the search.",
                 type = "cursor_move", -- Check cursor position after search
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson2_exercise1_setup.txt"),
-                start_cursor = {5, 0}, -- Start at the beginning
-                validation = { type = 'check_cursor_position', target_cursor = {6, 0} }, -- Target is the start of "jumps" on line 6
+                start_cursor = {6, 0}, -- Start at the beginning
+                validation = { type = 'check_cursor_position', target_cursor = {7, 9} }, -- Target is the start of "jumps" on line 7
                 feedback = "You found the word using search!",
             },
              {
                 instruction = "Search backward for the word 'quick' using `?`. Type `:LearnVim exc` to check after the search.",
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson2_exercise2_setup.txt"),
-                start_cursor = {7, 0}, -- Start at the end
-                validation = { type = 'check_cursor_position', target_cursor = {5, 12} }, -- Target is the start of "quick" on line 5
+                start_cursor = {6, 27}, -- Start at the end
+                validation = { type = 'check_cursor_position', target_cursor = {6, 13} }, -- Target is the start of "quick" on line 6
                 feedback = "You found the word using backward search!",
             },
              {
                 instruction = "Search forward for 'Line'. Then use `n` to find the next 'Line'. Type `:LearnVim exc` to check.",
                 type = "cursor_move",
                  setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson2_exercise3_setup.txt"),
-                 start_cursor = {5, 0}, -- Start on "Line 1"
-                 validation = { type = 'check_cursor_position', target_cursor = {6, 0} }, -- Target is the start of "Line 2"
+                 start_cursor = {5, 0}, -- Start on blank line
+                 validation = { type = 'check_cursor_position', target_cursor = {7, 1} }, -- Target is the start of "Line 2"
                  feedback = "You repeated the search forward!",
              },
         },
@@ -125,16 +125,16 @@ Let's practice using counts with find and search. Use `:LearnVim exc` to check a
                 instruction = "Using a numerical prefix with `f`, jump to the 3rd 'i' on the line below. Then type `:LearnVim exc` to check.",
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson3_exercise1_setup.txt"),
-                start_cursor = {5, 0}, -- Start at the beginning
-                validation = { type = 'check_cursor_position', target_cursor = {5, 21} }, -- Target is the 'i' in 'ivy' (1st in Jinxed, 2nd in wizards, 3rd in ivy)
+                start_cursor = {6, 0}, -- Start at the beginning
+                validation = { type = 'check_cursor_position', target_cursor = {6, 22} }, -- Target is the 'i' in 'ivy' (1st in Jinxed, 2nd in wizards, 3rd in ivy)
                 feedback = "You jumped to the 3rd 'i'!",
             },
              {
                 instruction = "Using a numerical prefix with `/`, search forward for the 2nd occurrence of 'Line'. Type `:LearnVim exc` to check after the search.",
                 type = "cursor_move",
                  setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson3_exercise2_setup.txt"),
-                 start_cursor = {5, 0}, -- Start on "Line 1"
-                 validation = { type = 'check_cursor_position', target_cursor = {6, 0} }, -- Target is the start of "Line 2" (2nd occurrence)
+                 start_cursor = {5, 0}, -- Start on blank line
+                 validation = { type = 'check_cursor_position', target_cursor = {7, 1} }, -- Target is the start of "Line 2" (2nd occurrence)
                  feedback = "You found the 2nd occurrence using search and a count!",
              },
         },
@@ -163,7 +163,7 @@ Let's practice a simple find and replace on the current line. Use `:LearnVim exc
                 instruction = "Using `:s`, replace the first occurrence of 'old' with 'new' on the line below. Type `:LearnVim exc` to check.",
                 type = "insert_text",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson4_exercise1_setup.txt"),
-                start_cursor = {5, 0},
+                start_cursor = {6, 0},
                 validation = {
                     type = 'check_buffer_content',
                     target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson4_exercise1_target.txt")
