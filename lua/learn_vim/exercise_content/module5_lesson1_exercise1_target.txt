@@ -3,6 +3,6 @@
 " Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
-Please  this word.
-Also  this word.
-And  this word too.
+Please this word.
+Also this word.
+And this word too.
