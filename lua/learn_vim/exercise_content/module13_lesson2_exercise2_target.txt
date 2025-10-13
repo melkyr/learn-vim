@@ -3,4 +3,4 @@
 " Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
-This is the second paragraph.]
+This is the second paragraph.
