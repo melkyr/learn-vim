@@ -3,4 +3,4 @@
 " Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
-Practice creating and closing tabs.]
+Practice creating and closing tabs.

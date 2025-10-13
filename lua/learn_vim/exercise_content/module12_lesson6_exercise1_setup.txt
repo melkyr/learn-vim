@@ -4,4 +4,4 @@
 " ---------------------------------------------
 
 YANK THIS LINE
-This line should remain unchanged.]
+This line should remain unchanged.

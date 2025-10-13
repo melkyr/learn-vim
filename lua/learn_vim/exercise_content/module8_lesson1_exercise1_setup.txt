@@ -3,4 +3,4 @@
 " Use ':LearnVim exc' to check, ':LearnVim exr' to reset.
 " ---------------------------------------------
 
-Practice entering and exiting command-line mode here.]
+Practice entering and exiting command-line mode here.

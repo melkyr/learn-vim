@@ -3,4 +3,4 @@
 " Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
-Experiment with highlighting the current line.]
+Experiment with highlighting the current line.

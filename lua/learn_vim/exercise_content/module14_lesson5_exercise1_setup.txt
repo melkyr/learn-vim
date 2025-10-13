@@ -3,4 +3,4 @@
 " Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
-This exercise is about understanding <Plug>. Read the text above.]
+This exercise is about understanding <Plug>. Read the text above.

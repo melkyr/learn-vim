@@ -3,4 +3,4 @@
 " Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
-Set your leader key and create a mapping using it.]
+Set your leader key and create a mapping using it.
