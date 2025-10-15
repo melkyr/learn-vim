@@ -4,4 +4,4 @@
 " ---------------------------------------------
 This line has old text.
 Another line with old text.
-A third line also has old text.]
+A third line also has old text.

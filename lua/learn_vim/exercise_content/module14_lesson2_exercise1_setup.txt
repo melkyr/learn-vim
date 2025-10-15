@@ -4,4 +4,4 @@
 " ---------------------------------------------
 
 This is a very long line that will demonstrate line wrapping if you enable it.
-Experiment with `:set wrap` and `:set nowrap`.]
+Experiment with `:set wrap` and `:set nowrap`.

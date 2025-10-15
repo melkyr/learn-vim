@@ -4,4 +4,4 @@
 " ---------------------------------------------
 
 YANK THIS LINE
-This line is not the tutorial text.]
+This line is not the tutorial text.

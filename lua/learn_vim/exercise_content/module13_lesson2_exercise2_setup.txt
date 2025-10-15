@@ -5,4 +5,4 @@
 This is the first paragraph.
 It has multiple lines.
 
-This is the second paragraph.]
+This is the second paragraph.

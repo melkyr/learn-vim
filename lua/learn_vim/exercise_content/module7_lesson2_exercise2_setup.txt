@@ -5,4 +5,4 @@
 
 Line 1: The quick brown fox
 Line 2: jumps over the lazy
-Line 3: dog.]
+Line 3: dog.

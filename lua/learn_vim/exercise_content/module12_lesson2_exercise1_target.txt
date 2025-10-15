@@ -3,4 +3,4 @@
 " Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
-Switch away and back using :bnext and :bprev.]
+Switch away and back using :bnext and :bprev.

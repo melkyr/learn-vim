@@ -4,4 +4,4 @@
 " ---------------------------------------------
 This is the first sentence. This is the second sentence.
 
-This is a separate paragraph.]
+This is a separate paragraph.

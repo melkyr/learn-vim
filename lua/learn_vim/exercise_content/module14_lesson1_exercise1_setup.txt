@@ -3,4 +3,4 @@
 " Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
-Open your configuration file using :e $MYVIMRC.]
+Open your configuration file using :e $MYVIMRC.

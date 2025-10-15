@@ -3,4 +3,4 @@
 " Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
-Create a mapping for the F2 key.]
+Create a mapping for the F2 key.

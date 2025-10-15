@@ -3,4 +3,4 @@
 " Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 
-Add vim.opt.relativenumber = true to your init.lua and restart Neovim.]
+Add vim.opt.relativenumber = true to your init.lua and restart Neovim.

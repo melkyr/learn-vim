@@ -5,4 +5,4 @@
 
 Keep this line.
 This line is changed.
-Keep this line too.]
+Keep this line too.
