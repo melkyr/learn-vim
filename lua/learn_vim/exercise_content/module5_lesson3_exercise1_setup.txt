@@ -2,4 +2,6 @@
 " Instruction: Edit the paragraph to match the target content. Apply commands learned in Modules 3-5.
 " Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
+TARGET TEXT: The agile fox cat. This is a simple sentence for practicing editing commands. We will delete some words, change others, and maybe move a few things around. Undo and repeat can be helpful here.
+
 The quick brown fox jumps over the lazy dog. This is a simple sentence for practicing editing commands. We will delete some words, change others, and maybe move a few things around. Undo and repeat can be helpful here.
