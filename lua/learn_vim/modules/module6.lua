@@ -30,7 +30,7 @@ Let's start with **Character Visual mode** (`v`). Press `v` in Normal mode, move
                 instruction = "Press `v` to enter Character Visual mode, move the cursor to select some text, then press `<Esc>` to return to Normal mode. Type `:LearnVim exc` to check.",
                 type = "mode_switch", -- We'll check the final mode is Normal
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module6_lesson1_exercise1_setup.txt"),
-                start_cursor = {5, 0},
+                start_cursor = {6, 0},
                 validation = { type = 'check_mode', target_mode = 'n' }, -- Check if they returned to Normal mode
                 feedback = "You entered and exited Character Visual mode!",
             },
@@ -38,7 +38,7 @@ Let's start with **Character Visual mode** (`v`). Press `v` in Normal mode, move
                 instruction = "Press `v`, move right 5 characters using `l`, then press `<Esc>`. Type `:LearnVim exc` to check.",
                 type = "mode_switch", -- Still checking final mode is Normal
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module6_lesson1_exercise2_setup.txt"),
-                start_cursor = {5, 0},
+                start_cursor = {6, 0},
                 validation = { type = 'check_mode', target_mode = 'n' },
                 feedback = "You selected characters using 'l' in Visual mode!",
             },
@@ -60,7 +60,7 @@ Press `V` to enter Line Visual mode, move up or down to select lines, then press
                 instruction = "Press `V` to enter Line Visual mode, move down 2 lines using `j`, then press `<Esc>`. Type `:LearnVim exc` to check.",
                 type = "mode_switch", -- Check final mode is Normal
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module6_lesson2_exercise1_setup.txt"),
-                start_cursor = {5, 0}, -- Start on Line 1
+                start_cursor = {6, 0}, -- Start on Line 1
                 validation = { type = 'check_mode', target_mode = 'n' },
                 feedback = "You selected lines using 'V' and 'j'!",
             },
@@ -117,7 +117,7 @@ Let's practice applying actions to visual selections. Use `:LearnVim exc` to che
                 instruction = "Use `v` to select the word 'delete', then press `d` to delete it. Type `:LearnVim exc` to check.",
                 type = "insert_text",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module6_lesson4_exercise1_setup.txt"),
-                start_cursor = {5, 7}, -- Cursor on 'd' of 'delete'
+                start_cursor = {6, 7}, -- Cursor on 'd' of 'delete'
                 validation = {
                     type = 'check_buffer_content',
                     target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module6_lesson4_exercise1_target.txt")
@@ -128,7 +128,7 @@ Let's practice applying actions to visual selections. Use `:LearnVim exc` to che
                 instruction = "Use `V` to select the line 'Change this line.', then press `c` to change it. Type 'This line is changed.' and press `<Esc>`. Type `:LearnVim exc` to check.",
                 type = "insert_text",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module6_lesson4_exercise2_setup.txt"),
-                start_cursor = {6, 0}, -- Cursor on the line to change
+                start_cursor = {7, 0}, -- Cursor on the line to change
                 validation = {
                     type = 'check_buffer_content',
                     target_content = Utils.read_file_content("lua/learn_vim/exercise_content/module6_lesson4_exercise2_target.txt")
