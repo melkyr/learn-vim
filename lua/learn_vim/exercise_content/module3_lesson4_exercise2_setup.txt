@@ -3,14 +3,14 @@
 " Use `:LearnVim exc` to check, `:LearnVim exr` to reset.
 " ---------------------------------------------
 Line 1
-Line 2
+Target line.
 Line 3
 Line 4
-Target line.
-Line 6
+Line 5
+Start here.
 Line 7
 Line 8
 Line 9
-Start here.
+Line 10
 Line 11
 Line 12
