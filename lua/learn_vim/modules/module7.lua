@@ -31,32 +31,32 @@ Let's practice finding characters on a line. Use `:LearnVim exc` to check and `:
                 instruction = "Using `f`, jump to the first 'a' on the line below. Then type `:LearnVim exc` to check.",
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson1_exercise1_setup.txt"),
-                start_cursor = {5, 0}, -- Start at the beginning of the line
-                validation = { type = 'check_cursor_position', target_cursor = {5, 10} }, -- Target is the first 'a' in 'wizards'
+                start_cursor = {6, 0}, -- Start at the beginning of the practice line
+                validation = { type = 'check_cursor_position', target_cursor = {6, 11} }, -- Target is the first 'a' in 'wizards' (1-based column)
                 feedback = "You found the character!",
             },
              {
                 instruction = "Using `t`, jump just before the 'f' in 'from'. Then type `:LearnVim exc` to check.",
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson1_exercise2_setup.txt"),
-                start_cursor = {5, 0}, -- Start at the beginning
-                validation = { type = 'check_cursor_position', target_cursor = {5, 24} }, -- Target is the space before 'f' in 'from'
+                start_cursor = {6, 0}, -- Start at the beginning of the practice line
+                validation = { type = 'check_cursor_position', target_cursor = {6, 25} }, -- Target is the space before 'f' in 'from' (1-based column)
                 feedback = "You jumped just before the character!",
             },
              {
                 instruction = "Using `f`, jump to the first 'i'. Then use `;` to jump to the next 'i'. Type `:LearnVim exc` to check.",
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson1_exercise3_setup.txt"),
-                start_cursor = {5, 0}, -- Start at the beginning
-                validation = { type = 'check_cursor_position', target_cursor = {5, 8} }, -- Target is the 'i' in 'wizards' (second 'i')
+                start_cursor = {6, 0}, -- Start at the beginning of the practice line
+                validation = { type = 'check_cursor_position', target_cursor = {6, 9} }, -- Target is the 'i' in 'wizards' (second 'i', 1-based column)
                 feedback = "You repeated the find forward!",
             },
              {
                 instruction = "Using `f`, jump to the first 'i'. Then use `;` to jump to the next 'i'. Then use `,` to jump back to the previous 'i'. Type `:LearnVim exc` to check.",
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module7_lesson1_exercise4_setup.txt"),
-                start_cursor = {5, 0}, -- Start at the beginning
-                validation = { type = 'check_cursor_position', target_cursor = {5, 1} }, -- Target is the 'i' in 'Jinxed' (first 'i')
+                start_cursor = {6, 0}, -- Start at the beginning of the practice line
+                validation = { type = 'check_cursor_position', target_cursor = {6, 2} }, -- Target is the 'i' in 'Jinxed' (first 'i', 1-based column)
                 feedback = "You repeated the find backward!",
             },
         },
