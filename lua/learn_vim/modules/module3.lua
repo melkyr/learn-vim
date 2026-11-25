@@ -183,7 +183,7 @@ Let's practice using counts with vertical and horizontal movements. Use `:LearnV
                 type = "cursor_move",
                 setup_text = Utils.read_file_content("lua/learn_vim/exercise_content/module3_lesson4_exercise4_setup.txt"),
                 start_cursor = {6, 35}, -- Start on 'S' of "Start"
-                validation = { type = 'check_cursor_position', target_cursor = {6, 20} }, -- Target is the start of "five" (3 words before "Start")
+                validation = { type = 'check_cursor_position', target_cursor = {6, 25} }, -- Target is the start of "six": for `b` the ":" after "seven" is a word of its own
                 feedback = "Excellent! You jumped backward multiple words.",
             },
         },

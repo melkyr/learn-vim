@@ -143,6 +143,9 @@ return function(M) -- Accept the parent module M as an argument
             wrap = true
         })
         vim.api.nvim_win_set_cursor(M.current_state.tutorial_winid, {1, 0})
+        -- The explanations are written in Markdown: render them as such and hide the markup.
+        vim.bo[tutorial_buf].filetype = 'markdown'
+        vim.wo[M.current_state.tutorial_winid].conceallevel = 2
 
         local exercise_buf = M.current_state.exercise_bufnr
         Utils.set_buffer_options(exercise_buf, {

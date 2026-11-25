@@ -229,12 +229,12 @@ function M.reset_current_exercise()
 
      -- Reset cursor position if specified
     if exercise_data.start_cursor then
-        local line = exercise_data.start_cursor[1] - 1
-        local col = exercise_data.start_cursor[2] - 1
-        vim.api.nvim_win_set_cursor(exercise_winid, {line, col})
+        -- Same placement as ui.display_lesson: start_cursor is passed as is ({line, 0-based column}),
+        -- so a reset puts the cursor exactly where the exercise started.
+        vim.api.nvim_win_set_cursor(exercise_winid, exercise_data.start_cursor)
     else
          -- Default to top-left if not specified
-         vim.api.nvim_win_set_cursor(exercise_winid, {0, 0})
+         vim.api.nvim_win_set_cursor(exercise_winid, {1, 0})
     end
 
     vim.notify("Exercise reset.", vim.log.levels.INFO)
